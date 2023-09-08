@@ -1,4 +1,4 @@
-import currentSpot from '@/assets/currentSpot.svg';
+import currentSpot from '@/assets/icons/currentSpot.svg';
 
 const {kakao} = window;
 

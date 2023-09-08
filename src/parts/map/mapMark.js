@@ -1,4 +1,4 @@
-import spot from '@/assets/spot.svg';
+import spot from '@/assets/icons/spot.svg';
 import {positions} from '@/data/positions';
 
 const {kakao} = window;

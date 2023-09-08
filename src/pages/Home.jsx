@@ -7,15 +7,15 @@ import 'swiper/css';
 import 'swiper/css/free-mode';
 import {FreeMode, Keyboard, Mousewheel} from 'swiper/modules';
 import {Swiper, SwiperSlide} from 'swiper/react';
-import inactiveAlarm from '@/assets/inactiveAlarm.svg';
-import myLocation from '@/assets/myLocation.svg';
-import reset from '@/assets/reset.svg';
+import inactiveAlarm from '@/assets/icons/inactiveAlarm.svg';
+import myLocation from '@/assets/icons/myLocation.svg';
+import reset from '@/assets/icons/reset.svg';
 
 function Home() {
   return (
     <div className="relative p-4">
       <h2 className="text-lg font-semibold">공구룸</h2>
-      <button>
+      <button type="button">
         <img
           src={inactiveAlarm}
           alt="알림 없음"

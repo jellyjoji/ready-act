@@ -8,12 +8,10 @@ import Counter from "@/components/Counter";
 import MeetingPoint from "@/components/MeetingPoint";
 import Location from "@/components/Location";
 // import ToggleButton from '@/components/ToggleButton';
-// import { useRef, useState } from 'react'
+import { useRef } from 'react'
+// import { useNavigate } from 'react-router-dom';
 
-// import { pb } from "@/api/pocketbase";
-
-// const record = await pb.collection('products').create(data);
-
+import { pb } from "@/api/pocketbase";
 
 function CreateRoom() {
 
@@ -39,7 +37,34 @@ function CreateRoom() {
   //     ""
   //   ]
   // };
+  // const navigate = useNavigate();
 
+  const formRef = useRef(null);
+  const titleRef = useRef(null);
+  const contentRef = useRef(null);
+  const priceRef = useRef(null);
+
+  const handleCreate = async (e) => {
+    e.preventDefault();
+
+    const titleValue = titleRef.current.value;
+    const contentValue = contentRef.current.value;
+    const priceValue = priceRef.current.value;
+
+    const data = new FormData();
+
+    data.append('title', titleValue);
+    data.append('contnet', contentValue);
+    data.append('contnet', priceValue);
+
+    try {
+      await pb.collection('products').create(data);
+      console.log(data);
+      // navigate('/products');
+    } catch (error) {
+      console.error(error);
+    }
+  }
 
   return (
     <>
@@ -55,11 +80,16 @@ function CreateRoom() {
         <meta property="og:article:author" content="" />
       </Helmet>
 
-      <div className="inputContainer">
+      <form
+        encType="multipart/form-data"
+        ref={formRef}
+        onSubmit={handleCreate}
+        className=''
+      >
         <Category title="카테고리" className="w-full defaultInput" placeholder="공구 카테고리를 선택해주세요." />
-        <Input type="text" placeholder="상품명을 입력해주세요." labelClassName="product name" inputClassName="defaultInput w-full my-4" title="상품명" />
-        <Input type="number" placeholder="0원" labelClassName="product price" inputClassName="defaultInput w-full my-4" title="상품 가격" />
-        <TextArea title="내용" placeholder="공구 모임 주요내용을 알려주세요." className="w-full defaultInput" labelClassName="product content" />
+        <Input isRef={titleRef} type="text" placeholder="상품명을 입력해주세요." labelClassName="product name" inputClassName="defaultInput w-full my-4" title="상품명" />
+        <Input isRef={priceRef} type="number" placeholder="0원" labelClassName="product price" inputClassName="defaultInput w-full my-4" title="상품 가격" />
+        <TextArea TextArearef={contentRef} title="내용" placeholder="공구 모임 주요내용을 알려주세요." className="w-full defaultInput" labelClassName="product content" />
         {/* <ToggleButton isOn={isOn} onChange={setIsOn} /> */}
         <DatePicker title="픽업 날짜" className="w-full defaultInput" />
         <Counter title="인원" />
@@ -68,7 +98,7 @@ function CreateRoom() {
         <Button type="submit" className="activeButton lgFontButton w-full my-4" text="방만들기" />
         <Location />
 
-      </div>
+      </form>
     </>
   );
 }

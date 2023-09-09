@@ -1,12 +1,13 @@
 import { useId } from 'react';
 
-function TextArea({ title, placeholder, className, labelClassName, ...restProps }) {
+function TextArea({ TextArearef, title, placeholder, className, labelClassName, ...restProps }) {
   const id = useId();
 
   return (
     <>
       <label htmlFor={id} className={labelClassName}>{title}</label>
       <textarea
+        ref={TextArearef}
         id={id}
         placeholder={placeholder}
         className={className}

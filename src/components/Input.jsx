@@ -2,6 +2,7 @@ import { useId } from 'react';
 import { string } from 'prop-types';
 
 function Input({
+  isRef,
   type,
   placeholder,
   labelClassName,
@@ -16,6 +17,7 @@ function Input({
 
       <label htmlFor={id} className={labelClassName}>{title}</label>
       <input
+        ref={isRef}
         id={id}
         type={type}
         placeholder={placeholder}

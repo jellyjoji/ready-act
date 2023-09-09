@@ -10,7 +10,7 @@ function Nav() {
     <nav>
       <ul className="flex justify-around ">
         <li>
-          <NavLink to="/">
+          <NavLink to="/r09m">
             <div className={styles.nav}>
               <HomeIcon />
               <span className={`${styles.span} ${styles.active}`}>홈</span>

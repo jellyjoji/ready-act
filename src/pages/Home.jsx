@@ -34,7 +34,7 @@ function Home() {
         </button>
 
         <Swiper
-          slidesPerView={5.5}
+          slidesPerView={4.5}
           spaceBetween={10}
           freeMode={true}
           keyboard={{

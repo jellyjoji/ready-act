@@ -26,13 +26,15 @@ function Meat() {
   return (
     <>
       <Helmet>
-        <title>R09M - 전체 상품</title>
+        <title>R09M - 육류</title>
       </Helmet>
+      <h1 className="sr-only">R09M</h1>
 
       <div className="bg-line-200 py-2">
         <Link to="/r09m">
           <img src={prev} alt="뒤로 가기" className="p-4" />
         </Link>
+        <h2 className="text-lg text-center font-semibold">육류</h2>
         <ul>
           {filterRecordItems.map(
             ({
@@ -96,4 +98,3 @@ function Meat() {
 }
 
 export default Meat;
-

@@ -2,26 +2,31 @@ import {pb} from '@/api/pocketbase';
 import participateNum from '@/assets/icons/participateNum.svg';
 import pickuptime from '@/assets/icons/pickuptime.svg';
 import prev from '@/assets/icons/prev.svg';
+import { useState } from 'react';
 import {useEffect} from 'react';
 import {Helmet} from 'react-helmet-async';
 import {Link} from 'react-router-dom';
 
-pb.autoCancellation(false);
-
-const filterRecordList = await pb.collection('products').getList(1, 50, {
-  filter: 'category="🧅 채소"',
-});
-
 function Vegetable() {
-  const filterRecordItems = filterRecordList.items;
+  const [data, setData] = useState([]);
 
   useEffect(() => {
-    try {
-      filterRecordItems;
-    } catch (error) {
-      throw new Error('error');
+    pb.autoCancellation(false);
+    async function filterProducts() {
+      try {
+        const filterRecordList = await pb
+          .collection('products')
+          .getList(1, 50, {
+            filter: 'category="🧅 채소"',
+          });
+        const filterRecordItems = filterRecordList.items;
+        setData(filterRecordItems);
+      } catch (error) {
+        throw new Error('error');
+      }
     }
-  }, [filterRecordItems]);
+    filterProducts();
+  }, []);
 
   return (
     <>
@@ -29,14 +34,14 @@ function Vegetable() {
         <title>R09M - 채소</title>
       </Helmet>
       <h1 className="sr-only">R09M</h1>
-      
+
       <div className="bg-line-200 py-2">
         <Link to="/r09m">
           <img src={prev} alt="뒤로 가기" className="p-4" />
         </Link>
         <h2 className="text-lg text-center font-semibold">채소</h2>
         <ul>
-          {filterRecordItems.map(
+          {data.map(
             ({
               id,
               category,

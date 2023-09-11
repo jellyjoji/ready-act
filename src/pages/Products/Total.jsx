@@ -1,20 +1,25 @@
 import {pb} from '@/api/pocketbase';
-import participateNum from '@/assets/icons/participateNum.svg';
-import pickuptime from '@/assets/icons/pickuptime.svg';
 import prev from '@/assets/icons/prev.svg';
-import {useEffect} from 'react';
+import {useEffect, useState} from 'react';
 import {Helmet} from 'react-helmet-async';
 import {Link} from 'react-router-dom';
-
-const readRecordList = await pb.collection('products').getFullList();
+import participateNum from '@/assets/icons/participateNum.svg';
+import pickuptime from '@/assets/icons/pickuptime.svg';
 
 function Total() {
+  const [data, setData] = useState([]);
+
   useEffect(() => {
-    try {
-      readRecordList;
-    } catch (error) {
-      throw new Error('error');
+    async function getProducts() {
+      try {
+        const readRecordList = await pb.collection('products').getFullList();
+        setData(readRecordList);
+        console.log(readRecordList);
+      } catch (error) {
+        throw new Error('error');
+      }
     }
+    getProducts();
   }, []);
 
   return (
@@ -30,8 +35,8 @@ function Total() {
         </Link>
         <h2 className="text-lg text-center font-semibold">전체</h2>
         <ul>
-          {readRecordList.map(
-            ({
+          {data.map(
+             ({
               id,
               category,
               status,

@@ -2,26 +2,31 @@ import {pb} from '@/api/pocketbase';
 import participateNum from '@/assets/icons/participateNum.svg';
 import pickuptime from '@/assets/icons/pickuptime.svg';
 import prev from '@/assets/icons/prev.svg';
+import {useState} from 'react';
 import {useEffect} from 'react';
 import {Helmet} from 'react-helmet-async';
 import {Link} from 'react-router-dom';
 
-pb.autoCancellation(false);
-
-const filterRecordList = await pb.collection('products').getList(1, 50, {
-  filter: 'category="🍇 과일"',
-});
-
 function Fruit() {
-  const filterRecordItems = filterRecordList.items;
+  const [data, setData] = useState([]);
 
   useEffect(() => {
-    try {
-      filterRecordItems;
-    } catch (error) {
-      throw new Error('error');
+    pb.autoCancellation(false);
+    async function filterProducts() {
+      try {
+        const filterRecordList = await pb
+          .collection('products')
+          .getList(1, 50, {
+            filter: 'category="🍇 과일"',
+          });
+        const filterRecordItems = filterRecordList.items;
+        setData(filterRecordItems);
+      } catch (error) {
+        throw new Error('error');
+      }
     }
-  }, [filterRecordItems]);
+    filterProducts();
+  }, []);
 
   return (
     <>
@@ -36,7 +41,7 @@ function Fruit() {
         </Link>
         <h2 className="text-lg text-center font-semibold">과일</h2>
         <ul>
-          {filterRecordItems.map(
+          {data.map(
             ({
               id,
               category,
@@ -96,5 +101,6 @@ function Fruit() {
     </>
   );
 }
+
 
 export default Fruit;

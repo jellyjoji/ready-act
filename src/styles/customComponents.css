@@ -1,4 +1,12 @@
 @layer components {
+  .goToHomepage {
+    @apply text-white text-center font-semibold border-2 rounded-xl px-10 py-3 border-white;
+  }
+
+  .hoverGoToHomepage {
+    @apply bg-primary-800 border-primary-800;
+  }
+
   .activeButton {
     @apply text-white text-center font-semibold bg-primary-500 border border-none rounded-xl py-3;
   }

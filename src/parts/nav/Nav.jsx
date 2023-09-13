@@ -24,7 +24,7 @@ function Nav({
     <nav>
       <ul className="flex justify-around ">
         <li>
-          <NavLink to="/r09m">
+          <NavLink to="/">
             <div className={styles.nav}>
               <HomeIcon homeSize={homeSize} homeColor={homeColor} />
               <span className={`${styles.span} ${homeSpan}`}>홈</span>

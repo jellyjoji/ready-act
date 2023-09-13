@@ -1,6 +1,11 @@
 @layer components {
+  .defaultButton {
+    @apply text-white text-center font-semibold;
+  }
+
   .goToHomepage {
-    @apply text-white text-center font-semibold border-2 rounded-xl px-10 py-3 border-white;
+    @apply defaultButton;
+    @apply border-2 rounded-xl px-10 py-3 border-white;
   }
 
   .hoverGoToHomepage {
@@ -8,15 +13,17 @@
   }
 
   .activeButton {
-    @apply text-white text-center font-semibold bg-primary-500 border border-none rounded-xl py-3;
+    @apply defaultButton;
+    @apply bg-primary-500 border-none rounded-xl py-3;
   }
 
   .inactiveButton {
-    @apply text-greenishgray-400 text-center font-semibold bg-line-200 border-none border rounded-xl py-3;
+    @apply text-greenishgray-400 text-center font-semibold bg-line-200 border-none rounded-xl py-3;
   }
 
   .cancleButton {
-    @apply text-white text-center font-semibold bg-cancel-500 border border-none rounded-xl py-3;
+    @apply defaultButton;
+    @apply bg-cancel-500 border-none rounded-xl py-3;
   }
 
   .lgFontButton {
@@ -27,8 +34,12 @@
     @apply text-sm;
   }
 
+  .defaultBorder {
+    @apply rounded-lg border-solid border-line-400 p-4;
+  }
   .defaultInput {
-    @apply rounded-lg border border-solid border-line-400 p-4;
+    @apply defaultBorder;
+    @apply border;
   }
 
   .navSpan {
@@ -40,7 +51,27 @@
   }
 
   .authInput {
-    @apply rounded-lg border border-solid border-line-400 p-4;
-    @apply w-full my-3;
+    @apply defaultBorder;
+    @apply border-2 w-full my-3;
+  }
+
+  .authTitle {
+    @apply text-lg text-center font-semibold pt-4;
+  }
+
+  .authActiveButton {
+    @apply activeButton;
+    @apply lgFontButton;
+    @apply w-full mt-4 mb-2 hover:bg-primary-700;
+  }
+
+  .authinActiveButton {
+    @apply inactiveButton;
+    @apply lgFontButton;
+    @apply w-full hover:bg-greenishgray-400 hover:text-white;
+  }
+
+  .authTransform {
+    @apply inline-block text-right mx-1 my-2 hover:underline;
   }
 }

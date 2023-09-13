@@ -73,50 +73,10 @@ function SignUp() {
       </div>
 
       <form encType="multipart/form-data" onSubmit={handleSignUp}>
-        <FormInput
-          ref={nameRef}
-          label="이름"
-          type="text"
-          name="name"
-          placeholder="이름을 입력해 주세요."
-          labelClassName="authLabel"
-          inputClassName="authInput"
-        />
-
-        <FormInput
-          ref={emailRef}
-          label="이메일"
-          type="email"
-          name="email"
-          placeholder="이메일을 입력해 주세요."
-          labelClassName="authLabel"
-          inputClassName="authInput"
-        />
-
-        <FormInput
-          ref={passwordRef}
-          label="비밀번호"
-          type="password"
-          name="password"
-          placeholder="비밀번호를 입력해 주세요."
-          labelClassName="authLabel"
-          inputClassName="authInput"
-        />
-
-        <FormInput
-          ref={passwordConfirmRef}
-          label="비밀번호 확인"
-          type="password"
-          name="passwordConfirm"
-          placeholder="비밀번호를 한 번 더 입력해 주세요."
-          labelClassName="authLabel"
-          inputClassName="authInput"
-        />
-
         <div className="relative flex flex-col gap-2 mt-4">
           <FormInput
             ref={photoRef}
-            label="사진 등록"
+            label="프로필 등록"
             type="file"
             name="photo"
             placeholder="비밀번호를 한 번 더 입력해 주세요."
@@ -126,7 +86,7 @@ function SignUp() {
             accept="*.jpg,*.png,*.webp,*.avif,*.svg,*.gif"
           />
 
-          <div className="w-[80px] h-[80px] bg-slate-200/80 p-2 rounded-full">
+          <div className="w-[80px] h-[80px] bg-slate-200/80 p-2 rounded-full mb-4">
             <img
               ref={uploadPhotoRef}
               className="h-full border border-slate-400/50 rounded-full"
@@ -134,6 +94,46 @@ function SignUp() {
               alt="placeholder 이미지"
             />
           </div>
+
+          <FormInput
+            ref={nameRef}
+            label="이름"
+            type="text"
+            name="name"
+            placeholder="이름을 입력해 주세요."
+            labelClassName="authLabel"
+            inputClassName="authInput"
+          />
+
+          <FormInput
+            ref={emailRef}
+            label="이메일"
+            type="email"
+            name="email"
+            placeholder="이메일을 입력해 주세요."
+            labelClassName="authLabel"
+            inputClassName="authInput"
+          />
+
+          <FormInput
+            ref={passwordRef}
+            label="비밀번호"
+            type="password"
+            name="password"
+            placeholder="비밀번호를 입력해 주세요."
+            labelClassName="authLabel"
+            inputClassName="authInput"
+          />
+
+          <FormInput
+            ref={passwordConfirmRef}
+            label="비밀번호 확인"
+            type="password"
+            name="passwordConfirm"
+            placeholder="비밀번호를 한 번 더 입력해 주세요."
+            labelClassName="authLabel"
+            inputClassName="authInput"
+          />
         </div>
 
         <Button

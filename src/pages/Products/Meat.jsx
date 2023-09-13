@@ -39,9 +39,11 @@ function Meat() {
         </Helmet>
         <h1 className="sr-only">R09M</h1>
 
-        <div className="bg-line-200 px-4 py-2">
-          <Header />
-          <h2 className="text-lg text-center font-semibold pt-4">육류</h2>
+        <div className="bg-line-200 py-2 h-screen">
+          <div className="px-4">
+            <Header />
+            <h2 className="text-lg text-center font-semibold pt-4">육류</h2>
+          </div>
           <ul>
             {data.map(
               ({

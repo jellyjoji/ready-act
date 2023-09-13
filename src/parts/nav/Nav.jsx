@@ -21,8 +21,8 @@ function Nav({
   profileSpan,
 }) {
   return (
-    <nav>
-      <ul className="flex justify-around ">
+    <nav className="bg-white fixed bottom-0 max-w-xl w-full py-3">
+      <ul className="flex justify-around">
         <li>
           <NavLink to="/">
             <div className={styles.nav}>

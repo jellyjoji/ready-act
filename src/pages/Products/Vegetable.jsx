@@ -18,7 +18,7 @@ function Vegetable() {
         const filterRecordList = await pb
           .collection('products')
           .getList(1, 50, {
-            filter: 'category="🧅 채소"',
+            filter: 'category="채소"',
           });
         const filterRecordItems = filterRecordList.items;
         setData(filterRecordItems);
@@ -40,7 +40,7 @@ function Vegetable() {
         <div className="bg-line-200 py-2 h-screen">
           <div className="px-4">
             <Header />
-            <h2 className="text-lg text-center font-semibold pt-4">채소</h2>
+            <h2 className="pageTitle">채소</h2>
           </div>
           <ul>
             {data.map(

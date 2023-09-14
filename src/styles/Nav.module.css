@@ -9,7 +9,3 @@
 .span {
   @apply text-sm text-greenishgray-500 pt-1;
 }
-
-.active {
-  @apply text-black;
-}

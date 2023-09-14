@@ -30,4 +30,17 @@
   .defaultInput {
     @apply rounded-lg border border-solid border-line-400 p-4;
   }
+
+  .navSpan {
+    @apply text-black;
+  }
+
+  .authLabel {
+    @apply font-semibold text-greenishgray-800;
+  }
+
+  .authInput {
+    @apply rounded-lg border border-solid border-line-400 p-4;
+    @apply w-full my-3;
+  }
 }

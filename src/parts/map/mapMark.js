@@ -1,29 +1,46 @@
+import {pb} from '@/api/pocketbase';
 import spot from '@/assets/icons/spot.svg';
-import {positions} from '@/data/positions';
 
 const {kakao} = window;
 
-export function mapMark() {
-  const container = document.getElementById('map');
-  const options = {
-    center: new kakao.maps.LatLng(37.57157200866145, 126.9763416696016),
-    level: 3,
-  };
+export async function mapMark() {
+  const readRecordList = await pb.collection('products').getList();
+  const meetPoints = readRecordList.items.map((item) => ({
+    meetingPoint: item.meetingPoint,
+  }));
 
-  const map = new kakao.maps.Map(container, options);
-  positions;
+  const readRecordItems = meetPoints;
 
-  const imageSrc = spot;
+  if (kakao) {
+    const container = document.getElementById('map');
+    const options = {
+      center: new kakao.maps.LatLng(37.57157200866145, 126.9763416696016),
+      level: 4,
+    };
+    const map = new kakao.maps.Map(container, options);
+    const geocoder = new kakao.maps.services.Geocoder();
 
-  for (var i = 0; i < positions.length; i++) {
-    const imageSize = new kakao.maps.Size(20, 20);
-    const markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize);
+    readRecordItems.map(({meetingPoint}) => {
+      geocoder.addressSearch(meetingPoint, (result, status) => {
+        if (status === kakao.maps.services.Status.OK) {
+          const {y, x} = result[0];
+          let coords = new kakao.maps.LatLng(y, x);
 
-    new kakao.maps.Marker({
-      map: map,
-      position: positions[i].latlng,
-      title: positions[i].title,
-      image: markerImage,
+          const imageSrc = spot;
+          const imageSize = new kakao.maps.Size(32, 32);
+          const markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize);
+
+          new kakao.maps.Marker({
+            map: map,
+            position: coords,
+            image: markerImage,
+          });
+
+          map.setCenter(coords);
+        }
+      });
     });
+  } else {
+    console.error('kakao에 접근할 수 없습니다.');
   }
 }

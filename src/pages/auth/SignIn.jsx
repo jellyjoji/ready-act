@@ -59,10 +59,7 @@ function SignIn() {
         <h2 className="pageTitle">로그인</h2>
       </div>
 
-      <form
-        onSubmit={handleSignIn}
-        // className="flex flex-col gap-3 mt-2 items-center"
-      >
+      <form onSubmit={handleSignIn}>
         <FormInput
           type="email"
           label="이메일"
@@ -84,10 +81,7 @@ function SignIn() {
           onChange={handleInput}
         />
 
-        <Button
-          type="submit"
-          className="authActiveButton"
-        >
+        <Button type="submit" className="authActiveButton">
           로그인
         </Button>
         <Button type="reset" className="authinActiveButton">

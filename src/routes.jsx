@@ -3,7 +3,12 @@ import {
   createBrowserRouter,
   createRoutesFromElements,
 } from 'react-router-dom';
+import SignIn from './pages/Auth/SignIn';
+import SignOut from './pages/Auth/SignOut';
+import SignUp from './pages/Auth/SignUp';
 import CreateRoom from './pages/CreateRoom';
+import Detail from './pages/Details/Detail';
+import DetailMap from './pages/Details/DetailMap';
 import Home from './pages/Home';
 import Logo from './pages/Logo';
 import Fruit from './pages/Products/Fruit';
@@ -11,13 +16,9 @@ import Grains from './pages/Products/Grains';
 import Meat from './pages/Products/Meat';
 import Total from './pages/Products/Total';
 import Vegetable from './pages/Products/Vegetable';
-import Location from './parts/map/Location';
 import Users from './pages/Users';
-import DetailMap from './pages/Details/DetailMap';
-import Detail from './pages/Details/Detail';
-import SignIn from './pages/Auth/SignIn';
-import SignOut from './pages/Auth/SignOut';
-import SignUp from './pages/Auth/SignUp';
+import Location from './parts/map/Location';
+import DetailStatus from './pages/details/DetailStatus';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -35,12 +36,17 @@ const router = createBrowserRouter(
       <Route path="signout" element={<SignOut />} />
 
       <Route path="products/:id" element={<Detail />} />
-      <Route path="pickupplace" element={<DetailMap />} />
+      <Route path="products/pickupplace" element={<DetailMap />} />
+      <Route path="products/:id/status" element={<DetailStatus />} />
 
       <Route path="users" element={<Users />} />
 
       <Route path="createroom" element={<CreateRoom />} />
       <Route path="location" element={<Location />} />
+
+
+
+
     </>
   )
 );

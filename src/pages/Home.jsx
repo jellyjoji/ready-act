@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import inactiveAlarm from '@/assets/icons/inactiveAlarm.svg';
 import myLocation from '@/assets/icons/myLocation.svg';
 import plus from '@/assets/icons/plus.svg';
@@ -93,3 +94,9 @@ function Home() {
 }
 
 export default Home;
+=======
+function Home() {
+  return <>Home</>
+}
+export default Home
+>>>>>>> 81430bb3bd9cc60c6ca72ac5bf0c409906193332

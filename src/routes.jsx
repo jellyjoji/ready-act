@@ -16,9 +16,10 @@ import Grains from './pages/Products/Grains';
 import Meat from './pages/Products/Meat';
 import Total from './pages/Products/Total';
 import Vegetable from './pages/Products/Vegetable';
+import ChangeStatus from './pages/Status/ChangeStatus';
 import Users from './pages/Users';
-import Location from './parts/map/Location';
 import DetailStatus from './pages/details/DetailStatus';
+import Location from './parts/map/Location';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -44,9 +45,7 @@ const router = createBrowserRouter(
       <Route path="createroom" element={<CreateRoom />} />
       <Route path="location" element={<Location />} />
 
-
-
-
+      <Route path="status/:id" element={<ChangeStatus />} />
     </>
   )
 );

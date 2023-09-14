@@ -70,7 +70,7 @@ function SignUp() {
 
       <div className="px-4 py-2">
         <Header />
-        <h2 className="authTitle">회원가입</h2>
+        <h2 className="pageTitle">회원가입</h2>
       </div>
 
       <form encType="multipart/form-data" onSubmit={handleSignUp}>

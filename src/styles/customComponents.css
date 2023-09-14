@@ -55,7 +55,7 @@
     @apply border-2 w-full my-3;
   }
 
-  .authTitle {
+  .pageTitle {
     @apply text-lg text-center font-semibold pt-4;
   }
 

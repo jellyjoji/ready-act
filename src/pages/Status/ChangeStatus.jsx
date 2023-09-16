@@ -1,21 +1,23 @@
-import {pb} from '@/api/pocketbase';
+import { pb } from '@/api/pocketbase';
 import Spinner from '@/components/Spinner';
 import Header from '@/layout/Header';
-import {useState} from 'react';
-import {useEffect} from 'react';
-import {useRef} from 'react';
-import {Helmet} from 'react-helmet-async';
+import { useState } from 'react';
+import { useEffect } from 'react';
+import { useRef } from 'react';
+import { Helmet } from 'react-helmet-async';
 import toast from 'react-hot-toast';
-import {useNavigate, useParams} from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import complete from '@/assets/icons/complete.svg';
 import proceeding from '@/assets/icons/proceeding.svg';
 import waiting from '@/assets/icons/waiting.svg';
 import checked from '@/assets/icons/checked.svg';
 import styles from '@/styles/ChangeStatus.module.css';
 import Button from '@/components/Button';
+import { getPbImageURL } from '@/utils/getPbImageURL';
+import { numberWithComma } from '@/utils/numberWithComma';
 
 function ChangeStatus() {
-  const {id} = useParams();
+  const { id } = useParams();
 
   const navigate = useNavigate();
 
@@ -59,6 +61,8 @@ function ChangeStatus() {
     detailProgress();
   }, [id]);
 
+  console.log(data);
+
   if (data) {
     return (
       <>
@@ -72,8 +76,23 @@ function ChangeStatus() {
             <Header />
             <h2 className="pageTitle">진행 상태</h2>
           </div>
+          <div>
+          <h3 className="font-semibold mt-10">상품 정보</h3>
+            <figure className="flex gap-4 h-[100px] mt-5">
+              <img src={getPbImageURL(data, 'uploadImage')} alt={data.title} className='w-[20%] h-full' />
+              <figcaption>
+                <h2 className="text-greenishgray-700 font-semibold">
+                  {data.title}
+                </h2>
+                <div className="text-sm flex flex-col">
+                  <span className='mt-1 mb-4'>{numberWithComma(data.price)}원</span>
+                  <span className='max-w-xl text-ellipsis	line-clamp-2'>{data.content}</span>
+                </div>
+              </figcaption>
+            </figure>
 
-          <h3 className="font-semibold mt-16">현재 상태</h3>
+          </div>
+          <h3 className="font-semibold mt-10">현재 상태</h3>
           {data.status === '대기중' ? (
             <div className={styles.group}>
               <figure className={styles.figure}>
@@ -114,7 +133,7 @@ function ChangeStatus() {
               </Button>
             </div>
           )}
-          <h3 className="font-semibold mt-24">상태 변경</h3>
+          <h3 className="font-semibold mt-10">상태 변경</h3>
           <form onSubmit={handleUpdate}>
             <label htmlFor="status"></label>
             <select

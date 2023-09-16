@@ -16,10 +16,10 @@ import Grains from './pages/Products/Grains';
 import Meat from './pages/Products/Meat';
 import Total from './pages/Products/Total';
 import Vegetable from './pages/Products/Vegetable';
-import ChangeStatus from './pages/Status/ChangeStatus';
 import Users from './pages/Users';
 import DetailStatus from './pages/details/DetailStatus';
 import Location from './parts/map/Location';
+import ChangeStatus from './pages/status/ChangeStatus';
 
 const router = createBrowserRouter(
   createRoutesFromElements(

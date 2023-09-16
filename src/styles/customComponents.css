@@ -74,4 +74,8 @@
   .authTransform {
     @apply inline-block text-right mx-1 my-2 hover:underline;
   }
+
+  .signOut {
+    @apply mt-2 p-1 bg-greenishgray-300 inline-block text-xs hover:bg-greenishgray-500 hover:text-white;
+  }
 }

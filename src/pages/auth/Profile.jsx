@@ -6,13 +6,18 @@ import {numberWithComma} from '@/utils/numberWithComma';
 
 import {useEffect, useState} from 'react';
 import {Helmet} from 'react-helmet-async';
-import {useParams} from 'react-router-dom';
-import {Link} from 'react-router-dom';
+import {Link, useParams} from 'react-router-dom';
+import Withdrawal from './Withdrawal';
+import Button from '@/components/Button';
+import {useNavigate} from 'react-router-dom';
+import toast from 'react-hot-toast';
 
 function Profile() {
   const {id} = useParams();
   const [userData, setUserData] = useState();
   const [productsData, setProductsData] = useState();
+
+  const navigate = useNavigate();
 
   const userId = JSON.parse(localStorage.getItem('pocketbase_auth')).model.id;
 
@@ -53,11 +58,11 @@ function Profile() {
             <Header />
             <h2 className="pageTitle">프로필</h2>
           </div>
-          <div className="flex gap-4 border-b border-b-line-400 pb-4">
+          <div className="flex gap-5 border-b border-b-line-400 pb-4">
             <img
               src={getPbImageURL(userData, 'photo')}
               alt={`${name}의 프로필`}
-              className='"w-[80px] h-[80px] rounded-full p-2 bg-slate-200/80'
+              className='"w-[100px] h-[100px] rounded-full p-2 bg-slate-200/80'
             />
             <div className="flex flex-col">
               <span className="font-semibold text-lg text-primary-600">
@@ -70,6 +75,26 @@ function Profile() {
                 0,
                 11
               )} 가입`}</span>
+              <div className="flex gap-2">
+                <Button
+                  type="button"
+                  className="signOut"
+                  onClick={() => {
+                    localStorage.removeItem('pocketbase_auth');
+                    toast.success('로그아웃되었습니다', {
+                      position: 'top-center',
+                      ariaProps: {
+                        role: 'status',
+                        'aria-live': 'polite',
+                      },
+                    });
+                    navigate('/home');
+                  }}
+                >
+                  로그아웃
+                </Button>
+                <Withdrawal />
+              </div>
             </div>
           </div>
 

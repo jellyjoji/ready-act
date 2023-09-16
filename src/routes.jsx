@@ -4,7 +4,6 @@ import {
   createRoutesFromElements,
 } from 'react-router-dom';
 import SignIn from './pages/Auth/SignIn';
-import SignOut from './pages/Auth/SignOut';
 import SignUp from './pages/Auth/SignUp';
 import CreateRoom from './pages/CreateRoom';
 import Detail from './pages/Details/Detail';
@@ -35,7 +34,6 @@ const router = createBrowserRouter(
 
       <Route path="signup" element={<SignUp />} />
       <Route path="signin" element={<SignIn />} />
-      <Route path="signout" element={<SignOut />} />
       <Route path="profile" element={<Profile />} />
 
       <Route path="products/:id" element={<Detail />} />

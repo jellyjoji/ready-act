@@ -20,6 +20,7 @@ import Users from './pages/Users';
 import DetailStatus from './pages/details/DetailStatus';
 import Location from './parts/map/Location';
 import ChangeStatus from './pages/status/ChangeStatus';
+import Profile from './pages/auth/Profile';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -35,6 +36,7 @@ const router = createBrowserRouter(
       <Route path="signup" element={<SignUp />} />
       <Route path="signin" element={<SignIn />} />
       <Route path="signout" element={<SignOut />} />
+      <Route path="profile" element={<Profile />} />
 
       <Route path="products/:id" element={<Detail />} />
       <Route path="products/pickupplace" element={<DetailMap />} />

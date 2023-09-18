@@ -42,7 +42,7 @@ function User() {
         </Helmet>
 
        <div className="px-4 py-2">
-        <Link to="/detail">
+        <Link to={`/products/${id}`}>
          <Header />
           </Link>
        </div>

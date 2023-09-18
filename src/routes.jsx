@@ -5,7 +5,7 @@ import {
 } from 'react-router-dom';
 import SignIn from './pages/Auth/SignIn';
 import SignUp from './pages/Auth/SignUp';
-import CreateRoom from './pages/CreateRoom';
+// import CreateRoom from './pages/CreateRoom';
 import Detail from './pages/Details/Detail';
 import DetailMap from './pages/Details/DetailMap';
 import Home from './pages/Home';
@@ -15,9 +15,9 @@ import Grains from './pages/Products/Grains';
 import Meat from './pages/Products/Meat';
 import Total from './pages/Products/Total';
 import Vegetable from './pages/Products/Vegetable';
-import Users from './pages/Users';
+// import Users from './pages/Users';
 import DetailStatus from './pages/details/DetailStatus';
-import Location from './parts/map/Location';
+// import Location from './parts/map/Location';
 import Profile from './pages/auth/Profile';
 import Search from './pages/Search';
 import ChangeStatus from './pages/details/ChangeStatus';
@@ -43,12 +43,10 @@ const router = createBrowserRouter(
       <Route path="products/:id/status" element={<DetailStatus />} />
       <Route path="status/:id" element={<ChangeStatus />} />
 
-      <Route path="users" element={<Users />} />
+      {/* <Route path="users" element={<Users />} />
 
       <Route path="createroom" element={<CreateRoom />} />
-      <Route path="location" element={<Location />} />
-
-      
+      <Route path="location" element={<Location />} /> */}
     </>
   )
 );

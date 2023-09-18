@@ -10,6 +10,10 @@ import {useEffect, useState} from 'react';
 import {Helmet} from 'react-helmet-async';
 import {Link, useParams} from 'react-router-dom';
 import Header from '@/layout/Header';
+import { numberWithComma } from '@/utils/numberWithComma';
+import DetailStatus from './DetailStatus';
+import View from './View';
+
 
 function Detail() {
   const {id} = useParams();
@@ -44,10 +48,13 @@ function Detail() {
           <title>R09M - 상품 상세 페이지</title>
         </Helmet>
         <div className="px-4 py-2">
-        <Header />
+          <Header />
+        </div>
+        <div className='flex justify-center mt-2'>
+            <DetailStatus />
         </div>
         <ul className="pl-4">
-          <li className="flex mb-3 mt-4 items-center font-semibold text-lg justify-between">
+          <li className="flex mb-3 mt-2 items-center font-semibold text-lg justify-between">
             <img
               src={getPbImageURL(creator, 'photo')}
               alt={creator.name}
@@ -57,9 +64,9 @@ function Detail() {
             <span className="pr-[400px]">{creator.name}</span>
              
             <Button type="button" className=''>
-            <img src={IconDots} alt="더보기" className='pr-4' />
+              <img src={IconDots} alt="더보기" className='pr-4' />
             </Button>
-      
+            
           </li>
 
           <li className="h-[350px]">
@@ -67,33 +74,41 @@ function Detail() {
           </li>
 
           <li className="mt-5">
-          <div className="bg-line-300 w-16 h-6 rounded-full pl-1 pr-1">{category}</div>
+            <div className='mb-3'>
+            <span className="font-semibold bg-line-400 text-greenishgray-800 p-2 rounded-xl">
+                      {category}
+                    </span>
+            </div>
           <span className='mt-3 text-xl font-extrabold'>{title}</span>
           </li>
 
           <li className="mt-9 flex items-center">
+            <div className='pr-2'>
           <img src={Dinner} alt="시계 이모티콘" className='w-4 h-4 items-center'/>
+            </div>
           <div>{pickup.slice(5, -8).replace('-', '/')}</div>
           </li>
 
           <li className="flex items-center mt-2">
+            <div className='pr-2'>
           <img src={Location} alt="만날 장소" className='w-4 h-4'/>
+            </div>
             <div>{meetingPoint}</div>
-             <Link to="/pickupplace">
+             <Link to={`/pickupplace/${id}`}>
               <div className='text-info-500 ml-2'>
                 픽업위치&gt;
             </div>
             </Link> 
           </li>
 
-          <li className="mt-11">
+          <li className="mt-7">
           <div className='pr-4'>{content}</div>
           </li>
 
      
           <li className="flex items-center mt-7 pr-4 place-content-between relative">
             <div className="text-base font-bold">
-              참여자{participate.length}/{participateNumber}
+              참여자 {participate.length}/{participateNumber}
             </div>
 
             <div className="flex justify-end pr-1">
@@ -110,14 +125,16 @@ function Detail() {
 
 
           <li>
-            <div className='mt-8'>{price / participateNumber}원</div>
+            <div className='mt-6 text-lg font-semibold'>
+              {numberWithComma(price / participateNumber)}원
+            </div>
           </li>
 
           
           <li className='flex items-center pr-4 place-content-between'>
             <div className='text-greenishgray-500 font-semibold'>1인당 정산비</div>
-            <Button type="button" className='w-28 h-11 bg-primary-500 rounded-xl text-white'>
-              참여하기
+            <Button type="button" className='w-28 h-11 bg-primary-500 rounded-xl text-white hover:bg-primary-700'>
+             <View />
             </Button>
           </li>
         </ul>

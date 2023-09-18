@@ -37,7 +37,6 @@
   .defaultBorder {
     @apply rounded-lg border-solid border-line-400 p-4;
   }
-
   .defaultInput {
     @apply defaultBorder;
     @apply border;

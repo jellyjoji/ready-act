@@ -1,6 +1,6 @@
-import {string} from 'prop-types';
+import { string } from 'prop-types';
 
-function Button({type, className, ...restProps}) {
+function Button({ type, className, ...restProps }) {
   return <button type={type} className={className} {...restProps}></button>;
 }
 

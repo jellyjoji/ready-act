@@ -21,6 +21,8 @@ import DetailStatus from './pages/details/DetailStatus';
 import Profile from './pages/auth/Profile';
 import Search from './pages/Search';
 import ChangeStatus from './pages/details/ChangeStatus';
+import CreateRoom from './pages/CreateRoom';
+import Location from './parts/map/Location';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -45,8 +47,8 @@ const router = createBrowserRouter(
 
       <Route path="users/:id" element={<Users />} />
 
-      {/* <Route path="createroom" element={<CreateRoom />} /> */}
-      {/* <Route path="location" element={<Location />} /> */}
+      <Route path="createroom" element={<CreateRoom />} />
+      <Route path="location" element={<Location />} />
     </>
   )
 );

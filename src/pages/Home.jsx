@@ -45,7 +45,7 @@ function Home() {
           mousewheel={true}
           modules={[FreeMode, Keyboard, Mousewheel]}
         >
-          {category.map(({title, path, img}) => (
+          {category.map(({ title, path, img }) => (
             <SwiperSlide key={title}>
               <Link to={path}>
                 <figure className="flex flex-col items-center m-1">

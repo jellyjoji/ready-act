@@ -1,4 +1,4 @@
-import {forwardRef, useId} from 'react';
+import { forwardRef, useId } from 'react';
 
 function FormInput(
   {

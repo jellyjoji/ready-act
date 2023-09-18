@@ -1,11 +1,16 @@
-import { useId, forwardRef } from 'react';
+import {forwardRef, useId} from 'react';
 
-function ContentTextarea({ TextArearef, title, placeholder, className, labelClassName, ...restProps }, ref) {
-  const id = useId();
+function ContentTextarea(
+  {title, placeholder, className, labelClassName, ...restProps},
+  ref
+) {
+  const {id} = useId();
 
   return (
     <>
-      <label htmlFor={id} className={labelClassName}>{title}</label>
+      <label htmlFor={id} className={labelClassName}>
+        {title}
+      </label>
       <textarea
         ref={ref}
         id={id}
@@ -15,5 +20,6 @@ function ContentTextarea({ TextArearef, title, placeholder, className, labelClas
       />
     </>
   );
-};
+}
+
 export default forwardRef(ContentTextarea);

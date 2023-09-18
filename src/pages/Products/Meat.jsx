@@ -20,7 +20,7 @@ function Meat() {
         const filterRecordList = await pb
           .collection('products')
           .getList(1, 50, {
-            filter: 'category="🍖 육류"',
+            filter: 'category="육류"',
           });
         const filterRecordItems = filterRecordList.items;
         setData(filterRecordItems);
@@ -42,7 +42,7 @@ function Meat() {
         <div className="bg-line-200 py-2 h-screen">
           <div className="px-4">
             <Header />
-            <h2 className="text-lg text-center font-semibold pt-4">육류</h2>
+            <h2 className="pageTitle">육류</h2>
           </div>
           <ul>
             {data.map(

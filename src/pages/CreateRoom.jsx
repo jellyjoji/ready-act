@@ -3,17 +3,17 @@ import { useRef, useEffect, useState, useContext } from 'react';
 import { pb } from "@/api/pocketbase";
 import FormInput from "@/components/FormInput";
 import Button from '@/components/Button';
-import ContentTextarea from '@/parts/creaate/ContentTextarea';
-import DatePicker from "@/parts/creaate/DatePicker";
-// import TimePicker from "@/parts/creaate/TimePicker";
-import ParticipateCounter from "@/parts/creaate/ParticipateCounter";
-import MeetingPoint from "@/parts/creaate/MeetingPoint";
+import ContentTextarea from '@/parts/create/ContentTextarea';
+import DatePicker from "@/parts/create/DatePicker";
+// import TimePicker from "@/parts/create/TimePicker";
+import ParticipateCounter from "@/parts/create/ParticipateCounter";
+import MeetingPoint from "@/parts/create/MeetingPoint";
 // import Location from "@/parts/map/Location";
-import CategoryDropdown from "@/parts/creaate/CategoryDropdown";
-import Status from '@/parts/creaate/Status';
-import PaymentToggleButton from '@/parts/creaate/PaymentToggleButton';
+import CategoryDropdown from "@/parts/create/CategoryDropdown";
+import Status from '@/parts/create/Status';
+import PaymentToggleButton from '@/parts/create/PaymentToggleButton';
 // import { useNavigate } from 'react-router-dom';
-import FileUpload from '../parts/creaate/FileUpload';
+import FileUpload from '../parts/create/FileUpload';
 import CreateHeader from '@/layout/CreateHeader';
 import { AppContext } from '@/App';
 
@@ -169,7 +169,6 @@ function CreateRoom() {
           <Status ref={statusRef} title="상태" className="w-full defaultInput " labelClassName="status" />
           <ParticipateCounter ref={ParticipateCounterRef} title="인원" />
 
-
           <MeetingPoint title="만날 장소" />
           {/* <Location ref={meetingPointRef} title="만날 장소"></Location> */}
 
@@ -183,9 +182,10 @@ function CreateRoom() {
 
           <FileUpload ref={uploadImageRef} title="파일 업로드" labelClassName="upload image" className="bg-[#EBF8E8] p-4 rounded-lg text-primary-500 " />
 
-          <div className='bg-white w-full  fixed bottom-0 left-0 p-4 shadow' >
-            <Button type="submit" className="activeButton lgFontButton w-full ">방 만들기</Button>
+          <div className='bg-white w-full shadow fixed bottom-0 left-0 p-4'>
+            <Button type="submit" className="activeButton lgFontButton w-full">방 만들기</Button>
           </div>
+          
 
         </form>
       </div>

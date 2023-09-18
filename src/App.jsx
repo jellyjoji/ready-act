@@ -46,6 +46,7 @@ function App() {
     <>
       <HelmetProvider>
         <AuthProvider>
+          {/* 공급할 앱 상태를 받은 appState 를 AppContext 에 주입  */}
           <AppContext.Provider value={appState}>
             <div className="max-w-xl mx-auto mt-12 font-pretendard">
               <RouterProvider router={router} />

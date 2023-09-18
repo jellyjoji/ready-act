@@ -36,7 +36,7 @@ const router = createBrowserRouter(
       {/* <Route path="signout" element={<SignOut />} /> */}
 
       <Route path="products/:id" element={<Detail />} />
-      <Route path="pickupplace/:id" element={<DetailMap />} />
+      <Route path="products/:id/pickupplace" element={<DetailMap />} />
 
       <Route path="users/:id" element={<Users />} />
 

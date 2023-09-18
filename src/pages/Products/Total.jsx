@@ -1,12 +1,12 @@
-import { pb } from '@/api/pocketbase';
+import {pb} from '@/api/pocketbase';
 import participateNum from '@/assets/icons/participateNum.svg';
 import pickuptime from '@/assets/icons/pickuptime.svg';
 import Spinner from '@/components/Spinner';
 import Header from '@/layout/Header';
 import Nav from '@/parts/nav/Nav';
-import { useEffect, useState } from 'react';
-import { Helmet } from 'react-helmet-async';
-import { Link } from 'react-router-dom';
+import {useEffect, useState} from 'react';
+import {Helmet} from 'react-helmet-async';
+import {Link} from 'react-router-dom';
 
 function Total() {
   const [data, setData] = useState([]);
@@ -21,10 +21,8 @@ function Total() {
       }
     }
 
-    
     getProducts();
   }, []);
-console.log(data);
 
   if (data) {
     return (

@@ -24,7 +24,7 @@ function Nav({
     <nav className="bg-white fixed bottom-0 max-w-xl w-full py-3 z-50">
       <ul className="flex justify-around">
         <li>
-          <NavLink to="/">
+          <NavLink to="/home">
             <div className={styles.nav}>
               <HomeIcon homeSize={homeSize} homeColor={homeColor} />
               <span className={`${styles.span} ${homeSpan}`}>홈</span>
@@ -48,15 +48,27 @@ function Nav({
           </NavLink>
         </li>
         <li>
-          <NavLink to="/profile">
-            <div className={styles.nav}>
-              <ProfileIcon
-                profileSize={profileSize}
-                profileColor={profileColor}
-              />
-              <span className={`${styles.span} ${profileSpan}`}>내 정보</span>
-            </div>
-          </NavLink>
+          {!localStorage.getItem('pocketbase_auth') ? (
+            <NavLink to="/signin">
+              <div className={styles.nav}>
+                <ProfileIcon
+                  profileSize={profileSize}
+                  profileColor={profileColor}
+                />
+                <span className={`${styles.span} ${profileSpan}`}>내 정보</span>
+              </div>
+            </NavLink>
+          ) : (
+            <NavLink to="/profile">
+              <div className={styles.nav}>
+                <ProfileIcon
+                  profileSize={profileSize}
+                  profileColor={profileColor}
+                />
+                <span className={`${styles.span} ${profileSpan}`}>내 정보</span>
+              </div>
+            </NavLink>
+          )}
         </li>
       </ul>
     </nav>

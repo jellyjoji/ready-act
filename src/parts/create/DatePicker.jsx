@@ -1,5 +1,4 @@
-import {string} from 'prop-types';
-import {useState, forwardRef, useId} from 'react';
+import {forwardRef, useId, useState} from 'react';
 // import Input from "@/components/Input";
 
 function DatePicker({title, className, labelClassName, ...restProps}, ref) {
@@ -22,11 +21,5 @@ function DatePicker({title, className, labelClassName, ...restProps}, ref) {
     </div>
   );
 }
-
-DatePicker.propTypes = {
-  title: string,
-  className: string,
-  labelClassName: string,
-};
 
 export default forwardRef(DatePicker);

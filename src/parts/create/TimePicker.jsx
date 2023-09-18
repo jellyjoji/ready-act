@@ -19,8 +19,4 @@ function TimePicker({title, className, ...restProps}, ref) {
   );
 }
 
-TimePicker.propTypes = {
-  title: string,
-  className: string,
-};
 export default forwardRef(TimePicker);

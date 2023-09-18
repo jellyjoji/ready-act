@@ -25,9 +25,4 @@ function Status({title, className, labelClassName, ...restProps}, ref) {
   );
 }
 
-Status.propTypes = {
-  title: string,
-  className: string,
-  labelClassName: string,
-};
 export default forwardRef(Status);

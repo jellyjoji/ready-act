@@ -1,6 +1,5 @@
-import {useState, forwardRef, useId} from 'react';
-import {imgUpload} from '../../assets/icons/svg-icons';
-import {string} from 'prop-types';
+import imgUpload from '@/assets/icons/imgUpload.svg';
+import {forwardRef, useId, useState} from 'react';
 
 function FileUpload({title, labelClassName, ...restProps}, ref) {
   const [fileImages, setFileImages] = useState(null);
@@ -35,31 +34,16 @@ function FileUpload({title, labelClassName, ...restProps}, ref) {
           />
         </div>
         <div className="flex justify-center border-2 my-4 rounded-lg border-dashed border-line-400">
-          {/* 이미지 업로드 전 아이콘 */}
           {!fileImages && (
             <img src={imgUpload} alt="photo" className="w-20 p-4" />
           )}
-          {/* 이미지 업로드 후 사진 표출 */}
           {fileImages?.map((file) => {
-            return (
-              <img
-                key={file.label}
-                src={file.image}
-                alt={file.label}
-                className=""
-              />
-            );
+            return <img key={file.label} src={file.image} alt={file.label} />;
           })}
         </div>
       </div>
     </>
   );
 }
-
-FileUpload.propTypes = {
-  title: string,
-  className: string,
-  labelClassName: string,
-};
 
 export default forwardRef(FileUpload);

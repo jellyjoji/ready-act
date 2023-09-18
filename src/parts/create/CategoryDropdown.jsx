@@ -1,8 +1,7 @@
 import {forwardRef, useId} from 'react';
 import {category} from '../../data/category';
-import {string} from 'prop-types';
 
-function CategoryDropdown({className, title, ...restProps}, ref) {
+function CategoryDropdown({className, title}, ref) {
   const {id} = useId();
 
   return (
@@ -15,7 +14,6 @@ function CategoryDropdown({className, title, ...restProps}, ref) {
         className={className}
         name="category"
         defaultValue="전체"
-        {...restProps}
       >
         {category.map((list) => (
           <option key={list.title} value={list.title}>
@@ -26,10 +24,5 @@ function CategoryDropdown({className, title, ...restProps}, ref) {
     </div>
   );
 }
-
-CategoryDropdown.propTypes = {
-  className: string,
-  title: string,
-};
 
 export default forwardRef(CategoryDropdown);

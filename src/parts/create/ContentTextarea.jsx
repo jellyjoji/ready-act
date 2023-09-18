@@ -1,5 +1,4 @@
-import {node, string} from 'prop-types';
-import {useId, forwardRef} from 'react';
+import {forwardRef, useId} from 'react';
 
 function ContentTextarea(
   {title, placeholder, className, labelClassName, ...restProps},
@@ -22,13 +21,5 @@ function ContentTextarea(
     </>
   );
 }
-
-ContentTextarea.propTypes = {
-  TextArearef: node,
-  title: string,
-  placeholder: string,
-  className: string,
-  labelClassName: string,
-};
 
 export default forwardRef(ContentTextarea);

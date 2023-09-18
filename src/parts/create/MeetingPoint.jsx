@@ -1,7 +1,6 @@
-import {string} from 'prop-types';
-import {arrow} from '/src/assets/icons/svg-icons';
-import {forwardRef} from 'react';
-import {Link} from 'react-router-dom';
+import arrow from '@/assets/icons/arrow.svg';
+import { forwardRef } from 'react';
+import { Link } from 'react-router-dom';
 
 function MeetingPoint({title, ...restProps}, ref) {
   return (
@@ -16,9 +15,5 @@ function MeetingPoint({title, ...restProps}, ref) {
     </>
   );
 }
-
-MeetingPoint.propTypes = {
-  title: string,
-};
 
 export default forwardRef(MeetingPoint);

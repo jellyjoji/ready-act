@@ -42,9 +42,4 @@ function PaymentToggleButton({labelClassName, title}, ref) {
   );
 }
 
-PaymentToggleButton.propTypes = {
-  labelClassName: string,
-  title: string,
-};
-
 export default forwardRef(PaymentToggleButton);

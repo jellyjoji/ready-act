@@ -7,6 +7,7 @@ import toast from 'react-hot-toast';
 import {useNavigate} from 'react-router-dom';
 import placeholderProfile from '@/assets/placeholderProfile.jpeg';
 import FormInput from '@/components/FormInput';
+import {Link} from 'react-router-dom';
 
 function SignUp() {
   const nameRef = useRef(null);
@@ -69,7 +70,7 @@ function SignUp() {
 
       <div className="px-4 py-2">
         <Header />
-        <h2 className="text-lg text-center font-semibold pt-4">회원가입</h2>
+        <h2 className="pageTitle">회원가입</h2>
       </div>
 
       <form encType="multipart/form-data" onSubmit={handleSignUp}>
@@ -94,57 +95,57 @@ function SignUp() {
               alt="placeholder 이미지"
             />
           </div>
-
-          <FormInput
-            ref={nameRef}
-            label="이름"
-            type="text"
-            name="name"
-            placeholder="이름을 입력해 주세요."
-            labelClassName="authLabel"
-            inputClassName="authInput"
-          />
-
-          <FormInput
-            ref={emailRef}
-            label="이메일"
-            type="email"
-            name="email"
-            placeholder="이메일을 입력해 주세요."
-            labelClassName="authLabel"
-            inputClassName="authInput"
-          />
-
-          <FormInput
-            ref={passwordRef}
-            label="비밀번호"
-            type="password"
-            name="password"
-            placeholder="비밀번호를 입력해 주세요."
-            labelClassName="authLabel"
-            inputClassName="authInput"
-          />
-
-          <FormInput
-            ref={passwordConfirmRef}
-            label="비밀번호 확인"
-            type="password"
-            name="passwordConfirm"
-            placeholder="비밀번호를 한 번 더 입력해 주세요."
-            labelClassName="authLabel"
-            inputClassName="authInput"
-          />
         </div>
+
+        <FormInput
+          ref={nameRef}
+          label="이름"
+          type="text"
+          name="name"
+          placeholder="이름을 입력해 주세요."
+          labelClassName="authLabel"
+          inputClassName="authInput"
+        />
+
+        <FormInput
+          ref={emailRef}
+          label="이메일"
+          type="email"
+          name="email"
+          placeholder="이메일을 입력해 주세요."
+          labelClassName="authLabel"
+          inputClassName="authInput"
+        />
+
+        <FormInput
+          ref={passwordRef}
+          label="비밀번호"
+          type="password"
+          name="password"
+          placeholder="비밀번호를 입력해 주세요."
+          labelClassName="authLabel"
+          inputClassName="authInput"
+        />
+
+        <FormInput
+          ref={passwordConfirmRef}
+          label="비밀번호 확인"
+          type="password"
+          name="passwordConfirm"
+          placeholder="비밀번호를 한 번 더 입력해 주세요."
+          labelClassName="authLabel"
+          inputClassName="authInput"
+        />
 
         <Button
           type="submit"
-          className="activeButton lgFontButton w-full mt-4 mb-2"
+          className="authActiveButton"
         >
-          등록
+          가입
         </Button>
         <Button
           type="reset"
-          className="inactiveButton lgFontButton w-full"
+          className="authinActiveButton"
           onClick={() => {
             uploadPhotoRef.current.src = placeholderProfile;
           }}
@@ -152,6 +153,9 @@ function SignUp() {
           취소
         </Button>
       </form>
+      <Link to="/signin">
+        <span className="authTransform">로그인</span>
+      </Link>
     </>
   );
 }

@@ -26,14 +26,14 @@ function DetailStatus() {
       <>
         {data.status === '대기중' ? (
           <div className="flex">
-            <StatusIcon color="#30B66E" textColor="#FFFF" text="대기중" />
+            <StatusIcon color="#30B66E" textColor="#FFF" text="대기중" />
             <StatusIcon text="진행중" />
             <StatusIcon text="종 료" textX="30%" textY="64%" />
           </div>
         ) : data.status === '진행중' ? (
           <div className="flex">
             <StatusIcon text="대기중" />
-            <StatusIcon color="#F09847" textColor="#FFFF" text="진행중" />
+            <StatusIcon color="#F09847" textColor="#FFF" text="진행중" />
             <StatusIcon text="종 료" textX="30%" textY="64%" />
           </div>
         ) : (
@@ -42,7 +42,7 @@ function DetailStatus() {
             <StatusIcon text="진행중" />
             <StatusIcon
               color="#8D948F"
-              textColor="#FFFF"
+              textColor="#FFF"
               text="종 료"
               textX="30%"
               textY="64%"

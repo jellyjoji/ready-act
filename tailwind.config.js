@@ -15,6 +15,7 @@ export default {
         'primary-300': '#72DAA2',
         'primary-200': '#EBF8E8',
         'map-500': '#F09847',
+        'map-200': '#FEF7F1',
         'info-500': '#0A72EC',
         'info-400': '#328CF6',
         'info-300': '#63A7F8',

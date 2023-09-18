@@ -1,23 +1,20 @@
 import { pb } from '@/api/pocketbase';
-import Spinner from '@/components/Spinner';
-import Header from '@/layout/Header';
-import { useState } from 'react';
-import { useEffect } from 'react';
-import { useRef } from 'react';
-import { Helmet } from 'react-helmet-async';
-import toast from 'react-hot-toast';
-import { useNavigate, useParams } from 'react-router-dom';
 import complete from '@/assets/icons/complete.svg';
 import proceeding from '@/assets/icons/proceeding.svg';
 import waiting from '@/assets/icons/waiting.svg';
-import checked from '@/assets/icons/checked.svg';
+import Spinner from '@/components/Spinner';
+import Header from '@/layout/Header';
 import styles from '@/styles/ChangeStatus.module.css';
-import Button from '@/components/Button';
 import { getPbImageURL } from '@/utils/getPbImageURL';
 import { numberWithComma } from '@/utils/numberWithComma';
+import { useEffect, useRef, useState } from 'react';
+import { Helmet } from 'react-helmet-async';
+import toast from 'react-hot-toast';
+import { useNavigate, useParams } from 'react-router-dom';
+import CheckIcon from './CheckIcon';
 
 function ChangeStatus() {
-  const { id } = useParams();
+  const {id} = useParams();
 
   const navigate = useNavigate();
 
@@ -61,8 +58,6 @@ function ChangeStatus() {
     detailProgress();
   }, [id]);
 
-  console.log(data);
-
   if (data) {
     return (
       <>
@@ -77,60 +72,63 @@ function ChangeStatus() {
             <h2 className="pageTitle">진행 상태</h2>
           </div>
           <div>
-          <h3 className="font-semibold mt-10">상품 정보</h3>
+            <h3 className="font-semibold mt-10">상품 정보</h3>
             <figure className="flex gap-4 h-[100px] mt-5">
-              <img src={getPbImageURL(data, 'uploadImage')} alt={data.title} className='w-[20%] h-full' />
+              <img
+                src={getPbImageURL(data, 'uploadImage')}
+                alt={data.title}
+                className="w-[20%] h-full"
+              />
               <figcaption>
                 <h2 className="text-greenishgray-700 font-semibold">
                   {data.title}
                 </h2>
                 <div className="text-sm flex flex-col">
-                  <span className='mt-1 mb-4'>{numberWithComma(data.price)}원</span>
-                  <span className='max-w-xl text-ellipsis	line-clamp-2'>{data.content}</span>
+                  <span className="mt-1 mb-4">
+                    {numberWithComma(data.price)}원
+                  </span>
+                  <span className="max-w-xl text-ellipsis	line-clamp-2">
+                    {data.content}
+                  </span>
                 </div>
               </figcaption>
             </figure>
-
           </div>
           <h3 className="font-semibold mt-10">현재 상태</h3>
           {data.status === '대기중' ? (
-            <div className={styles.group}>
+            <div className={`${styles.group} bg-primary-200 flex items-center`}>
               <figure className={styles.figure}>
                 <img src={waiting} alt="대기중" aria-hidden="true" />
                 <figcaption>
-                  <h3 className={styles.title}>대기중</h3>
+                  <h3 className={`${styles.title} text-primary-600`}>대기중</h3>
                   <p className={styles.description}>참여자를 기다리고 있어요</p>
                 </figcaption>
               </figure>
-              <Button type="button">
-                <img src={checked} alt="체크" aria-hidden="true" />
-              </Button>
+              <CheckIcon color="#258D55" />
             </div>
           ) : data.status === '진행중' ? (
-            <div className={styles.group}>
+            <div className={`${styles.group} bg-map-200 flex items-center`}>
               <figure className={styles.figure}>
                 <img src={proceeding} alt="진행중" aria-hidden="true" />
                 <figcaption>
-                  <h3 className={styles.title}>진행중</h3>
+                  <h3 className={`${styles.title} text-map-500`}>진행중</h3>
                   <p className={styles.description}>공구가 시작되었어요.</p>
                 </figcaption>
               </figure>
-              <Button type="button">
-                <img src={checked} alt="체크" aria-hidden="true" />
-              </Button>
+              <CheckIcon color="#F09847" />
             </div>
           ) : (
-            <div className={styles.group}>
+            <div className={`${styles.group} bg-line-100 flex items-center`}>
               <figure className={styles.figure}>
                 <img src={complete} alt="공구종료" aria-hidden="true" />
                 <figcaption>
-                  <h3 className={styles.title}>공구종료</h3>
+                  <h3 className={`${styles.title} text-greenishgray-500`}>
+                    공구종료
+                  </h3>
                   <p className={styles.description}>공구가 완료되었어요.</p>
                 </figcaption>
               </figure>
-              <Button type="button">
-                <img src={checked} alt="체크" aria-hidden="true" />
-              </Button>
+              <CheckIcon color="#8D948F" />
             </div>
           )}
           <h3 className="font-semibold mt-10">상태 변경</h3>
@@ -144,7 +142,7 @@ function ChangeStatus() {
             >
               <option value="대기중">대기중</option>
               <option value="진행중">진행중</option>
-              <option value="공구 완료">공구 완료</option>
+              <option value="공구종료">공구종료</option>
             </select>
             <button
               type="submit"

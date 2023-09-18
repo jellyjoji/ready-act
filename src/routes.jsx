@@ -18,8 +18,9 @@ import Vegetable from './pages/Products/Vegetable';
 import Users from './pages/Users';
 import DetailStatus from './pages/details/DetailStatus';
 import Location from './parts/map/Location';
-import ChangeStatus from './pages/status/ChangeStatus';
 import Profile from './pages/auth/Profile';
+import Search from './pages/Search';
+import ChangeStatus from './pages/details/ChangeStatus';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -31,6 +32,7 @@ const router = createBrowserRouter(
       <Route path="fruit" element={<Fruit />} />
       <Route path="grains" element={<Grains />} />
       <Route path="meat" element={<Meat />} />
+      <Route path="search" element={<Search />} />
 
       <Route path="signup" element={<SignUp />} />
       <Route path="signin" element={<SignIn />} />
@@ -39,13 +41,14 @@ const router = createBrowserRouter(
       <Route path="products/:id" element={<Detail />} />
       <Route path="products/pickupplace" element={<DetailMap />} />
       <Route path="products/:id/status" element={<DetailStatus />} />
+      <Route path="status/:id" element={<ChangeStatus />} />
 
       <Route path="users" element={<Users />} />
 
       <Route path="createroom" element={<CreateRoom />} />
       <Route path="location" element={<Location />} />
 
-      <Route path="status/:id" element={<ChangeStatus />} />
+      
     </>
   )
 );

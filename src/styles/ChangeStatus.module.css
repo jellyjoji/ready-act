@@ -1,9 +1,9 @@
 .group {
-  @apply flex justify-between my-5 p-6 rounded-2xl bg-primary-200;
+  @apply flex justify-between my-5 p-6 rounded-2xl;
 }
 
 .title {
-  @apply text-xl font-bold text-greenishgray-700;
+  @apply text-xl font-bold;
 }
 
 .description {

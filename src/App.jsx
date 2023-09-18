@@ -1,8 +1,9 @@
 import { createContext, useState } from 'react';
 import { HelmetProvider } from 'react-helmet-async';
 import { Toaster } from 'react-hot-toast';
+import { RouterProvider } from 'react-router-dom';
+import AuthProvider from './context/Auth';
 import router from './routes';
-import { RouterProvider } from 'react-router-dom'
 
 
 // 앱에서 사용될 공통 상태 관리를 위한 컨텍스트 객체를 생성합니다.
@@ -42,15 +43,20 @@ function App() {
   };
 
   return (
-    <AppContext.Provider value={appState}>
+    <>
       <HelmetProvider>
-        <div className="max-w-xl mx-auto mt-12 font-pretendard bg-purple-200">
-          {/* 모든 페이지에 앱 상태 공급 */}
-          <RouterProvider router={router} />
-        </div>
-      </HelmetProvider>
+        <AuthProvider>
+          <AppContext.Provider value={appState}>
+            <div className="max-w-xl mx-auto mt-12 font-pretendard">
+              <RouterProvider router={router} />
+            </div>
+          </AppContext.Provider>
+        </AuthProvider>
+      </HelmetProvider >
+
       <Toaster />
-    </AppContext.Provider>
+    </>
+
   );
 }
 export default App;

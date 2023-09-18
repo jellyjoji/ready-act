@@ -7,6 +7,10 @@ import pickup from '@/assets/icons/pickup.svg';
 import { ClientResponseError } from 'pocketbase';
 import { useParams } from 'react-router-dom';
 import { useState } from 'react';
+import { currentLocation } from '@/parts/map/currentLocation';
+import myLocation from '@/assets/icons/myLocation.svg';
+import styles from '@/styles/Home.module.css';
+import { Link } from 'react-router-dom';
 
 const { kakao } = window;
 function DetailMap() {
@@ -73,18 +77,30 @@ function DetailMap() {
       <div className="px-4 py-2">
         <Header />
         </div>
-      <div id="map" className="w-full h-[600px] my-3"></div>
+      <div id="map" className="w-full h-[600px] my-3 relative">
+
+       
+      <Button
+            type="button"
+            className={`${styles.button} right-2 bottom-4 bg-white p-2`}
+            onClick={currentLocation}
+            >
+            <img src={myLocation} alt="현재 위치로 가기" className='mx-auto'/>
+      </Button>
+      </div>
       
       <ul>
         <li className='flex mb-4 mt-4 items-center'>
-          <span className='mt-5 mb-20'>{data && data.meetingPoint ? data.meetingPoint : 'Meeting Point가 없습니다.'}</span>
+          <span className='mt-5 mb-18 font-extrabold text-lg'>{data && data.meetingPoint ? data.meetingPoint : 'Meeting Point가 없습니다.'}</span>
         </li>
       </ul>
 
       <div className=" flex py-2 justify-center">
-        <Button className='w-full h-16 bg-primary-500 rounded-2xl text-lg text-line-100 font-bold'>
+        <Link to={`/products/${id}`}>
+        <Button className='w-[580px] h-16 bg-primary-500 rounded-2xl text-lg text-line-100 font-bold hover:bg-primary-700'>
           확인
         </Button>
+        </Link>
         </div>
     </>
   )

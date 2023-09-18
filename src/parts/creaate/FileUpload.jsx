@@ -1,9 +1,10 @@
-import { useState, forwardRef } from "react";
+import { useState, forwardRef, useId } from "react";
 import { imgUpload } from '../../assets/icons/svg-icons'
 
-function FileUpload({ }, ref) {
+function FileUpload({ title, className, labelClassName, ...restProps }, ref) {
 
   const [fileImages, setFileImages] = useState(null);
+  const id = useId();
 
   const handleFileUpload = (e) => {
     const { files } = e.target;
@@ -17,33 +18,38 @@ function FileUpload({ }, ref) {
     // console.log(photoRef.current.files);
     // const photoValue = photoRef.current.files;
 
-    // if (!photoValue[0]) {
-    //   // toast message here
-    // }
+    //   if (!photoValue) {
+    // toast message here
+
+    //   }
   };
 
   return (<>
-    <div >
-      <label htmlFor="photo" className="sr-only">
-        사진 등록
-      </label>
-      <input
-        type="file"
-        accept="image/jpg,image/png,image/jpeg,image/webp,image/avif"
-        name="photo"
-        id="photo"
-        ref={ref}
-        onChange={handleFileUpload}
-        className=""
-      />
-      <div className="" >
+    <div className=" mb-14" >
+      <div className="flex justify-between items-center">
+        <p>사진 업로드</p>
+        <label htmlFor={id} labelClassName={labelClassName} className={className}>{title}</label>
+        <input
+          type="file"
+          accept="image/jpg,image/png,image/jpeg,image/webp,image/avif"
+          name="photo"
+          id={id}
+          ref={ref}
+          onChange={handleFileUpload}
+          style={{ display: "none" }}
+          {...restProps}
+        />
+      </div>
+      <div className="flex justify-center border-2 my-4 rounded-lg border-dashed border-line-400" >
+        {/* 이미지 업로드 전 아이콘 */}
         {!fileImages && (
           <img
             src={imgUpload}
             alt="photo"
-            className="w-24"
+            className="w-20 p-4"
           />
         )}
+        {/* 이미지 업로드 후 사진 표출 */}
         {fileImages?.map((file) => {
           return (
             <img

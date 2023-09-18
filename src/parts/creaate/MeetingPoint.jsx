@@ -1,17 +1,21 @@
 import { arrow } from '/src/assets/icons/svg-icons';
-import Location from "../map/Location";
 import { forwardRef } from 'react'
+import { Link } from "react-router-dom";
 
-function MeetingPoint({ title }, ref) {
+function MeetingPoint({ title, ...restProps }, ref) {
+
+
 
   return (<>
 
-    <form ref={mapRef} className='flex justify-between w-full'>
+    <div className='flex justify-between w-full py-4 defaultInput bg-white'>
       <label ref={ref}>{title}</label>
-      <img src={arrow} alt="arrow" />
-    </form>
 
-    <Location></Location>
+      <Link to="/location">
+        <img src={arrow} alt="만날 장소 지도 이동" {...restProps} />
+      </Link>
+
+    </div>
 
 
 

@@ -1,7 +1,7 @@
 import React, { useId, forwardRef } from "react";
 import { category } from '../../data/category';
 
-function CategoryDropdown({ className, title }, ref) {
+function CategoryDropdown({ className, title, ...restProps }, ref) {
   // const [selectedCategory, setSelectedCategory] = useState("");
   const id = useId();
 
@@ -9,10 +9,10 @@ function CategoryDropdown({ className, title }, ref) {
     <div >
       <label htmlFor={id}  >{title}</label>
       {/* value={selectedCategory} onChange={(e) => setSelectedCategory(e.target.value)} */}
-      <select ref={ref} id={id} className={className} name="category" defaultValue="전체" >
+      <select ref={ref} id={id} className={className} name="category" defaultValue="전체" {...restProps} >
         {category.map((list) => (
           <option key={list.title} value={list.title}>
-            {list.icon}
+            {list.title}
           </option>
         ))}
       </select>

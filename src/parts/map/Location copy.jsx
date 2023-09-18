@@ -1,19 +1,12 @@
 import { forwardRef, useEffect } from 'react';
 import './location.module.css';
-import { useState, useContext } from 'react';
-import { arrowLeft } from '../../assets/icons/svg-icons';
+import { useState } from 'react';
+import { arrow } from '../../assets/icons/svg-icons';
 import { Link } from 'react-router-dom';
-import { AppContext } from '../../App';
-
 
 const { kakao } = window;
 
 function Location({ title }, ref) {
-
-  // 이전에 관리하던 모든 상태는 이제 직접 관리하지 않고 App에서 관리합니다.
-  // Location 페이지 컴포넌트는 AppContext로부터 상태 값을 읽고 쓸 수 있습니다.
-  const { updateCreateRoomForm } = useContext(AppContext);
-  /* -------------------------------------------------------------------------- */
 
   const [data, setData] = useState();
 
@@ -33,7 +26,7 @@ function Location({ title }, ref) {
 
     const marker = new kakao.maps.Marker(), // 클릭한 위치를 표시할 마커입니다
       infowindow = new kakao.maps.InfoWindow({ zindex: 1 }); // 클릭한 위치에 대한 주소를 표시할 인포윈도우입니다
-    // console.log(infowindow);
+    console.log(infowindow);
 
     // 현재 지도 중심좌표로 주소를 검색해서 지도 좌측 상단에 표시합니다
     searchAddrFromCoords(map.getCenter(), displayCenterInfo);
@@ -47,7 +40,7 @@ function Location({ title }, ref) {
           // let detailAddr = !!result[0].road_address ? result[0].road_address.address_name : '위치정보를 불러올수없음';
           let detailAddr = !!result[0].address.address_name ? result[0].address.address_name : '위치정보를 불러올수없음';
           // detailAddr += `<div>지번 주소 : ${result[0].address.address_name}</div>`;
-          // console.log(detailAddr);
+          console.log(detailAddr);
           setData(detailAddr);
 
           // let address = result[0].road_address.address_name;
@@ -100,37 +93,16 @@ function Location({ title }, ref) {
 
   }, [])
 
-  useEffect(() => {
-    // console.log(data);
-    updateCreateRoomForm('meetingPoint', data);
-
-    // useEffect를 써서 data가 바뀔때마다 실행시키겠다
-  }, [data])
-
-
-
-  // const handleSetLocation = () => {
-  //   // ...
-  //   // Kakao Map API에서 사용자가 선택한 주소 정보 값을 상태에 업데이트
-  //   // 상태가 스냅샷처럼 작동한다 : 상태는 다음번 함수가 실행될때 (리랜더될때) 바뀐다. 당장이 아니라 나중에 바뀐다. =>useEffect 사용
-  //   updateCreateRoomForm('meetingPoint', data);
-  // };
-  /* -------------------------------------------------------------------------- */
-
 
   return (
     <div className='h-full'>
 
-      <div className="relative h-12">
-        {/* <Link to="/home">
+      <div className="relative">
+        <Link to="/home">
           <img src="/favicon.png" alt="공구룸 로고" className="w-12 m-auto" />
-        </Link> */}
-
-        <p className='text-center py-3'>지도에서 위치 확인</p>
-
-        {/* 사용자가 지도에서 장소를 선택한 후 다시 CreateRoom 페이지로 이동하는 기능이 필요합니다. */}
+        </Link>
         <Link to="/createroom">
-          <img src={arrowLeft} alt="뒤로 가기" className="absolute top-3" />
+          <img src={arrow} alt="뒤로 가기" className="absolute top-3" />
         </Link>
       </div>
 
@@ -139,7 +111,7 @@ function Location({ title }, ref) {
         <div className="hAddr" >
           <span className="title" >{title}</span>
 
-          <span id="centerAddr" ref={ref} >{data}</span>
+          <span id="centerAddr" ref={ref}>{data}</span>
         </div>
       </div>
     </div>

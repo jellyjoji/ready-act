@@ -1,5 +1,5 @@
 import { Helmet } from 'react-helmet-async';
-import { useRef, useEffect, useState, useContext } from 'react';
+import { useRef, useEffect, useState } from 'react';
 import { pb } from "@/api/pocketbase";
 import FormInput from "@/components/FormInput";
 import Button from '@/components/Button';
@@ -15,20 +15,10 @@ import PaymentToggleButton from '@/parts/creaate/PaymentToggleButton';
 // import { useNavigate } from 'react-router-dom';
 import FileUpload from '../parts/creaate/FileUpload';
 import CreateHeader from '@/layout/CreateHeader';
-import { AppContext } from '@/App';
-
 
 
 function CreateRoom() {
-  // 이전에 관리하던 모든 상태는 이제 직접 관리하지 않고 App에서 관리합니다.
-  // CreateRoom 페이지 컴포넌트는 AppContext로부터 상태 값을 읽고 쓸 수 있습니다.
-  const { createRoomForm, updateCreateRoomForm } = useContext(AppContext);
 
-  // 방 만들기 폼 입력할 때마다 앱에 상태를 저장해야 합니다.
-  // 그래야 Location 페이지로 이동할 때 기억이 되겠죠.
-  // 그러므로 파일을 제외한 나머지는 사용자가 입력할 때 상태를 업데이트해야 합니다.
-  // useRef를 사용하는 것이 아니라, updateCreateRoomForm 함수를 사용하세요.
-  /* -------------------------------------------------------------------------- */
 
 
   const formRef = useRef(null);
@@ -58,12 +48,12 @@ function CreateRoom() {
     // // console.log(timeRef.current.value);
     console.log(paymentRef.current.dataset.payment);
     // console.log(ParticipateCounterRef.current.textContent);
-    // console.log(meetingPointRef.current.textContent);
+    console.log(meetingPointRef.current.textContent);
     console.log(uploadImageRef.current.files);
     console.log(statusRef.current.value);
     // console.log(categoryRef.current.value);
 
-    // return
+    return
 
     const categoryValue = categoryRef.current.value;
     console.log(categoryValue);
@@ -82,10 +72,6 @@ function CreateRoom() {
     const ParticipateCounterValue = Number(ParticipateCounterRef.current.textContent);
     console.log(ParticipateCounterValue);
     // const meetingPointValue = meetingPointRef.current.textContent;
-    /* -------------------------------------------------------------------------- */
-    // useContext 로 생성된 createRoomForm 안의 meetingPoint data 를 뽑아서 가져오겠다.
-    const meetingPointValue = createRoomForm.meetingPoint;
-    console.log(meetingPointValue);
     // console.log(meetingPointValue);
     // console.log(meetingPointRef);
     const uploadImageValue = uploadImageRef.current.files[0];
@@ -170,7 +156,7 @@ function CreateRoom() {
           <ParticipateCounter ref={ParticipateCounterRef} title="인원" />
 
 
-          <MeetingPoint title="만날 장소" />
+          <MeetingPoint ref={meetingPointRef} title="만날 장소" />
           {/* <Location ref={meetingPointRef} title="만날 장소"></Location> */}
 
 

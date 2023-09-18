@@ -12,7 +12,8 @@ import { Link, useParams } from 'react-router-dom';
 import Header from '@/layout/Header';
 import { numberWithComma } from '@/utils/numberWithComma';
 import DetailStatus from './DetailStatus';
-// import View from './View';
+import Participation from './Participation';
+import Cancel from './Cancel';
 
 
 function Detail() {
@@ -133,9 +134,8 @@ function Detail() {
 
           <li className='flex items-center pr-4 place-content-between'>
             <div className='text-greenishgray-500 font-semibold'>1인당 정산비</div>
-            <Button type="button" className='w-28 h-11 bg-primary-500 rounded-xl text-white hover:bg-primary-700'>
-              {/* <View /> */}
-            </Button>
+              <Participation />
+              <Cancel />
           </li>
         </ul>
       </>

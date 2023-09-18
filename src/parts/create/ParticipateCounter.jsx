@@ -1,7 +1,8 @@
-import { useState, forwardRef } from "react";
-import { minus, plus } from '../../../src/assets/icons/svg-icons';
+import {useState, forwardRef} from 'react';
+import {minus, plus} from '../../../src/assets/icons/svg-icons';
+import {string} from 'prop-types';
 
-function ParticipateCounter({ title }, ref) {
+function ParticipateCounter({title}, ref) {
   const [count, setCount] = useState(0);
 
   const incrementCount = () => {
@@ -14,7 +15,7 @@ function ParticipateCounter({ title }, ref) {
 
   return (
     <div className="py-4">
-      <label >{title}</label>
+      <label>{title}</label>
       <div className="flex gap-2 float-right p-2 items-center">
         <button type="button" onClick={decrementCount}>
           <img src={minus} alt="minus" />
@@ -26,6 +27,10 @@ function ParticipateCounter({ title }, ref) {
       </div>
     </div>
   );
+}
+
+ParticipateCounter.propTypes = {
+  title: string,
 };
 
 export default forwardRef(ParticipateCounter);

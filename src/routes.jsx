@@ -3,25 +3,22 @@ import {
   createBrowserRouter,
   createRoutesFromElements,
 } from 'react-router-dom';
-import SignIn from './pages/Auth/SignIn';
-import SignUp from './pages/Auth/SignUp';
-// import CreateRoom from './pages/CreateRoom';
-import Detail from './pages/Details/Detail';
-import DetailMap from './pages/Details/DetailMap';
+import CreateRoom from './pages/CreateRoom';
 import Home from './pages/Home';
 import Logo from './pages/Logo';
-import Fruit from './pages/Products/Fruit';
-import Grains from './pages/Products/Grains';
-import Meat from './pages/Products/Meat';
-import Total from './pages/Products/Total';
-import Vegetable from './pages/Products/Vegetable';
-import Users from './pages/Users';
-import DetailStatus from './pages/details/DetailStatus';
-// import Location from './parts/map/Location';
-import Profile from './pages/auth/Profile';
 import Search from './pages/Search';
+import Profile from './pages/auth/Profile';
+import SignIn from './pages/auth/SignIn';
+import SignUp from './pages/auth/SignUp';
 import ChangeStatus from './pages/details/ChangeStatus';
-import CreateRoom from './pages/CreateRoom';
+import Detail from './pages/details/Detail';
+import DetailMap from './pages/details/DetailMap';
+import DetailStatus from './pages/details/DetailStatus';
+import Fruit from './pages/products/Fruit';
+import Grains from './pages/products/Grains';
+import Meat from './pages/products/Meat';
+import Total from './pages/products/Total';
+import Vegetable from './pages/products/Vegetable';
 import Location from './parts/map/Location';
 
 const router = createBrowserRouter(
@@ -45,7 +42,7 @@ const router = createBrowserRouter(
       <Route path="products/:id/status" element={<DetailStatus />} />
       <Route path="status/:id" element={<ChangeStatus />} />
 
-      <Route path="users/:id" element={<Users />} />
+      {/* <Route path="users/:id" element={<Users />} /> */}
 
       <Route path="createroom" element={<CreateRoom />} />
       <Route path="location" element={<Location />} />

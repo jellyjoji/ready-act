@@ -3,7 +3,7 @@ import {
   createBrowserRouter,
   createRoutesFromElements,
 } from 'react-router-dom';
-// import CreateRoom from './pages/CreateRoom';
+import CreateRoom from './pages/CreateRoom';
 import Home from './pages/Home';
 import Logo from './pages/Logo';
 import Fruit from './pages/Products/Fruit';
@@ -11,7 +11,7 @@ import Grains from './pages/Products/Grains';
 import Meat from './pages/Products/Meat';
 import Total from './pages/Products/Total';
 import Vegetable from './pages/Products/Vegetable';
-// import Location from './parts/map/Location';
+import Location from './parts/map/Location';
 import Users from './pages/Users';
 
 import SignIn from './pages/Auth/SignIn';
@@ -35,13 +35,13 @@ const router = createBrowserRouter(
       <Route path="signin" element={<SignIn />} />
       {/* <Route path="signout" element={<SignOut />} /> */}
 
-      <Route path="products/:id" element={<Detail/>} />
+      <Route path="products/:id" element={<Detail />} />
       <Route path="pickupplace/:id" element={<DetailMap />} />
 
       <Route path="users/:id" element={<Users />} />
 
-      {/* <Route path="createroom" element={<CreateRoom />} /> */}
-      {/* <Route path="location" element={<Location />} /> */}
+      <Route path="createroom" element={<CreateRoom />} />
+      <Route path="location" element={<Location />} />
     </>
   )
 );

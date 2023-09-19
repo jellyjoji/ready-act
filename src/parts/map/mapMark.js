@@ -4,7 +4,7 @@ import spot from '@/assets/icons/spot.svg';
 const {kakao} = window;
 
 export async function mapMark() {
-  const readRecordList = await pb.collection('products').getList();
+  const readRecordList = await pb.collection('products').getList(1,5);
   const meetPoints = readRecordList.items.map((item) => ({
     meetingPoint: item.meetingPoint,
   }));

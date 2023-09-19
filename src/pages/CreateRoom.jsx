@@ -1,5 +1,5 @@
-import { AppContext } from '@/App';
-import { pb } from '@/api/pocketbase';
+import {AppContext} from '@/App';
+import {pb} from '@/api/pocketbase';
 import Button from '@/components/Button';
 import FormInput from '@/components/FormInput';
 import CreateHeader from '@/layout/CreateHeader';
@@ -11,9 +11,9 @@ import MeetingPoint from '@/parts/create/MeetingPoint';
 import ParticipateCounter from '@/parts/create/ParticipateCounter';
 import PaymentToggleButton from '@/parts/create/PaymentToggleButton';
 import Status from '@/parts/create/Status';
-import { ClientResponseError } from 'pocketbase';
-import { useContext, useRef, useState } from 'react';
-import { Helmet } from 'react-helmet-async';
+import {ClientResponseError} from 'pocketbase';
+import {useContext, useRef, useState} from 'react';
+import {Helmet} from 'react-helmet-async';
 
 function CreateRoom() {
   const {createRoomForm, updateCreateRoomForm} = useContext(AppContext);
@@ -79,19 +79,19 @@ function CreateRoom() {
         <title>방만들기</title>
       </Helmet>
 
-      <div className="p-4 ">
+      <div className="p-4 m-auto">
         <CreateHeader />
 
         <form
           encType="multipart/form-data"
           ref={formRef}
           onSubmit={handleCreate}
-          className="flex flex-col gap-4 py-4 "
+          className="flex flex-col gap-4 py-4"
         >
           <CategoryDropdown
             ref={categoryRef}
             title="카테고리"
-            className="w-full defaultInput"
+            className="w-full defaultInput mt-3"
           />
           <FormInput
             ref={titleRef}
@@ -124,7 +124,7 @@ function CreateRoom() {
           <DatePicker
             ref={dateRef}
             title="픽업 날짜"
-            className="w-full defaultInput"
+            className="w-full defaultInput mt-3"
             labelClassName="Date Picker"
           />
           <Status
@@ -141,14 +141,12 @@ function CreateRoom() {
             ref={uploadImageRef}
             title="파일 업로드"
             labelClassName="upload image"
-            className="bg-[#EBF8E8] p-4 rounded-lg text-primary-500 "
+            className="bg-[#EBF8E8] p-4 rounded-lg text-primary-500"
           />
 
-          <div className="bg-white w-full  fixed bottom-0 left-0 p-4 shadow">
-            <Button type="submit" className="activeButton lgFontButton w-full ">
-              방 만들기
-            </Button>
-          </div>
+          <Button type="submit" className="activeButton lgFontButton w-full">
+            방 만들기
+          </Button>
         </form>
       </div>
     </>

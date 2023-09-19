@@ -19,6 +19,7 @@ import Grains from './pages/products/Grains';
 import Meat from './pages/products/Meat';
 import Total from './pages/products/Total';
 import Vegetable from './pages/products/Vegetable';
+import Users from './pages/users/Users';
 import Location from './parts/map/Location';
 
 const router = createBrowserRouter(
@@ -38,11 +39,11 @@ const router = createBrowserRouter(
       <Route path="profile" element={<Profile />} />
 
       <Route path="products/:id" element={<Detail />} />
-      <Route path="products/pickupplace" element={<DetailMap />} />
+      <Route path="products/:id/pickupplace" element={<DetailMap />} />
       <Route path="products/:id/status" element={<DetailStatus />} />
       <Route path="status/:id" element={<ChangeStatus />} />
 
-      {/* <Route path="users/:id" element={<Users />} /> */}
+      <Route path="users/:id" element={<Users />} />
 
       <Route path="createroom" element={<CreateRoom />} />
       <Route path="location" element={<Location />} />

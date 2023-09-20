@@ -37,7 +37,7 @@ function ChangeStatus() {
           'aria-live': 'polite',
         },
       });
-      navigate('/products');
+      navigate('/profile');
     } catch (error) {
       throw new Error(error);
     }
@@ -68,7 +68,7 @@ function ChangeStatus() {
 
         <div className="py-2 h-screen">
           <div className="px-4">
-            <Header />
+            <Header link="/profile" />
             <h2 className="pageTitle">진행 상태</h2>
           </div>
           <div>

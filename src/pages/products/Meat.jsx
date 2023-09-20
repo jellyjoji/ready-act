@@ -8,13 +8,10 @@ import {useEffect, useState} from 'react';
 import {Helmet} from 'react-helmet-async';
 import {Link} from 'react-router-dom';
 
-pb.autoCancellation(false);
-
 function Meat() {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    pb.autoCancellation(false);
     async function filterProducts() {
       try {
         const filterRecordList = await pb

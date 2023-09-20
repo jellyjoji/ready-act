@@ -2,7 +2,7 @@
 import { AnimatePresence, motion } from 'framer-motion';
 import Dialog from './Dialog';
 import { useRef, useState } from 'react';
-import Logo from '@/assets/icons/Logo.svg';
+import logo from '@/assets/icons/logo.svg';
 
 
 function Cancel() {
@@ -42,7 +42,7 @@ function Cancel() {
             </Dialog.Head>
             <Dialog.Body>
               <div className="text-cancel-500">
-                 <img src={Logo} alt="로고" className='mx-auto' />
+                 <img src={logo} alt="로고" className='mx-auto' />
                  <span className='text-center block'>참여를 취소하시겠습니까?</span>
               </div>
             </Dialog.Body>

@@ -1,8 +1,7 @@
-import {string} from 'prop-types';
-import {forwardRef, useState} from 'react';
+import { forwardRef, useState } from 'react';
 // import Input from "@/components/Input";
 
-function TimePicker({title, className, ...restProps}, ref) {
+function TimePicker({ title, className, ...restProps }, ref) {
   const [time, setTime] = useState(null);
 
   return (

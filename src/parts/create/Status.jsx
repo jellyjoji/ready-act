@@ -1,8 +1,7 @@
-import {string} from 'prop-types';
-import {useId, forwardRef} from 'react';
+import { useId, forwardRef } from 'react';
 
-function Status({title, className, labelClassName, ...restProps}, ref) {
-  const {id} = useId();
+function Status({ title, className, labelClassName, ...restProps }, ref) {
+  const { id } = useId();
 
   return (
     <>

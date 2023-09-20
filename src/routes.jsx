@@ -11,9 +11,9 @@ import Profile from './pages/auth/Profile';
 import SignIn from './pages/auth/SignIn';
 import SignUp from './pages/auth/SignUp';
 import ChangeStatus from './pages/details/ChangeStatus';
-import Detail from './pages/details/Detail';
-import DetailMap from './pages/details/DetailMap';
-import DetailStatus from './pages/details/DetailStatus';
+// import Detail from './pages/details/Detail';
+// import DetailMap from './pages/details/DetailMap';
+// import DetailStatus from './pages/details/DetailStatus';
 import Fruit from './pages/products/Fruit';
 import Grains from './pages/products/Grains';
 import Meat from './pages/products/Meat';
@@ -38,9 +38,9 @@ const router = createBrowserRouter(
       <Route path="signin" element={<SignIn />} />
       <Route path="profile" element={<Profile />} />
 
-      <Route path="products/:id" element={<Detail />} />
-      <Route path="products/:id/pickupplace" element={<DetailMap />} />
-      <Route path="products/:id/status" element={<DetailStatus />} />
+      {/* <Route path="products/:id" element={<Detail />} />
+      <Route path="products/pickupplace" element={<DetailMap />} />
+      <Route path="products/:id/status" element={<DetailStatus />} /> */}
       <Route path="status/:id" element={<ChangeStatus />} />
 
       <Route path="users/:id" element={<Users />} />

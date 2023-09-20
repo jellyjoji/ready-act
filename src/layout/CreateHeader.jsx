@@ -1,10 +1,10 @@
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import close from '@/assets/icons/close.svg';
 
-function CreateHeader({...restProps}) {
+function CreateHeader({ ...restProps }) {
   return (
     <div className="relative border-b-2 line-400">
-      <p className="text-center py-4">방만들기</p>
+      <h1 className="text-center py-4">방만들기</h1>
 
       <Link to="/home">
         <img

@@ -83,7 +83,7 @@ function Location() {
       <p className='my-4'>만날 장소</p>
 
       <div className="map_wrap">
-        <div id="map" className="w-full h-[420px]"></div>
+        <div id="map" className="w-full h-[360px]"></div>
         <div className="hAddr flex">
           <span id="centerAddr" className='p-4 text-primary-600'>
             {data}

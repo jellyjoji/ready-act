@@ -62,7 +62,7 @@ function Profile() {
             <img
               src={getPbImageURL(userData, 'photo')}
               alt={`${name}의 프로필`}
-              className='"w-[100px] h-[100px] rounded-full p-2 bg-slate-200/80'
+              className='w-[100px] h-[100px] rounded-full p-2 bg-slate-200/80'
             />
             <div className="flex flex-col">
               <span className="font-semibold text-lg text-primary-600">

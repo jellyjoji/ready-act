@@ -1,16 +1,16 @@
-import {pb} from '@/api/pocketbase';
+import { pb } from '@/api/pocketbase';
 import crownSmall from '@/assets/icons/crownSmall.svg';
 import dinner from '@/assets/icons/dinner.svg';
-import location from '@/assets/icons/location.svg';
 import dots from '@/assets/icons/dots.svg';
+import location from '@/assets/icons/location.svg';
 import Button from '@/components/Button';
-import {getPbImageURL} from '@/utils/getPbImageURL';
-import {ClientResponseError} from 'pocketbase';
-import {useEffect, useState} from 'react';
-import {Helmet} from 'react-helmet-async';
-import {Link, useParams} from 'react-router-dom';
 import Header from '@/layout/Header';
-import {numberWithComma} from '@/utils/numberWithComma';
+import { getPbImageURL } from '@/utils/getPbImageURL';
+import { numberWithComma } from '@/utils/numberWithComma';
+import { ClientResponseError } from 'pocketbase';
+import { useEffect, useState } from 'react';
+import { Helmet } from 'react-helmet-async';
+import { Link, useParams } from 'react-router-dom';
 import DetailStatus from './DetailStatus';
 // import View from './View';
 

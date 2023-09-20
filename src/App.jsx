@@ -4,10 +4,12 @@ import {Toaster} from 'react-hot-toast';
 import {RouterProvider} from 'react-router-dom';
 import AuthProvider from './context/Auth';
 import router from './routes';
+import {pb} from './api/pocketbase';
 
 export const AppContext = createContext();
 
 function App() {
+  pb.autoCancellation(false);
   const [createRoomForm, setCreateRoomForm] = useState({
     category: '',
     title: '',
@@ -48,7 +50,6 @@ function App() {
 
       <Toaster />
     </>
-
   );
 }
 export default App;

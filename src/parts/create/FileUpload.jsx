@@ -1,12 +1,12 @@
 import imgUpload from '@/assets/icons/imgUpload.svg';
-import {forwardRef, useId, useState} from 'react';
+import { forwardRef, useId, useState } from 'react';
 
-function FileUpload({title, labelClassName, ...restProps}, ref) {
+function FileUpload({ className, title, ...restProps }, ref) {
   const [fileImages, setFileImages] = useState(null);
   const id = useId();
 
   const handleFileUpload = (e) => {
-    const {files} = e.target;
+    const { files } = e.target;
     const fileImages = Array.from(files).map((file) => ({
       image: URL.createObjectURL(file),
       label: file.name,
@@ -19,7 +19,7 @@ function FileUpload({title, labelClassName, ...restProps}, ref) {
       <div className=" mb-14">
         <div className="flex justify-between items-center">
           <p>사진 업로드</p>
-          <label htmlFor={id} className={labelClassName}>
+          <label htmlFor={id} className={className}>
             {title}
           </label>
           <input
@@ -29,7 +29,7 @@ function FileUpload({title, labelClassName, ...restProps}, ref) {
             id={id}
             ref={ref}
             onChange={handleFileUpload}
-            style={{display: 'none'}}
+            style={{ display: 'none' }}
             {...restProps}
           />
         </div>

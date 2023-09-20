@@ -1,7 +1,7 @@
-import {forwardRef, useId, useState} from 'react';
+import { forwardRef, useId, useState } from 'react';
 // import Input from "@/components/Input";
 
-function DatePicker({title, className, labelClassName, ...restProps}, ref) {
+function DatePicker({ title, className, labelClassName, ...restProps }, ref) {
   const [, setDate] = useState(null);
   const id = useId();
 

@@ -86,13 +86,7 @@ function Location() {
 
   return (
     <div className="h-full">
-      <div className="relative h-12">
-        <p className="text-center py-3">지도에서 위치 확인</p>
-
-        <Link to="/createroom">
-          <img src={arrowLeft} alt="뒤로 가기" className="absolute top-3" />
-        </Link>
-      </div>
+      <p className="my-4">만날 장소</p>
 
       <div className="map_wrap">
         <div ref={locationMapRef} className="w-full h-[420px]"></div>

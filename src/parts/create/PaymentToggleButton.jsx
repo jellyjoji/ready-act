@@ -1,9 +1,8 @@
-import {string} from 'prop-types';
-import {forwardRef, useState, useId} from 'react';
+import { forwardRef, useState, useId } from 'react';
 
-function PaymentToggleButton({labelClassName, title}, ref) {
+function PaymentToggleButton({ labelClassName, title }, ref) {
   const [isToggled, setToggled] = useState(false);
-  const {id} = useId();
+  const { id } = useId();
 
   return (
     <>
@@ -22,18 +21,16 @@ function PaymentToggleButton({labelClassName, title}, ref) {
             className={`flex w-full ${isToggled ? 'items-center' : ''}`.trim()}
           >
             <div
-              className={`w-1/2 ${
-                isToggled ? 'shadow-lg bg-white rounded-lg' : ''
-              }`.trim()}
-            >
-              계좌 이체
-            </div>
-            <div
-              className={`w-1/2 ${
-                !isToggled ? 'shadow-lg bg-white rounded-lg' : ''
-              }`.trim()}
+              className={`w-1/2 ${!isToggled ? 'shadow-lg bg-white rounded-lg' : ''
+                }`.trim()}
             >
               만나서 결제
+            </div>
+            <div
+              className={`w-1/2 ${isToggled ? 'shadow-lg bg-white rounded-lg' : ''
+                }`.trim()}
+            >
+              계좌 이체
             </div>
           </div>
         </button>

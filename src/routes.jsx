@@ -13,7 +13,6 @@ import SignUp from './pages/auth/SignUp';
 import ChangeStatus from './pages/details/ChangeStatus';
 import Detail from './pages/details/Detail';
 import DetailMap from './pages/details/DetailMap';
-import DetailStatus from './pages/details/DetailStatus';
 import Fruit from './pages/products/Fruit';
 import Grains from './pages/products/Grains';
 import Meat from './pages/products/Meat';
@@ -21,6 +20,7 @@ import Total from './pages/products/Total';
 import Vegetable from './pages/products/Vegetable';
 import Users from './pages/users/Users';
 import Location from './parts/map/Location';
+import DetailStatus from './pages/details/DetailStatus';
 
 const router = createBrowserRouter(
   createRoutesFromElements(

@@ -1,5 +1,5 @@
 import { pb } from '@/api/pocketbase';
-import Logo from '@/assets/icons/Logo.svg';
+import logo from '@/assets/icons/logo.svg';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useRef, useState } from 'react';
 import { useParams } from 'react-router-dom';
@@ -83,7 +83,7 @@ function Participation({ onUpdateParticipation }) {
             </Dialog.Head>
             <Dialog.Body>
               <div className="text-primary-500 flex flex-1 justify-center items-center">
-                <img src={Logo} alt="로고" className="mx-auto w-10 h-10" />
+                <img src={logo} alt="로고" className="mx-auto w-10 h-10" />
               </div>
                 <div className="text-center block text-primary-500 mb-3">참여하시겠습니까?</div>
             </Dialog.Body>

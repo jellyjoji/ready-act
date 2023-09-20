@@ -1,9 +1,7 @@
 import { pb } from '@/api/pocketbase';
 import crownSmall from '@/assets/icons/crownSmall.svg';
 import dinner from '@/assets/icons/dinner.svg';
-import dots from '@/assets/icons/dots.svg';
 import location from '@/assets/icons/location.svg';
-import Button from '@/components/Button';
 import Header from '@/layout/Header';
 import { getPbImageURL } from '@/utils/getPbImageURL';
 import { numberWithComma } from '@/utils/numberWithComma';
@@ -12,11 +10,20 @@ import { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Link, useParams } from 'react-router-dom';
 import DetailStatus from './DetailStatus';
-// import View from './View';
+import Participation from './Participation';
+import SeeMore from './SeeMore';
 
 function Detail() {
   const {id} = useParams();
   const [data, setData] = useState();
+
+  const handleUpdateParticipation = (newParticipation) => {
+    setData((data) => {
+      const nextData = {...data};
+      nextData.expand.participate.push(newParticipation);
+      return nextData;
+    });
+  };
 
   useEffect(() => {
     async function getDetails() {
@@ -72,9 +79,7 @@ function Detail() {
             />
             <span className="pr-[400px]">{creator.name}</span>
 
-            <Button type="button" className="">
-              <img src={dots} alt="더보기" className="pr-4" />
-            </Button>
+            <SeeMore />
           </li>
 
           <li className="h-[350px]">
@@ -120,18 +125,12 @@ function Detail() {
           </li>
 
           <li className="flex items-center mt-7 pr-4 place-content-between relative">
-            {!participate ? (
-              <div className="text-base font-bold">
-                참여자 0/{participateNumber}
-              </div>
-            ) : (
-              <div className="text-base font-bold">
-                참여자 {participate.length}/{participateNumber}
-              </div>
-            )}
+            <div className="text-base font-bold">
+              참여자 {participate.length}/{participateNumber}
+            </div>
 
             <div className="flex justify-end pr-1">
-              {participate?.map((item) => (
+              {participate.map((item) => (
                 <img
                   key={item.id}
                   src={getPbImageURL(item, 'photo')}
@@ -152,12 +151,8 @@ function Detail() {
             <div className="text-greenishgray-500 font-semibold">
               1인당 정산비
             </div>
-            <Button
-              type="button"
-              className="w-28 h-11 bg-primary-500 rounded-xl text-white hover:bg-primary-700"
-            >
-              {/* <View /> */}
-            </Button>
+            <Participation onUpdateParticipation={handleUpdateParticipation} />
+            {/* <Cancel /> */}
           </li>
         </ul>
       </>

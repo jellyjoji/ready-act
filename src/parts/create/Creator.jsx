@@ -1,23 +1,29 @@
 
 import { AppContext } from '@/App';
-import FormInput from '../../components/FormInput';
 import { useContext, useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { pb } from '@/api/pocketbase';
 import { ClientResponseError } from 'pocketbase';
-
-
+import FormInput from '@/components/FormInput';
 
 function Creator() {
   const { updateCreateRoomForm } = useContext(AppContext);
-  const [idData, setIdData] = useState("");
   const [productIdData, setProductIdData] = useState("");
   const { id } = useParams();
-
-
   // localStorage에서 아이디 정보를 가져오는 함수
-  const localStorageId = JSON.parse(localStorage.getItem('pocketbase_auth')).model.id;
-  // console.log(localStorageId);
+  // 로컬 스토리지에서 데이터를 읽어오는 것은 비동기 처리가 필요합니다. 그러므로 useState 훅을 사용해 지연된 처리가 필요
+  const [localStorageId] = useState(() => JSON.parse(localStorage.getItem('pocketbase_auth')).model.id);
+
+  const [idData, setIdData] = useState({});
+
+  // idData 상태가 업데이트 되면 실행되는 이펙트 콜백 함수
+  useEffect(() => {
+    if (idData.id) {
+      // idData 값이 서버로부터 가져와 업데이트 되면
+      // creator 폼 필드를 { id, name } 객체 값으로 설정합니다.
+      updateCreateRoomForm('creator', { id: idData.id, name: idData.name });
+    }
+  }, [idData])
 
   useEffect(() => {
     async function readUserId() {
@@ -63,9 +69,7 @@ function Creator() {
     readUserId();
     readProductId()
 
-    updateCreateRoomForm('creator', idData.name);
-    // console.log(idData.name);
-  }, [idData.name])
+  }, [])
 
 
   // 이제 이 비교된 결과값을 넣는 Creator input 창이 필요 

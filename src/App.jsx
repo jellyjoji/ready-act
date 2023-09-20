@@ -21,6 +21,7 @@ function App() {
     status: '',
     location: '',
     creator: '',
+    participate: '',
   });
 
   const appState = {

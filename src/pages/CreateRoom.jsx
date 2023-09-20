@@ -7,25 +7,22 @@ import CategoryDropdown from '@/parts/create/CategoryDropdown';
 import ContentTextarea from '@/parts/create/ContentTextarea';
 import DatePicker from '@/parts/create/DatePicker';
 import FileUpload from '@/parts/create/FileUpload';
-import MeetingPoint from '@/parts/create/MeetingPoint';
+// import MeetingPoint from '@/parts/create/MeetingPoint';
+import Location from '@/parts/map/Location';
 import ParticipateCounter from '@/parts/create/ParticipateCounter';
 import PaymentToggleButton from '@/parts/create/PaymentToggleButton';
 import Status from '@/parts/create/Status';
 import { ClientResponseError } from 'pocketbase';
-import { useEffect } from 'react';
 import { useContext, useRef, useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import Creator from '@/parts/create/Creator';
-
 
 
 function CreateRoom() {
   const { createRoomForm, updateCreateRoomForm } = useContext(AppContext);
 
   const formRef = useRef(null);
-  const categoryRef = useRef(null);
   const titleRef = useRef(null);
-  const contentRef = useRef(null);
   const priceRef = useRef(null);
   const dateRef = useRef(null);
   const paymentRef = useRef(null);
@@ -36,9 +33,10 @@ function CreateRoom() {
   const handleCreate = async (e) => {
     e.preventDefault();
 
-    const categoryValue = categoryRef.current.value;
+    const categoryValue = createRoomForm.category;
     const titleValue = titleRef.current.value;
-    const contentValue = contentRef.current.value;
+    const contentValue = createRoomForm.content;
+    console.log(contentValue);
     const priceValue = priceRef.current.value;
     const dateValue = dateRef.current.value;
 
@@ -48,7 +46,7 @@ function CreateRoom() {
     );
 
     const meetingPointValue = createRoomForm.meetingPoint;
-    const creatorValue = createRoomForm.creator;
+    const creatorValue = createRoomForm.creator.id;
 
     const uploadImageValue = uploadImageRef.current.files[0];
     const statusValue = statusRef.current.value;
@@ -64,6 +62,7 @@ function CreateRoom() {
     data.append('participateNumber', ParticipateCounterValue);
     data.append('meetingPoint', meetingPointValue);
     data.append('creator', creatorValue);
+    data.append('participate', creatorValue);
     if (uploadImageValue) {
       data.append('uploadImage', uploadImageValue);
     }
@@ -72,7 +71,6 @@ function CreateRoom() {
     for (const [key, value] of data.entries()) {
       console.log(key, value);
     }
-
 
     // return
     try {
@@ -105,8 +103,10 @@ function CreateRoom() {
           <div className="flex flex-col gap-4 p-4 relative"
           >
 
+            <Location />
+
+
             <CategoryDropdown
-              ref={categoryRef}
               title="카테고리"
               className="w-full defaultInput"
             />
@@ -127,7 +127,6 @@ function CreateRoom() {
               label="상품 가격"
             />
             <ContentTextarea
-              ref={contentRef}
               title="내용"
               placeholder="공구 모임 주요내용을 알려주세요."
               className="w-full defaultInput"
@@ -158,13 +157,15 @@ function CreateRoom() {
 
             <ParticipateCounter ref={ParticipateCounterRef} title="인원" />
 
-            <MeetingPoint title="만날 장소" />
+            {/* <MeetingPoint title="만날 장소" /> */}
 
             <FileUpload
               ref={uploadImageRef}
               title="파일 업로드"
               className="bg-[#EBF8E8] p-4 rounded-lg text-primary-500"
             />
+
+
           </div>
           <div className="bg-white fixed bottom-0 max-w-xl w-full p-4 drop-shadow-2xl">
             <Button type="submit" className="activeButton lgFontButton w-full ">

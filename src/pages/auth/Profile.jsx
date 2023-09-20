@@ -1,19 +1,17 @@
-import { pb } from '@/api/pocketbase';
+import {pb} from '@/api/pocketbase';
 import Spinner from '@/components/Spinner';
 import Header from '@/layout/Header';
-import { getPbImageURL } from '@/utils/getPbImageURL';
-import { numberWithComma } from '@/utils/numberWithComma';
+import {getPbImageURL} from '@/utils/getPbImageURL';
+import {numberWithComma} from '@/utils/numberWithComma';
 
-import { useEffect, useState } from 'react';
-import { Helmet } from 'react-helmet-async';
-import { Link, useParams } from 'react-router-dom';
-import Withdrawal from './Withdrawal';
 import Button from '@/components/Button';
-import { useNavigate } from 'react-router-dom';
+import {useEffect, useState} from 'react';
+import {Helmet} from 'react-helmet-async';
 import toast from 'react-hot-toast';
+import {Link, useNavigate} from 'react-router-dom';
+import Withdrawal from './Withdrawal';
 
 function Profile() {
-  const { id } = useParams();
   const [userData, setUserData] = useState();
   const [productsData, setProductsData] = useState();
 
@@ -44,7 +42,7 @@ function Profile() {
   }, [userId]);
 
   if (userData && productsData) {
-    const { email, name, created } = userData;
+    const {email, name, created} = userData;
 
     return (
       <>
@@ -62,7 +60,7 @@ function Profile() {
             <img
               src={getPbImageURL(userData, 'photo')}
               alt={`${name}의 프로필`}
-              className='w-[100px] h-[100px] rounded-full p-2 bg-slate-200/80'
+              className="w-[100px] h-[100px] rounded-full p-2 bg-slate-200/80"
             />
             <div className="flex flex-col">
               <span className="font-semibold text-lg text-primary-600">
@@ -101,9 +99,9 @@ function Profile() {
           <h3 className="font-semibold mt-6 mb-3">판매 상품</h3>
           <ul>
             {productsData.map((products) => (
-              <Link to={`/products/${id}`} key={products.id}>
+              <Link to={`/profile/${products.id}`} key={products.id}>
                 <li>
-                  <div className="bg-primary-200 p-4 rounded-2xl mb-4">
+                  <div className="bg-primary-200 p-4 rounded-2xl mb-4 relative">
                     <figure className="flex gap-4 h-[100px]">
                       <img
                         src={getPbImageURL(products, 'uploadImage')}
@@ -111,13 +109,28 @@ function Profile() {
                         className="w-[100px] h-full rounded-2xl"
                       />
                       <figcaption>
-                        <h2 className="text-sm text-greenishgray-700 font-semibold">
+                        <h2 className="text-sm text-greenishgray-700 font-semibold ">
                           {products.title}
                         </h2>
+
+                        {products.status === '대기중' ? (
+                          <span className="font-bold absolute text-primary-500 right-6 top-4">
+                            {products.status}
+                          </span>
+                        ) : products.status === '진행중' ? (
+                          <span className="font-bold absolute text-map-500 right-6 top-4">
+                            {products.status}
+                          </span>
+                        ) : (
+                          <span className="font-bold absolute text-greenishgray-500 right-6 top-4">
+                            {products.status}
+                          </span>
+                        )}
                         <div className="text-xs flex flex-col">
                           <span className="mt-1 mb-5">
                             {numberWithComma(products.price)}원
                           </span>
+
                           <span className="max-w-xl text-ellipsis	line-clamp-2">
                             {products.content}
                           </span>

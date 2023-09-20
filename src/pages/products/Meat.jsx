@@ -8,7 +8,9 @@ import {useEffect, useState} from 'react';
 import {Helmet} from 'react-helmet-async';
 import {Link} from 'react-router-dom';
 
-function Grains() {
+pb.autoCancellation(false);
+
+function Meat() {
   const [data, setData] = useState([]);
 
   useEffect(() => {
@@ -18,7 +20,7 @@ function Grains() {
         const filterRecordList = await pb
           .collection('products')
           .getList(1, 50, {
-            filter: 'category="곡류"',
+            filter: 'category="육류"',
           });
         const filterRecordItems = filterRecordList.items;
         setData(filterRecordItems);
@@ -33,14 +35,14 @@ function Grains() {
     return (
       <>
         <Helmet>
-          <title>R09M - 곡류</title>
+          <title>R09M - 육류</title>
         </Helmet>
         <h1 className="sr-only">R09M</h1>
 
-        <div className="bg-line-200 py-2 h-screen">
+        <div className="bg-line-200 py-2">
           <div className="px-4">
             <Header />
-            <h2 className="pageTitle">곡류</h2>
+            <h2 className="pageTitle">육류</h2>
           </div>
           <ul>
             {data.map(
@@ -108,4 +110,4 @@ function Grains() {
   }
 }
 
-export default Grains;
+export default Meat;

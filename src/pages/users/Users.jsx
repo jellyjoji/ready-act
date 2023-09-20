@@ -1,6 +1,6 @@
 import {pb} from '@/api/pocketbase';
 import Header from '@/layout/Header';
-import IconCrownSmall from '@/assets/icons/IconCrownSmall.svg';
+import crownSmall from '@/assets/icons/crownSmall.svg';
 import { getPbImageURL } from '@/utils/getPbImageURL';
 import { ClientResponseError } from 'pocketbase';
 import { useState } from 'react';
@@ -12,7 +12,7 @@ import {Link} from 'react-router-dom';
 
 
 
-function User() {
+function Users() {
   const {id} = useParams();
   const[data, setData] = useState()
   useEffect(() => {
@@ -60,7 +60,7 @@ function User() {
               alt={creator.name}
               className="object-cover rounded-full w-14 h-14 relative"
             />
-            <img src={ IconCrownSmall } alt="게시물 작성자" className='absolute mt-10 ml-10'/>
+            <img src={ crownSmall } alt="게시물 작성자" className='absolute mt-10 ml-10'/>
             <span className="pl-3 font-extrabold text-lg">{creator.name}</span>
             </li>
         </ul>
@@ -81,4 +81,4 @@ function User() {
   }
 }
 
-export default User;
+export default Users;

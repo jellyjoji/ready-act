@@ -1,19 +1,25 @@
-import {forwardRef, useId} from 'react';
-import {category} from '../../data/category';
+import { useId, useContext, useState, useEffect } from 'react';
+import { category } from '@/data/category';
+import { AppContext } from '@/App';
 
-function CategoryDropdown({className, title}, ref) {
-  const {id} = useId();
+function CategoryDropdown({ className, title }) {
+  const { id } = useId();
+  const { updateCreateRoomForm } = useContext(AppContext);
+  const [selectedCategory, setSelectedCategory] = useState('전체');
+
+  useEffect(() => {
+    updateCreateRoomForm('category', selectedCategory);
+  }, [selectedCategory]);
 
   return (
     <div>
       <label htmlFor={id}>{title}</label>
-      {/* value={selectedCategory} onChange={(e) => setSelectedCategory(e.target.value)} */}
       <select
-        ref={ref}
+        value={selectedCategory}
+        onChange={(e) => setSelectedCategory(e.target.value)}
         id={id}
         className={className}
         name="category"
-        defaultValue="전체"
       >
         {category.map((list) => (
           <option key={list.title} value={list.title}>
@@ -25,4 +31,4 @@ function CategoryDropdown({className, title}, ref) {
   );
 }
 
-export default forwardRef(CategoryDropdown);
+export default CategoryDropdown;

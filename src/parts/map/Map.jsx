@@ -6,7 +6,7 @@ function Map() {
     mapMark();
   }, []);
 
-  return <div id="map" className="w-full h-[750px] my-3"></div>;
+  return <div id="map" className="w-full h-[65vh] my-3"></div>;
 }
 
 export default Map;

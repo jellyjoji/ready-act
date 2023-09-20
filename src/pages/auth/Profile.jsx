@@ -1,19 +1,19 @@
-import {pb} from '@/api/pocketbase';
+import { pb } from '@/api/pocketbase';
 import Spinner from '@/components/Spinner';
 import Header from '@/layout/Header';
-import {getPbImageURL} from '@/utils/getPbImageURL';
-import {numberWithComma} from '@/utils/numberWithComma';
+import { getPbImageURL } from '@/utils/getPbImageURL';
+import { numberWithComma } from '@/utils/numberWithComma';
 
-import {useEffect, useState} from 'react';
-import {Helmet} from 'react-helmet-async';
-import {Link, useParams} from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { Helmet } from 'react-helmet-async';
+import { Link, useParams } from 'react-router-dom';
 import Withdrawal from './Withdrawal';
 import Button from '@/components/Button';
-import {useNavigate} from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
 
 function Profile() {
-  const {id} = useParams();
+  const { id } = useParams();
   const [userData, setUserData] = useState();
   const [productsData, setProductsData] = useState();
 
@@ -44,7 +44,7 @@ function Profile() {
   }, [userId]);
 
   if (userData && productsData) {
-    const {email, name, created} = userData;
+    const { email, name, created } = userData;
 
     return (
       <>

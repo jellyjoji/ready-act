@@ -8,9 +8,7 @@ import {useEffect, useState} from 'react';
 import {Helmet} from 'react-helmet-async';
 import {Link} from 'react-router-dom';
 
-pb.autoCancellation(false);
-
-function Meat() {
+function Vegetable() {
   const [data, setData] = useState([]);
 
   useEffect(() => {
@@ -20,7 +18,7 @@ function Meat() {
         const filterRecordList = await pb
           .collection('products')
           .getList(1, 50, {
-            filter: 'category="육류"',
+            filter: 'category="채소"',
           });
         const filterRecordItems = filterRecordList.items;
         setData(filterRecordItems);
@@ -35,14 +33,14 @@ function Meat() {
     return (
       <>
         <Helmet>
-          <title>R09M - 육류</title>
+          <title>R09M - 채소</title>
         </Helmet>
         <h1 className="sr-only">R09M</h1>
 
-        <div className="bg-line-200 py-2 h-screen">
+        <div className="bg-line-200 py-2">
           <div className="px-4">
             <Header />
-            <h2 className="pageTitle">육류</h2>
+            <h2 className="pageTitle">채소</h2>
           </div>
           <ul>
             {data.map(
@@ -110,4 +108,4 @@ function Meat() {
   }
 }
 
-export default Meat;
+export default Vegetable;

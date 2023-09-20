@@ -79,15 +79,26 @@ function Location() {
 
   return (
     <div className="h-full">
+      <div className="relative h-12">
+        <p className="text-center py-3">지도에서 위치 확인</p>
 
-      <p className='my-4'>만날 장소</p>
+        <Link to="/createroom">
+          <img src={arrowLeft} alt="뒤로 가기" className="absolute top-3" />
+        </Link>
+      </div>
 
       <div className="map_wrap">
         <div id="map" className="w-full h-[420px]"></div>
         <div className="hAddr flex">
-          <span id="centerAddr" className='p-4 text-primary-600'>
+          <span id="centerAddr" className='p-4'>
             {data}
           </span>
+
+          <Link to="/createroom" className="bg-white w-full absolute max-w-xl bottom-0 p-4 drop-shadow-2xl">
+            <Button type="submit" className="activeButton lgFontButton w-full ">
+              이 위치로 설정
+            </Button>
+          </Link>
 
         </div>
       </div>

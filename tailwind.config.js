@@ -39,8 +39,6 @@ export default {
         'line-200': '#ECEDED',
         'line-100': '#F1F4F4',
       },
-
-      backgroundImage: {},
     },
   },
   plugins: [],

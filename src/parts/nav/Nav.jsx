@@ -1,23 +1,19 @@
 import styles from '@/styles/Nav.module.css';
+import {number, string} from 'prop-types';
 import {NavLink} from 'react-router-dom';
-import ChatIcon from './ChatIcon';
 import HomeIcon from './HomeIcon';
 import ProfileIcon from './ProfileIcon';
 import SearchIcon from './SearchIcon';
-import {number, string} from 'prop-types';
 
 function Nav({
   homeSize,
   homeColor,
   searchSize,
   searchColor,
-  chatSize,
-  chatColor,
   profileSize,
   profileColor,
   homeSpan,
   searchSpan,
-  chatSpan,
   profileSpan,
 }) {
   return (
@@ -36,14 +32,6 @@ function Nav({
             <div className={styles.nav}>
               <SearchIcon searchSize={searchSize} searchColor={searchColor} />
               <span className={`${styles.span} ${searchSpan}`}>검색</span>
-            </div>
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to="/chat">
-            <div className={styles.nav}>
-              <ChatIcon chatSize={chatSize} chatColor={chatColor} />
-              <span className={`${styles.span} ${chatSpan}`}>채팅</span>
             </div>
           </NavLink>
         </li>
@@ -75,9 +63,7 @@ function Nav({
   );
 }
 Nav.propTypes = {
-  chatSize: number,
   profileSize: number,
-  chatColor: string,
   profileColor: string,
   homeSize: number,
   homeColor: string,
@@ -85,7 +71,6 @@ Nav.propTypes = {
   searchColor: string,
   homeSpan: string,
   searchSpan: string,
-  chatSpan: string,
   profileSpan: string,
 };
 

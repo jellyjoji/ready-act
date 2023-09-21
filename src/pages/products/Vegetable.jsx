@@ -72,9 +72,9 @@ function Vegetable() {
                           {status}
                         </span>
                       )}
-                      <h2 className="text-greenishgray-700 font-semibold mt-5 ml-20">
+                      <h3 className="text-greenishgray-700 font-semibold mt-5 ml-20">
                         {title}
-                      </h2>
+                      </h3>
                       <p className="text-sm my-2">{content}</p>
                     </div>
                     <div className="flex gap-2 justify-end text-xs text-greenishgray-600">

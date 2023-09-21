@@ -1,14 +1,14 @@
-import { pb } from '@/api/pocketbase';
+import {pb} from '@/api/pocketbase';
 import crownSmall from '@/assets/icons/crownSmall.svg';
 import dinner from '@/assets/icons/dinner.svg';
 import location from '@/assets/icons/location.svg';
 import Header from '@/layout/Header';
-import { getPbImageURL } from '@/utils/getPbImageURL';
-import { numberWithComma } from '@/utils/numberWithComma';
-import { ClientResponseError } from 'pocketbase';
-import { useEffect, useState } from 'react';
-import { Helmet } from 'react-helmet-async';
-import { Link, useParams } from 'react-router-dom';
+import {getPbImageURL} from '@/utils/getPbImageURL';
+import {numberWithComma} from '@/utils/numberWithComma';
+import {ClientResponseError} from 'pocketbase';
+import {useEffect, useState} from 'react';
+import {Helmet} from 'react-helmet-async';
+import {Link, useParams} from 'react-router-dom';
 import DetailStatus from './DetailStatus';
 import Participation from './Participation';
 import SeeMore from './SeeMore';
@@ -60,12 +60,14 @@ function Detail() {
           <title>R09M - 상품 상세 페이지</title>
         </Helmet>
         <div className="px-4 py-2">
-          <Header />
+          <Header link='/products' />
         </div>
+        <h1 className="sr-only">R09M</h1>
         <div className="flex justify-center mt-2">
           <DetailStatus />
         </div>
         <ul className="pl-4">
+          <h2 className="sr-only">상품 정보</h2>
           <li className="flex mb-3 mt-2 items-center font-semibold text-lg justify-between">
             <img
               src={getPbImageURL(creator, 'photo')}
@@ -96,7 +98,7 @@ function Detail() {
                 {category}
               </span>
             </div>
-            <span className="mt-3 text-xl font-extrabold">{title}</span>
+            <h3 className="mt-3 text-xl font-extrabold">{title}</h3>
           </li>
 
           <li className="mt-9 flex items-center">

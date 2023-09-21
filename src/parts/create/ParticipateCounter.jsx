@@ -15,7 +15,6 @@ function ParticipateCounter({title}, ref) {
 
   return (
     <div className="py-4">
-      <label>{title}</label>
       <div className="flex gap-2 float-right p-2 items-center">
         <button type="button" onClick={decrementCount}>
           <img src={minusCircle} alt="minus" />

@@ -1,25 +1,24 @@
-import { AppContext } from '@/App';
-import { pb } from '@/api/pocketbase';
+import {AppContext} from '@/App';
+import {pb} from '@/api/pocketbase';
 import Button from '@/components/Button';
 import FormInput from '@/components/FormInput';
 import CreateHeader from '@/layout/CreateHeader';
 import CategoryDropdown from '@/parts/create/CategoryDropdown';
 import ContentTextarea from '@/parts/create/ContentTextarea';
+import Creator from '@/parts/create/Creator';
 import DatePicker from '@/parts/create/DatePicker';
 import FileUpload from '@/parts/create/FileUpload';
-// import MeetingPoint from '@/parts/create/MeetingPoint';
-import Location from '@/parts/map/Location';
 import ParticipateCounter from '@/parts/create/ParticipateCounter';
 import PaymentToggleButton from '@/parts/create/PaymentToggleButton';
 import Status from '@/parts/create/Status';
-import { ClientResponseError } from 'pocketbase';
-import { useContext, useRef, useState } from 'react';
-import { Helmet } from 'react-helmet-async';
-import Creator from '@/parts/create/Creator';
-
+import Location from '@/parts/map/Location';
+import {ClientResponseError} from 'pocketbase';
+import {useContext, useRef} from 'react';
+import {Helmet} from 'react-helmet-async';
+import toast from 'react-hot-toast';
 
 function CreateRoom() {
-  const { createRoomForm, updateCreateRoomForm } = useContext(AppContext);
+  const {createRoomForm} = useContext(AppContext);
 
   const formRef = useRef(null);
   const titleRef = useRef(null);
@@ -36,7 +35,6 @@ function CreateRoom() {
     const categoryValue = createRoomForm.category;
     const titleValue = titleRef.current.value;
     const contentValue = createRoomForm.content;
-    console.log(contentValue);
     const priceValue = priceRef.current.value;
     const dateValue = dateRef.current.value;
 
@@ -66,49 +64,57 @@ function CreateRoom() {
     if (uploadImageValue) {
       data.append('uploadImage', uploadImageValue);
     }
-    data.append("status", statusValue);
+    data.append('status', statusValue);
 
-    for (const [key, value] of data.entries()) {
-      console.log(key, value);
-    }
-
-    // return
     try {
       await pb.collection('products').create(data);
-
-      // navigate('/products');
-
+      toast.success('등록되었습니다.', {
+        position: 'top-center',
+        ariaProps: {
+          role: 'status',
+          'aria-live': 'polite',
+        },
+      });
     } catch (error) {
       if (!(error instanceof ClientResponseError)) {
-        console.error(error);
+        toast.error('등록에 실패하였습니다. 다시 시도해 주세요.', {
+          position: 'top-center',
+          ariaProps: {
+            role: 'status',
+            'aria-live': 'polite',
+          },
+        });
       }
     }
-  }
+  };
 
   return (
     <>
-
       <Helmet>
         <title>방만들기</title>
       </Helmet>
 
-      <div >
-        <CreateHeader />
+      <h1 className="sr-only">R09M</h1>
 
+      <div className="py-2">
+        <div className="px-4">
+          <CreateHeader />
+          <h2 className="pageTitle">방만들기</h2>
+        </div>
+      </div>
+
+      <div>
         <form
           encType="multipart/form-data"
           ref={formRef}
           onSubmit={handleCreate}
         >
-          <div className="flex flex-col gap-4 p-4 relative"
-          >
-
+          <div className="flex flex-col gap-4 p-4 relative">
             <Location />
-
 
             <CategoryDropdown
               title="카테고리"
-              className="w-full defaultInput"
+              className="w-full defaultInput mt-4"
             />
             <FormInput
               ref={titleRef}
@@ -136,7 +142,7 @@ function CreateRoom() {
             <DatePicker
               ref={dateRef}
               title="픽업 날짜"
-              className="w-full defaultInput"
+              className="w-full defaultInput mt-4"
               labelClassName="date Picker"
             />
 
@@ -157,21 +163,18 @@ function CreateRoom() {
 
             <ParticipateCounter ref={ParticipateCounterRef} title="인원" />
 
-            {/* <MeetingPoint title="만날 장소" /> */}
-
             <FileUpload
               ref={uploadImageRef}
               title="파일 업로드"
               className="bg-[#EBF8E8] p-4 rounded-lg text-primary-500"
             />
-
-
           </div>
-          <div className="bg-white fixed bottom-0 max-w-xl w-full p-4 drop-shadow-2xl">
-            <Button type="submit" className="activeButton lgFontButton w-full ">
-              방 만들기
-            </Button>
-          </div>
+          <Button
+            type="submit"
+            className="fixed bottom-0 max-w-xl w-full p-4 activeButton lgFontButton"
+          >
+            방 만들기
+          </Button>
         </form>
       </div>
     </>

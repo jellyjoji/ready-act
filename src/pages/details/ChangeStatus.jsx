@@ -1,16 +1,16 @@
-import { pb } from '@/api/pocketbase';
+import {pb} from '@/api/pocketbase';
 import complete from '@/assets/icons/complete.svg';
 import proceeding from '@/assets/icons/proceeding.svg';
 import waiting from '@/assets/icons/waiting.svg';
 import Spinner from '@/components/Spinner';
 import Header from '@/layout/Header';
 import styles from '@/styles/ChangeStatus.module.css';
-import { getPbImageURL } from '@/utils/getPbImageURL';
-import { numberWithComma } from '@/utils/numberWithComma';
-import { useEffect, useRef, useState } from 'react';
-import { Helmet } from 'react-helmet-async';
+import {getPbImageURL} from '@/utils/getPbImageURL';
+import {numberWithComma} from '@/utils/numberWithComma';
+import {useEffect, useRef, useState} from 'react';
+import {Helmet} from 'react-helmet-async';
 import toast from 'react-hot-toast';
-import { useNavigate, useParams } from 'react-router-dom';
+import {useNavigate, useParams} from 'react-router-dom';
 import CheckIcon from './CheckIcon';
 
 function ChangeStatus() {
@@ -80,9 +80,9 @@ function ChangeStatus() {
                 className="w-[20%] h-full"
               />
               <figcaption>
-                <h2 className="text-greenishgray-700 font-semibold">
+                <h4 className="text-greenishgray-700 font-semibold">
                   {data.title}
-                </h2>
+                </h4>
                 <div className="text-sm flex flex-col">
                   <span className="mt-1 mb-4">
                     {numberWithComma(data.price)}원
@@ -100,7 +100,9 @@ function ChangeStatus() {
               <figure className={styles.figure}>
                 <img src={waiting} alt="대기중" aria-hidden="true" />
                 <figcaption>
-                  <h3 className={`${styles.title} text-primary-600`}>대기중</h3>
+                  <span className={`${styles.title} text-primary-600`}>
+                    대기중
+                  </span>
                   <p className={styles.description}>참여자를 기다리고 있어요</p>
                 </figcaption>
               </figure>

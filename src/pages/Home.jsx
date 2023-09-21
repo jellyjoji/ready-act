@@ -32,6 +32,7 @@ function Home() {
         <h1 className="sr-only">R09M</h1>
         <Header />
         <h2 className="text-lg font-semibold pb-4">공구룸</h2>
+        <h3 className="sr-only">카테고리</h3>
 
         <Swiper
           slidesPerView={4.5}
@@ -46,6 +47,7 @@ function Home() {
           {category.map(({title, path, img}) => (
             <SwiperSlide key={title}>
               <Link to={path}>
+                <h4 className="sr-only">{title}</h4>
                 <figure className="flex flex-col items-center m-1">
                   <img
                     src={img}
@@ -71,6 +73,7 @@ function Home() {
                 mapMark(mainMapRef.current);
               }}
             >
+              <h3 className='sr-only'>기존 위치로 돌아가기</h3>
               <img src={reset} alt="기존 위치로 되돌아가기" />
             </Button>
             <Button
@@ -80,6 +83,7 @@ function Home() {
                 currentLocation(mainMapRef.current);
               }}
             >
+              <h3 className='sr-only'>현재 위치</h3>
               <img src={myLocation} alt="현재 위치로 가기" />
             </Button>
             <Button
@@ -87,11 +91,13 @@ function Home() {
               className={`${styles.button} right-2 bottom-2 bg-primary-500`}
             >
               <Link to="/createRoom">
+              <h3 className='sr-only'>방 만들기</h3>
                 <img src={plus} alt="방 만들기" className="w-12 h-12 p-2" />
               </Link>
             </Button>
           </div>
         </div>
+            <h3 className='sr-only'>메뉴</h3>
         <Nav homeColor="#000" homeSpan="navSpan" />
       </div>
     </>

@@ -109,9 +109,9 @@ function Profile() {
                         className="w-[100px] h-full rounded-2xl"
                       />
                       <figcaption>
-                        <h2 className="text-sm text-greenishgray-700 font-semibold ">
+                        <h4 className="text-sm text-greenishgray-700 font-semibold ">
                           {products.title}
-                        </h2>
+                        </h4>
 
                         {products.status === '대기중' ? (
                           <span className="font-bold absolute text-primary-500 right-6 top-4">

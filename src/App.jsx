@@ -7,6 +7,8 @@ import router from './routes';
 import {pb} from './api/pocketbase';
 import {QueryClient, QueryClientProvider} from '@tanstack/react-query';
 import {ReactQueryDevtools} from '@tanstack/react-query-devtools';
+import Spinner from './components/Spinner';
+import {Suspense} from 'react';
 
 export const AppContext = createContext();
 
@@ -56,7 +58,11 @@ function App() {
           <QueryClientProvider client={queryClient}>
             <AppContext.Provider value={appState}>
               <div className="max-w-xl mx-auto mt-12 font-pretendard">
-                <RouterProvider router={router} />
+                <Suspense
+                  fallback={<Spinner size={200} message="페이지 로딩 중..." />}
+                >
+                  <RouterProvider router={router} />
+                </Suspense>
               </div>
             </AppContext.Provider>
             <ReactQueryDevtools />

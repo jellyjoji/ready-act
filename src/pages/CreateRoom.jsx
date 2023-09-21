@@ -112,7 +112,7 @@ function CreateRoom() {
           name="description"
           content="공동구매 채소 상품을 확인할 수 있는 페이지입니다. 카테고리, 상품명, 상품 이미지, 상품 가격, 내용, 픽업 날짜, 상태, 생성자, 지불 방법, 픽업 위치 등을 입력하면 방이 생성됩니다."
         ></meta>
-        <meta property="og:image" content="favicon.ico" />
+        <meta property="og:image" content="favicon.png" />
         <meta property="og:article:author" content="Ready! Act" />
       </Helmet>
 

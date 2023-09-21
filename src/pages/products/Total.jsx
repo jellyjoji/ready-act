@@ -54,7 +54,7 @@ function Total() {
           name="description"
           content="공동구매 전체 상품을 확인할 수 있는 페이지입니다. 카테고리, 상품명, 상세내용, 진행상태, 픽업 일자, 참여자 현황을 확인할 수 있습니다."
         ></meta>
-        <meta property="og:image" content="favicon.ico" />
+        <meta property="og:image" content="favicon.png" />
         <meta property="og:article:author" content="Ready! Act" />
       </Helmet>
       <h1 className="sr-only">R09M</h1>
@@ -110,7 +110,7 @@ function Total() {
                       <span>{pickup.slice(5, -8).replace('-', '/')}</span>
                     </div>
                     <div className="flex gap-1">
-                    <img
+                      <img
                         src={participateNum}
                         alt="참여 인원"
                         className="w-4 h-4"

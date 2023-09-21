@@ -159,10 +159,7 @@ function SignUp() {
           inputClassName="authInput"
         />
 
-        <Button
-          type="submit"
-          className="authActiveButton"
-        >
+        <Button type="submit" className="authActiveButton">
           가입
         </Button>
         <Button

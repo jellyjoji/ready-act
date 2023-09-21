@@ -47,7 +47,7 @@ function Logo() {
           name="description"
           content="1인이 소비하기에 많은 양의 상품, 대용량 제품 등을 대상으로 합리적인 가격에 구매하여 분배하는 서비스, R09M의 로고 페이지입니다."
         ></meta>
-        <meta property="og:image" content="favicon.ico" />
+        <meta property="og:image" content="favicon.png" />
         <meta property="og:article:author" content="Ready! Act" />
       </Helmet>
       <div className="bg-primary-600 w-[576px] h-[740px] text-center flex justify-center items-center relative">

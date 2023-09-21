@@ -57,7 +57,7 @@ function Fruit() {
           name="description"
           content="공동구매 과일 상품을 확인할 수 있는 페이지입니다. 카테고리, 상품명, 상세내용, 진행상태, 픽업 일자, 참여자 현황을 확인할 수 있습니다."
         ></meta>
-        <meta property="og:image" content="favicon.ico" />
+        <meta property="og:image" content="favicon.png" />
         <meta property="og:article:author" content="Ready! Act" />
       </Helmet>
       <h1 className="sr-only">R09M</h1>
@@ -80,7 +80,7 @@ function Fruit() {
               participateNumber,
             }) => (
               <li className=" rounded-2xl p-5 m-6 bg-white" key={id}>
-                  <Link to={`/products/${id}`}>
+                <Link to={`/products/${id}`}>
                   <span className="font-semibold bg-line-400 text-greenishgray-800 p-2 rounded-xl">
                     {category}
                   </span>
@@ -105,7 +105,11 @@ function Fruit() {
                   </div>
                   <div className="flex gap-2 justify-end text-xs text-greenishgray-600">
                     <div className="flex gap-1">
-                    <img src={pickuptime} alt="픽업 시간" className="w-4 h-4" />
+                      <img
+                        src={pickuptime}
+                        alt="픽업 시간"
+                        className="w-4 h-4"
+                      />
                       <span>{pickup.slice(5, -8).replace('-', '/')}</span>
                     </div>
                     <div className="flex gap-1">
@@ -119,8 +123,8 @@ function Fruit() {
                       </span>
                     </div>
                   </div>
-              </Link>
-                </li>
+                </Link>
+              </li>
             )
           )}
         </ul>

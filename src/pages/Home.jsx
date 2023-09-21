@@ -47,7 +47,7 @@ function Home() {
           name="description"
           content="전체, 채소, 과일, 곡류, 육류 등 카테고리별 상품을 확인할 수 있는 메뉴와 현재 등록된 공동구매 상품의 픽업 위치를 확인할 수 있는 페이지입니다. 더하기 버튼 클릭 시 새로운 공동구매 상품을 등록할 수 있습니다."
         ></meta>
-        <meta property="og:image" content="favicon.ico" />
+        <meta property="og:image" content="favicon.png" />
         <meta property="og:article:author" content="Ready! Act" />
       </Helmet>
       <div className="relative p-4">

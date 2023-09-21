@@ -60,7 +60,7 @@ function Users() {
           name="description"
           content="공동구매 생성자, 참여자를 볼 수 있는 페이지입니다."
         ></meta>
-        <meta property="og:image" content="favicon.ico" />
+        <meta property="og:image" content="favicon.png" />
         <meta property="og:article:author" content="Ready! Act" />
       </Helmet>
       <div className="px-4 py-2">

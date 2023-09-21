@@ -16,22 +16,24 @@ export async function mapMark(mapElement) {
     };
     const map = new kakao.maps.Map(container, options);
     const geocoder = new kakao.maps.services.Geocoder();
-    readRecordList?.map(({meetingPoint}) => {
-      geocoder.addressSearch(meetingPoint, (result, status) => {
-        if (status === kakao.maps.services.Status.OK) {
-          const {y, x} = result[0];
-          let coords = new kakao.maps.LatLng(y, x);
-          const imageSrc = spot;
-          const imageSize = new kakao.maps.Size(32, 32);
-          const markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize);
-          new kakao.maps.Marker({
-            map: map,
-            position: coords,
-            image: markerImage,
-          });
-          map.setCenter(coords);
-        }
-      });
+    readRecordList.map(({meetingPoint}) => {
+      if (meetingPoint) {
+        geocoder.addressSearch(meetingPoint, (result, status) => {
+          if (status === kakao.maps.services.Status.OK) {
+            const {y, x} = result[0];
+            let coords = new kakao.maps.LatLng(y, x);
+            const imageSrc = spot;
+            const imageSize = new kakao.maps.Size(32, 32);
+            const markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize);
+            new kakao.maps.Marker({
+              map: map,
+              position: coords,
+              image: markerImage,
+            });
+            map.setCenter(coords);
+          }
+        });
+      }
     });
   } else {
     console.error('kakao에 접근할 수 없습니다.');

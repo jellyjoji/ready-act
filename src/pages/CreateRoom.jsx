@@ -92,6 +92,28 @@ function CreateRoom() {
     <>
       <Helmet>
         <title>방만들기</title>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta
+          property="og:title"
+          content="합리적인 소비를 위한 공동구매 서비스 R09M 공동구매 방 만들기 페이지"
+        />
+        <meta
+          property="twitter:title"
+          content="합리적인 소비를 위한 공동구매 서비스 R09M 공동구매 방 만들기 페이지"
+        />
+        <meta property="og:type" content="web application" />
+        <meta property="og:url" content="https://r09m.vercel.app/createRoom" />
+        <meta
+          property="og:description"
+          content="공동구매 채소 상품을 확인할 수 있는 페이지입니다. 카테고리, 상품명, 상품 이미지, 상품 가격, 내용, 픽업 날짜, 상태, 생성자, 지불 방법, 픽업 위치 등을 입력하면 방이 생성됩니다."
+        />
+        <meta
+          name="description"
+          content="공동구매 채소 상품을 확인할 수 있는 페이지입니다. 카테고리, 상품명, 상품 이미지, 상품 가격, 내용, 픽업 날짜, 상태, 생성자, 지불 방법, 픽업 위치 등을 입력하면 방이 생성됩니다."
+        ></meta>
+        <meta property="og:image" content="favicon.ico" />
+        <meta property="og:article:author" content="Ready! Act" />
       </Helmet>
 
       <h1 className="sr-only">R09M</h1>

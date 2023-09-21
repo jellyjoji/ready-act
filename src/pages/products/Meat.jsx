@@ -37,6 +37,28 @@ function Meat() {
     <>
       <Helmet>
         <title>R09M - 육류</title>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta
+          property="og:title"
+          content="합리적인 소비를 위한 공동구매 서비스 R09M 육류 상품 페이지"
+        />
+        <meta
+          property="twitter:title"
+          content="합리적인 소비를 위한 공동구매 서비스 R09M 육류 상품 페이지"
+        />
+        <meta property="og:type" content="web application" />
+        <meta property="og:url" content="https://r09m.vercel.app/meat" />
+        <meta
+          property="og:description"
+          content="공동구매 육류 상품을 확인할 수 있는 페이지입니다. 카테고리, 상품명, 상세내용, 진행상태, 픽업 일자, 참여자 현황을 확인할 수 있습니다."
+        />
+        <meta
+          name="description"
+          content="공동구매 육류 상품을 확인할 수 있는 페이지입니다. 카테고리, 상품명, 상세내용, 진행상태, 픽업 일자, 참여자 현황을 확인할 수 있습니다."
+        ></meta>
+        <meta property="og:image" content="favicon.ico" />
+        <meta property="og:article:author" content="Ready! Act" />
       </Helmet>
       <h1 className="sr-only">R09M</h1>
 
@@ -57,8 +79,8 @@ function Meat() {
               participate,
               participateNumber,
             }) => (
-              <Link to={`/products/${id}`} key={id}>
-                <li className=" rounded-2xl p-5 m-6 bg-white">
+              <li className=" rounded-2xl p-5 m-6 bg-white" key={id}>
+                <Link to={`/products/${id}`}>
                   <span className="font-semibold bg-line-400 text-greenishgray-800 p-2 rounded-xl">
                     {category}
                   </span>
@@ -83,22 +105,26 @@ function Meat() {
                   </div>
                   <div className="flex gap-2 justify-end text-xs text-greenishgray-600">
                     <div className="flex gap-1">
-                      <img src={pickuptime} alt="픽업 시간" className="w-4" />
+                      <img
+                        src={pickuptime}
+                        alt="픽업 시간"
+                        className="w-4 h-4"
+                      />
                       <span>{pickup.slice(5, -8).replace('-', '/')}</span>
                     </div>
                     <div className="flex gap-1">
                       <img
                         src={participateNum}
                         alt="참여 인원"
-                        className="w-4"
+                        className="w-4 h-4"
                       />
                       <span>
                         {participate.length}/{participateNumber}
                       </span>
                     </div>
                   </div>
-                </li>
-              </Link>
+                </Link>
+              </li>
             )
           )}
         </ul>

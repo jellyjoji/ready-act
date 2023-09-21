@@ -64,6 +64,28 @@ function Detail() {
     <>
       <Helmet>
         <title>R09M - 상품 상세 페이지</title>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta
+          property="og:title"
+          content="합리적인 소비를 위한 공동구매 서비스 R09M 상세 페이지"
+        />
+        <meta
+          property="twitter:title"
+          content="합리적인 소비를 위한 공동구매 서비스 R09M 상세 페이지"
+        />
+        <meta property="og:type" content="web application" />
+        <meta property="og:url" content="https://r09m.vercel.app/products" />
+        <meta
+          property="og:description"
+          content="공동구매 상품에 대한 상세 정보를 확인할 수 있는 페이지입니다. 생성자, 상품명, 상세내용, 진행상태, 픽업 일자, 참여자, 1인당 정산비 등을 확인할 수 있으며 참여하기 버튼 클릭 시 참여가 가능합니다."
+        />
+        <meta
+          name="description"
+          content="공동구매 상품에 대한 상세 정보를 확인할 수 있는 페이지입니다. 생성자, 상품명, 상세내용, 진행상태, 픽업 일자, 참여자, 1인당 정산비 등을 확인할 수 있으며 참여하기 버튼 클릭 시 참여가 가능합니다."
+        ></meta>
+        <meta property="og:image" content="favicon.ico" />
+        <meta property="og:article:author" content="Ready! Act" />
       </Helmet>
       <div className="px-4 py-2">
         <Header link="/products" />
@@ -78,6 +100,7 @@ function Detail() {
           <img
             src={getPbImageURL(creator, 'photo')}
             alt={creator.name}
+            aria-hidden="true"
             className="object-cover rounded-full w-14 h-14 relative"
           />
           <img

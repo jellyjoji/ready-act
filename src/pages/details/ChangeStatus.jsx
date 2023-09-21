@@ -63,6 +63,31 @@ function ChangeStatus() {
       <>
         <Helmet>
           <title>R09M - 진행 상태</title>
+          <meta charset="UTF-8" />
+          <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0"
+          />
+          <meta
+            property="og:title"
+            content="합리적인 소비를 위한 공동구매 서비스 R09M 상품 진행 상태 변경 페이지"
+          />
+          <meta
+            property="twitter:title"
+            content="합리적인 소비를 위한 공동구매 서비스 R09M 상품 진행 상태 변경 페이지"
+          />
+          <meta property="og:type" content="web application" />
+          <meta property="og:url" content="https://r09m.vercel.app/profile" />
+          <meta
+            property="og:description"
+            content="공동구매 상품의 진행 상태를 변경할 수 있는 페이지입니다. 생성자가 진행 상태에 따라 직접 대기중, 진행중, 공구종료로 변경할 수 있습니다."
+          />
+          <meta
+            name="description"
+            content="공동구매 상품의 진행 상태를 변경할 수 있는 페이지입니다. 생성자가 진행 상태에 따라 직접 대기중, 진행중, 공구종료로 변경할 수 있습니다."
+          ></meta>
+          <meta property="og:image" content="favicon.ico" />
+          <meta property="og:article:author" content="Ready! Act" />
         </Helmet>
         <h1 className="sr-only">R09M</h1>
 

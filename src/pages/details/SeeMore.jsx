@@ -29,7 +29,7 @@ function Cancel() {
         whileTap={{scale: 0.96}}
         onClick={handleOpen}
       >
-        <img src={dots} alt="더보기" className="pr-4" />
+        <img src={dots} alt="더보기" className="w-10 h-10 pr-4" />
       </motion.button>
 
       <AnimatePresence>

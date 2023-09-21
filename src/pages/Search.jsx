@@ -30,6 +30,28 @@ function Search() {
       <>
         <Helmet>
           <title>R09M - 검색</title>
+          <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta
+          property="og:title"
+          content="합리적인 소비를 위한 공동구매 서비스 R09M 검색 페이지"
+        />
+        <meta
+          property="twitter:title"
+          content="합리적인 소비를 위한 공동구매 서비스 R09M 검색 페이지"
+        />
+        <meta property="og:type" content="web application" />
+        <meta property="og:url" content="https://r09m.vercel.app/search" />
+        <meta
+          property="og:description"
+          content="검색어 입력 시 키워드에 해당하는 공동구매 상품을 확인할 수 있습니다."
+        />
+        <meta
+          name="description"
+          content="검색어 입력 시 키워드에 해당하는 공동구매 상품을 확인할 수 있습니다."
+        ></meta>
+        <meta property="og:image" content="favicon.ico" />
+        <meta property="og:article:author" content="Ready! Act" />
         </Helmet>
         <h1 className="sr-only">R09M</h1>
 
@@ -88,7 +110,7 @@ function Search() {
         ) : (
           <span className="text-greenishgray-600">검색 결과가 없습니다.</span>
         )}
-        <Nav />
+        <Nav searchColor="#000" searchSpan="navSpan" />
       </>
     );
   } else {

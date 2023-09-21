@@ -9,7 +9,7 @@ export default {
       colors: {
         'primary-800': '#103D25',
         'primary-700': '#1B653D',
-        'primary-600': '#1A613A',
+        'primary-600': '#258D55',
         'primary-500': '#30B66E',
         'primary-400': '#49CF87',
         'primary-300': '#72DAA2',

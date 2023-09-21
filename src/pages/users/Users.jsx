@@ -40,6 +40,28 @@ function Users() {
     <>
       <Helmet>
         <title>R09M - 참여자 목록</title>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta
+          property="og:title"
+          content="합리적인 소비를 위한 공동구매 서비스 R09M 참여자 목록 페이지"
+        />
+        <meta
+          property="twitter:title"
+          content="합리적인 소비를 위한 공동구매 서비스 R09M 참여자 목록 페이지"
+        />
+        <meta property="og:type" content="web application" />
+        <meta property="og:url" content="https://r09m.vercel.app/products" />
+        <meta
+          property="og:description"
+          content="공동구매 생성자, 참여자를 볼 수 있는 페이지입니다."
+        />
+        <meta
+          name="description"
+          content="공동구매 생성자, 참여자를 볼 수 있는 페이지입니다."
+        ></meta>
+        <meta property="og:image" content="favicon.ico" />
+        <meta property="og:article:author" content="Ready! Act" />
       </Helmet>
       <div className="px-4 py-2">
         <Header link={`/products/${id}`} />

@@ -27,6 +27,24 @@ function Logo() {
     <>
       <Helmet>
         <title>R09M</title>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta
+          property="og:title"
+          content="합리적인 소비를 위한 공동구매 서비스 R09M"
+        />
+        <meta
+          property="twitter:title"
+          content="합리적인 소비를 위한 공동구매 서비스 R09M"
+        />
+        <meta property="og:type" content="web application" />
+        <meta property="og:url" content="https://r09m.vercel.app" />
+        <meta
+          property="og:description"
+          content="1인이 소비하기에 많은 양의 상품, 대용량 제품 등을 대상으로 합리적인 가격에 구매하여 분배하는 서비스입니다."
+        />
+        <meta property="og:image" content="favicon.ico" />
+        <meta property="og:article:author" content="Ready! Act" />
       </Helmet>
       <div className="bg-primary-600 w-[576px] h-[740px] text-center flex justify-center items-center relative">
         <h1 className="sr-only">R09M</h1>

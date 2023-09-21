@@ -12,7 +12,7 @@ export async function mapMark(mapElement) {
     const container = mapElement;
     const options = {
       center: new kakao.maps.LatLng(37.57157200866145, 126.9763416696016),
-      level: 7,
+      level: 5,
     };
     const map = new kakao.maps.Map(container, options);
     const geocoder = new kakao.maps.services.Geocoder();

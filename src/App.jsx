@@ -1,12 +1,23 @@
-import { createContext, useState } from 'react';
-import { HelmetProvider } from 'react-helmet-async';
-import { Toaster } from 'react-hot-toast';
-import { RouterProvider } from 'react-router-dom';
+import {createContext, useState} from 'react';
+import {HelmetProvider} from 'react-helmet-async';
+import {Toaster} from 'react-hot-toast';
+import {RouterProvider} from 'react-router-dom';
 import AuthProvider from './context/Auth';
 import router from './routes';
 import {pb} from './api/pocketbase';
+import {QueryClient, QueryClientProvider} from '@tanstack/react-query';
+import {ReactQueryDevtools} from '@tanstack/react-query-devtools';
 
 export const AppContext = createContext();
+
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: 1000 * 60 * 2,
+      cacheTime: 1000 * 60 * 4,
+    },
+  },
+});
 
 function App() {
   pb.autoCancellation(false);
@@ -42,12 +53,14 @@ function App() {
     <>
       <HelmetProvider>
         <AuthProvider>
-          {/* 공급할 앱 상태를 받은 appState 를 AppContext 에 주입  */}
-          <AppContext.Provider value={appState}>
-            <div className="max-w-xl mx-auto mt-12 font-pretendard">
-              <RouterProvider router={router} />
-            </div>
-          </AppContext.Provider>
+          <QueryClientProvider client={queryClient}>
+            <AppContext.Provider value={appState}>
+              <div className="max-w-xl mx-auto mt-12 font-pretendard">
+                <RouterProvider router={router} />
+              </div>
+            </AppContext.Provider>
+            <ReactQueryDevtools />
+          </QueryClientProvider>
         </AuthProvider>
       </HelmetProvider>
 

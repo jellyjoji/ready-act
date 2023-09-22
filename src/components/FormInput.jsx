@@ -1,4 +1,4 @@
-import { forwardRef, useId } from 'react';
+import { useId } from 'react';
 
 function FormInput(
   {
@@ -9,8 +9,7 @@ function FormInput(
     labelClassName,
     inputClassName,
     ...restProps
-  },
-  ref
+  }
 ) {
   const id = useId();
   return (
@@ -19,7 +18,6 @@ function FormInput(
         {label}
       </label>
       <input
-        ref={ref}
         id={id}
         type={type}
         name={name}
@@ -31,4 +29,4 @@ function FormInput(
   );
 }
 
-export default forwardRef(FormInput);
+export default FormInput;

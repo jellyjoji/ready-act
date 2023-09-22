@@ -1,14 +1,13 @@
 import { AppContext } from '@/App';
 import { pb } from '@/api/pocketbase';
 import Button from '@/components/Button';
-import FormInput from '@/components/FormInput';
 import CreateHeader from '@/layout/CreateHeader';
 import CategoryDropdown from '@/parts/create/CategoryDropdown';
 import ContentTextarea from '@/parts/create/ContentTextarea';
 import DatePicker from '@/parts/create/DatePicker';
 import FileUpload from '@/parts/create/FileUpload';
-// import MeetingPoint from '@/parts/create/MeetingPoint';
-import Location from '@/parts/map/Location';
+import MeetingPoint from '@/parts/create/MeetingPoint';
+// import Location from '@/parts/map/Location';
 import ParticipateCounter from '@/parts/create/ParticipateCounter';
 import PaymentToggleButton from '@/parts/create/PaymentToggleButton';
 import Status from '@/parts/create/Status';
@@ -16,31 +15,30 @@ import { ClientResponseError } from 'pocketbase';
 import { useContext, useRef, useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import Creator from '@/parts/create/Creator';
+import Price from '@/parts/create/Price';
+import Title from '@/parts/create/title';
 
 
 function CreateRoom() {
-  const { createRoomForm, updateCreateRoomForm } = useContext(AppContext);
+  const { createRoomForm } = useContext(AppContext);
 
   const formRef = useRef(null);
-  const titleRef = useRef(null);
-  const priceRef = useRef(null);
-  const dateRef = useRef(null);
   const paymentRef = useRef(null);
   const ParticipateCounterRef = useRef(null);
   const uploadImageRef = useRef(null);
-  const statusRef = useRef(null);
 
   const handleCreate = async (e) => {
     e.preventDefault();
 
     const categoryValue = createRoomForm.category;
-    const titleValue = titleRef.current.value;
+    const titleValue = createRoomForm.title;
     const contentValue = createRoomForm.content;
-    console.log(contentValue);
-    const priceValue = priceRef.current.value;
-    const dateValue = dateRef.current.value;
-
-    const paymentValue = paymentRef.current.dataset.payment;
+    const priceValue = createRoomForm.price;
+    // createRoomForm.pickUp
+    const dateValue = new Date(createRoomForm.pickUp).toISOString();
+    // const paymentValue = paymentRef.current.dataset.payment;
+    const paymentValue = createRoomForm.payment;
+    console.log(paymentValue);
     const ParticipateCounterValue = Number(
       ParticipateCounterRef.current.textContent
     );
@@ -49,7 +47,7 @@ function CreateRoom() {
     const creatorValue = createRoomForm.creator.id;
 
     const uploadImageValue = uploadImageRef.current.files[0];
-    const statusValue = statusRef.current.value;
+    const statusValue = createRoomForm.status;
 
     const data = new FormData();
 
@@ -103,46 +101,45 @@ function CreateRoom() {
           <div className="flex flex-col gap-4 p-4 relative"
           >
 
-            <Location />
+            {/* <Location /> */}
 
 
             <CategoryDropdown
               title="카테고리"
               className="w-full defaultInput"
+              label="카테고리"
+              value={createRoomForm.category}
             />
-            <FormInput
-              ref={titleRef}
-              type="text"
-              placeholder="상품명을 입력해주세요."
-              labelClassName="product name"
-              inputClassName="defaultInput w-full"
-              label="상품명"
+
+            <Title
+              value={createRoomForm.title}
             />
-            <FormInput
-              ref={priceRef}
-              type="number"
-              placeholder="0원"
-              labelClassName="product price"
-              inputClassName="defaultInput w-full"
-              label="상품 가격"
+
+            <Price
+              value={createRoomForm.price}
             />
+
             <ContentTextarea
               title="내용"
               placeholder="공구 모임 주요내용을 알려주세요."
               className="w-full defaultInput"
               labelClassName="product content"
+              label="내용"
+              value={createRoomForm.content}
             />
 
             <DatePicker
-              ref={dateRef}
               title="픽업 날짜"
+              label="픽업 날짜"
               className="w-full defaultInput"
               labelClassName="date Picker"
+              value={createRoomForm.pickUp}
+
             />
 
             <Status
-              ref={statusRef}
               title="상태"
+              label="상태"
               className="w-full defaultInput "
               labelClassName="status"
             />
@@ -150,18 +147,21 @@ function CreateRoom() {
             <Creator />
 
             <PaymentToggleButton
-              ref={paymentRef}
               title="정산 방법"
+              label="정산 방법"
               labelClassName="payment"
+              value={createRoomForm.payment}
+
             />
 
-            <ParticipateCounter ref={ParticipateCounterRef} title="인원" />
+            <ParticipateCounter ref={ParticipateCounterRef} title="인원" label="참여자 인원" />
 
-            {/* <MeetingPoint title="만날 장소" /> */}
+            <MeetingPoint title="만날 장소" />
 
             <FileUpload
               ref={uploadImageRef}
               title="파일 업로드"
+              label="파일 업로드"
               className="bg-[#EBF8E8] p-4 rounded-lg text-primary-500"
             />
 

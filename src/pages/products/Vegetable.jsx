@@ -12,7 +12,6 @@ function Vegetable() {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    pb.autoCancellation(false);
     async function filterProducts() {
       try {
         const filterRecordList = await pb

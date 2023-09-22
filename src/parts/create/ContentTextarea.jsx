@@ -3,10 +3,10 @@ import { useEffect, useState, useContext, useId } from 'react';
 
 
 function ContentTextarea(
-  { title, placeholder, className, labelClassName, ...restProps }) {
+  { value = "", title, placeholder, className, labelClassName, ...restProps }) {
   const { id } = useId();
   const { updateCreateRoomForm } = useContext(AppContext);
-  const [data, setData] = useState('');
+  const [data, setData] = useState(value);
 
   useEffect(() => {
     updateCreateRoomForm('content', data);

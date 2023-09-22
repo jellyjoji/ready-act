@@ -1,8 +1,8 @@
-import {forwardRef, useState} from 'react';
+import { forwardRef, useState } from 'react';
 import minusCircle from '@/assets/icons/minusCircle.svg';
 import plusCircle from '@/assets/icons/plusCircle.svg';
 
-function ParticipateCounter({title}, ref) {
+function ParticipateCounter({ title }, ref) {
   const [count, setCount] = useState(0);
 
   const incrementCount = () => {
@@ -20,7 +20,9 @@ function ParticipateCounter({title}, ref) {
         <button type="button" onClick={decrementCount}>
           <img src={minusCircle} alt="minus" />
         </button>
+
         <p ref={ref}>{count}</p>
+
         <button type="button" onClick={incrementCount}>
           <img src={plusCircle} alt="plus" />
         </button>

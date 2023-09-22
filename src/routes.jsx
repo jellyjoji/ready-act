@@ -11,9 +11,8 @@ import Profile from './pages/auth/Profile';
 import SignIn from './pages/auth/SignIn';
 import SignUp from './pages/auth/SignUp';
 import ChangeStatus from './pages/details/ChangeStatus';
-// import Detail from './pages/details/Detail';
-// import DetailMap from './pages/details/DetailMap';
-// import DetailStatus from './pages/details/DetailStatus';
+import Detail from './pages/details/Detail';
+import DetailMap from './pages/details/DetailMap';
 import Fruit from './pages/products/Fruit';
 import Grains from './pages/products/Grains';
 import Meat from './pages/products/Meat';
@@ -21,13 +20,14 @@ import Total from './pages/products/Total';
 import Vegetable from './pages/products/Vegetable';
 import Users from './pages/users/Users';
 import Location from './parts/map/Location';
+import DetailStatus from './pages/details/DetailStatus';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <>
       <Route path="/" element={<Logo />} />
       <Route path="/home" element={<Home />} />
-      <Route path="/products" element={<Total />} />
+      <Route path="products" element={<Total />} />
       <Route path="vegetable" element={<Vegetable />} />
       <Route path="fruit" element={<Fruit />} />
       <Route path="grains" element={<Grains />} />
@@ -36,13 +36,14 @@ const router = createBrowserRouter(
 
       <Route path="signup" element={<SignUp />} />
       <Route path="signin" element={<SignIn />} />
+
       <Route path="profile" element={<Profile />} />
+      <Route path="profile/:id" element={<ChangeStatus />} />
 
-      {/* <Route path="products/:id" element={<Detail />} />
-      <Route path="products/pickupplace" element={<DetailMap />} />
-      <Route path="products/:id/status" element={<DetailStatus />} /> */}
-      <Route path="status/:id" element={<ChangeStatus />} />
+      <Route path="products/:id" element={<Detail />} />
 
+      <Route path="products/:id/pickupplace" element={<DetailMap />} />
+      <Route path="products/:id/status" element={<DetailStatus />} />
       <Route path="users/:id" element={<Users />} />
 
       <Route path="createroom" element={<CreateRoom />} />

@@ -1,7 +1,18 @@
-import { useId, forwardRef } from 'react';
+import { AppContext } from '@/App';
+import { useContext, useId, useState, useEffect } from 'react';
 
-function Status({ title, className, labelClassName, ...restProps }, ref) {
+function Status({ value = "대기중", title, className, labelClassName, ...restProps }) {
   const { id } = useId();
+  const { updateCreateRoomForm } = useContext(AppContext);
+  const [data, setData] = useState(value);
+
+  useEffect(() => {
+    updateCreateRoomForm('status', data)
+  }, [data])
+
+  const handleInputChange = (e) => {
+    setData(e.target.value);
+  };
 
   return (
     <>
@@ -9,12 +20,12 @@ function Status({ title, className, labelClassName, ...restProps }, ref) {
         {title}
       </label>
       <select
-        ref={ref}
+        value={data || ""}
+        onChange={handleInputChange}
         id={id}
         className={className}
         {...restProps}
         name="status"
-        defaultValue="대기중"
       >
         <option value="대기중">대기중</option>
         <option value="진행중">진행중</option>
@@ -24,4 +35,4 @@ function Status({ title, className, labelClassName, ...restProps }, ref) {
   );
 }
 
-export default forwardRef(Status);
+export default Status;

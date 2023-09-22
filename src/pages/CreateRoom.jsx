@@ -196,7 +196,7 @@ function CreateRoom() {
           </div>
           <Button
             type="submit"
-            className="fixed bottom-0 max-w-xl w-full p-4 activeButton lgFontButton"
+            className="fixed bottom-3 py-4 activeButton lgFontButton mx-3 w-[93vw]"
           >
             방 만들기
           </Button>

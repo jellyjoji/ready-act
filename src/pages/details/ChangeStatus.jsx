@@ -91,7 +91,7 @@ function ChangeStatus() {
         </Helmet>
         <h1 className="sr-only">R09M</h1>
 
-        <div className="py-2 h-screen">
+        <div className="px-4 py-2 h-screen">
           <div className="px-4">
             <Header link="/profile" />
             <h2 className="pageTitle">진행 상태</h2>
@@ -102,7 +102,7 @@ function ChangeStatus() {
               <img
                 src={getPbImageURL(data, 'uploadImage')}
                 alt={data.title}
-                className="w-[20%] h-full"
+                className="w-[30%] h-full"
               />
               <figcaption>
                 <h4 className="text-greenishgray-700 font-semibold">
@@ -173,7 +173,7 @@ function ChangeStatus() {
             </select>
             <button
               type="submit"
-              className="text-white text-center font-semibold bg-primary-500 rounded-lg py-3 w-[23%] mx-1 hover:bg-primary-700"
+              className="text-white text-center font-semibold bg-primary-500 rounded-lg py-3 w-[20%] ml-3 hover:bg-primary-700"
             >
               변경
             </button>

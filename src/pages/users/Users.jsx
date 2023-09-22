@@ -65,11 +65,11 @@ function Users() {
 
       <h1 className="sr-only">R09M</h1>
       <div className="flex items-center">
-        <h2 className="text-2xl font-semibold mx-auto">참여자 목록</h2>
+      <h2 className="text-lg font-semibold pb-2 mx-auto">참여자 목록</h2>
       </div>
 
-      <ul className="pl-4 mb-10 border-b border-solid border-line-400">
-        <li className="flex mb-3 mt-4 items-center font-semibold text-lg">
+      <ul className="pl-4">
+        <li className="flex mb-3 mt-2 items-center font-semibold text-lg">
           <img
             src={getPbImageURL(creator, 'photo')}
             alt={creator.name}
@@ -83,10 +83,10 @@ function Users() {
           <span className="pl-3 font-extrabold text-lg">{creator.name}</span>
         </li>
       </ul>
-
+      <hr className='my-3 w-[95vw] m-auto' />
       <ul>
         {participate.map((item) => (
-          <li key={item.id} className="flex mb-4 mt-4 items-center">
+          <li key={item.id} className="flex mb-4 items-center">
             <img
               src={getPbImageURL(item, 'photo')}
               alt={item.name}

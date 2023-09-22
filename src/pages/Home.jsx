@@ -1,9 +1,9 @@
+import logo from '@/assets/icons/logo.svg';
 import myLocation from '@/assets/icons/myLocation.svg';
 import plus from '@/assets/icons/plus.svg';
 import reset from '@/assets/icons/reset.svg';
 import Button from '@/components/Button';
 import {category} from '@/data/category';
-import Header from '@/layout/Header';
 import {currentLocation} from '@/parts/map/currentLocation';
 import {mapMark} from '@/parts/map/mapMark';
 import Nav from '@/parts/nav/Nav';
@@ -15,13 +15,37 @@ import 'swiper/css';
 import 'swiper/css/free-mode';
 import {FreeMode, Keyboard, Mousewheel} from 'swiper/modules';
 import {Swiper, SwiperSlide} from 'swiper/react';
+import navStyles from '@/styles/Nav.module.css';
+import {pb} from '@/api/pocketbase';
+import {useQuery} from '@tanstack/react-query';
+import {motion} from 'framer-motion';
+
+let mapCached = false;
+
+async function getReadRecordList() {
+  try {
+    const readRecordList = await pb.collection('products').getFullList({
+      fields: 'meetingPoint',
+    });
+    return readRecordList;
+  } catch (error) {
+    return console.error(error);
+  }
+}
 
 function Home() {
   const mainMapRef = useRef(null);
 
+  const {isLoading, data} = useQuery({
+    queryKey: ['home'],
+    queryFn: getReadRecordList,
+    keepPreviousData: true,
+  });
+
   useEffect(() => {
-    mapMark(mainMapRef.current);
-  }, []);
+    mapMark(mainMapRef.current, data);
+    mapCached = true;
+  }, [data]);
 
   return (
     <>
@@ -52,7 +76,9 @@ function Home() {
       </Helmet>
       <div className="relative p-4">
         <h1 className="sr-only">R09M</h1>
-        <Header />
+        <Link to="/home">
+          <img src={logo} alt="공구룸 로고" className="w-12 h-12 m-auto" />
+        </Link>
         <h2 className="text-lg font-semibold pb-4">공구룸</h2>
         <h3 className="sr-only">카테고리</h3>
 
@@ -87,53 +113,67 @@ function Home() {
         </Swiper>
         <div className="relative">
           <div ref={mainMapRef} className="w-full h-[65vh] my-3">
-            <Button
-              type="button"
-              className={`${styles.button} left-2 bottom-16 bg-white p-2`}
-              onClick={() => {
-                mapMark(mainMapRef.current);
-              }}
+            {isLoading && (
+              <div className="absolute top-0 left-0 right-0 bottom-0 bg-zinc-100 flex justify-center items-center">
+                지도 로딩 중...
+              </div>
+            )}
+
+            <motion.div
+              ref={mainMapRef}
+              initial={{opacity: mapCached ? 1 : 0}}
+              animate={{opacity: mapCached ? 1 : 1}}
+              transition={{delay: mapCached ? 0 : 0.9}}
+              className="w-full h-[65vh]"
             >
-              <h3 className="sr-only">기존 위치로 돌아가기</h3>
-              <img
-                src={reset}
-                alt="기존 위치로 되돌아가기"
-                className="w-6 h-6"
-              />
-            </Button>
-            <Button
-              type="button"
-              className={`${styles.button} left-2 bottom-2 bg-white p-2`}
-              onClick={() => {
-                currentLocation(mainMapRef.current);
-              }}
-            >
-              <h3 className="sr-only">현재 위치</h3>
-              <img
-                src={myLocation}
-                alt="현재 위치로 가기"
-                className="w-6 h-6"
-              />
-            </Button>
-            <Button
-              type="button"
-              className={`${styles.button} right-2 bottom-2 bg-primary-500 w-12 h-12`}
-            >
-              <Link to="/createRoom">
-                <h3 className="sr-only">방 만들기</h3>
+              <Button
+                type="button"
+                className={`${styles.button} left-2 bottom-16 bg-white p-2`}
+                onClick={() => {
+                  mapMark(mainMapRef.current);
+                }}
+              >
+                <h3 className="sr-only">기존 위치로 돌아가기</h3>
                 <img
-                  src={plus}
-                  alt="방 만들기"
-                  aria-hidden="true"
-                  className="w-12 h-12 p-2"
+                  src={reset}
+                  alt="기존 위치로 되돌아가기"
+                  className="w-6 h-6"
                 />
-              </Link>
-            </Button>
+              </Button>
+              <Button
+                type="button"
+                className={`${styles.button} left-2 bottom-2 bg-white p-2`}
+                onClick={() => {
+                  currentLocation(mainMapRef.current);
+                }}
+              >
+                <h3 className="sr-only">현재 위치</h3>
+                <img
+                  src={myLocation}
+                  alt="현재 위치로 가기"
+                  className="w-6 h-6"
+                />
+              </Button>
+              <Button
+                type="button"
+                className={`${styles.button} right-2 bottom-2 bg-primary-500 w-12 h-12`}
+              >
+                <Link to="/createRoom">
+                  <h3 className="sr-only">방 만들기</h3>
+                  <img
+                    src={plus}
+                    alt="방 만들기"
+                    aria-hidden="true"
+                    className="w-12 h-12 p-2"
+                  />
+                </Link>
+              </Button>
+            </motion.div>
           </div>
         </div>
         <h3 className="sr-only">메뉴</h3>
-        <Nav homeColor="#000" homeSpan="navSpan" />
       </div>
+      <Nav homeColor="#000" homeSpan={navStyles.navSpan} />
     </>
   );
 }

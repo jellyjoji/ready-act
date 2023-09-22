@@ -1,16 +1,14 @@
-import { useId, forwardRef } from 'react';
+import {forwardRef} from 'react';
 
-function Status({ title, className, labelClassName, ...restProps }, ref) {
-  const { id } = useId();
-
+function Status({title, className, labelClassName, ...restProps}, ref) {
   return (
     <>
-      <label htmlFor={id} className={labelClassName}>
-        {title}
+      <label htmlFor="status" className={labelClassName}>
+        상태
       </label>
       <select
         ref={ref}
-        id={id}
+        id="status"
         className={className}
         {...restProps}
         name="status"

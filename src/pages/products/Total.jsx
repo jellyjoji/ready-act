@@ -9,18 +9,16 @@ import {Helmet} from 'react-helmet-async';
 import {Link} from 'react-router-dom';
 
 const getProducts = async () => {
-  return await pb.collection('products').getFullList();
+  return await pb.collection('products').getFullList({
+    sort: '-created',
+  });
 };
 
 function Total() {
-  const {isLoading, error, data, refetch} = useQuery({
+  const {isLoading, error, data} = useQuery({
     queryKey: ['products'],
     queryFn: () => getProducts(),
-    refetchOnWindowFocus: false,
-    refetchOnReconnect: false,
   });
-
-  refetch();
 
   if (isLoading) {
     return <Spinner />;

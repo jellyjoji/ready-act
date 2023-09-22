@@ -11,19 +11,16 @@ import {Link} from 'react-router-dom';
 const filterFruitProducts = async () => {
   const filterRecordList = await pb.collection('products').getList(1, 50, {
     filter: 'category="과일"',
+    sort: '-created',
   });
   return filterRecordList.items;
 };
 
 function Fruit() {
-  const {isLoading, error, data, refetch} = useQuery({
+  const {isLoading, error, data} = useQuery({
     queryKey: ['products'],
     queryFn: () => filterFruitProducts(),
-    refetchOnWindowFocus: false,
-    refetchOnReconnect: false,
   });
-
-  refetch();
 
   if (isLoading) {
     return <Spinner />;

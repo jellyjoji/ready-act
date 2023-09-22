@@ -11,19 +11,15 @@ import {Link} from 'react-router-dom';
 const filterVegetableProducts = async () => {
   const filterRecordList = await pb
     .collection('products')
-    .getList(1, 50, {filter: 'category="채소"'});
+    .getList(1, 50, {filter: 'category="채소"', sort: '-created'});
   return filterRecordList.items;
 };
 
 function Vegetable() {
-  const {isLoading, error, data, refetch} = useQuery({
+  const {isLoading, error, data} = useQuery({
     queryKey: ['products'],
     queryFn: () => filterVegetableProducts(),
-    refetchOnWindowFocus: false,
-    refetchOnReconnect: false,
   });
-
-  refetch();
 
   if (isLoading) {
     return <Spinner />;

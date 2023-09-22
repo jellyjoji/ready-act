@@ -16,14 +16,10 @@ const getUsers = async (id) => {
 function Users() {
   const {id} = useParams();
 
-  const {isLoading, error, data, refetch} = useQuery({
+  const {isLoading, error, data} = useQuery({
     queryKey: ['products', id],
     queryFn: () => getUsers(id),
-    refetchOnWindowFocus: false,
-    refetchOnReconnect: false,
   });
-
-  refetch();
 
   if (isLoading) {
     return <Spinner />;

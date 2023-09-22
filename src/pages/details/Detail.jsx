@@ -30,14 +30,10 @@ function Detail() {
     };
   };
 
-  const {isLoading, error, data, refetch} = useQuery({
+  const {isLoading, error, data} = useQuery({
     queryKey: ['products', id],
     queryFn: () => getDetails(id),
-    refetchOnWindowFocus: false,
-    refetchOnReconnect: false,
   });
-
-  refetch();
 
   if (isLoading) {
     return <Spinner />;
@@ -179,11 +175,10 @@ function Detail() {
         </li>
 
         <li className="flex items-center pr-4 place-content-between">
-          <div className="text-greenishgray-500 font-semibold">
+          <span className="text-greenishgray-500 font-semibold">
             1인당 정산비
-          </div>
+          </span>
           <Participation onUpdateParticipation={handleUpdateParticipation} />
-          {/* <Cancel /> */}
         </li>
       </ul>
     </>

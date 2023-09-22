@@ -9,6 +9,7 @@ import {numberWithComma} from '@/utils/numberWithComma';
 import {useEffect, useState} from 'react';
 import {Helmet} from 'react-helmet-async';
 import {Link} from 'react-router-dom';
+import navStyles from '@/styles/Nav.module.css';
 
 function Search() {
   const [data, setData] = useState();
@@ -113,7 +114,7 @@ function Search() {
         ) : (
           <span className="text-greenishgray-600">검색 결과가 없습니다.</span>
         )}
-        <Nav searchColor="#000" searchSpan="navSpan" />
+        <Nav searchColor="#000" searchSpan={navStyles.navSpan} />
       </>
     );
   } else {

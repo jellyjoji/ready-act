@@ -11,19 +11,16 @@ import {Link} from 'react-router-dom';
 const filterMeatProducts = async () => {
   const filterRecordList = await pb.collection('products').getList(1, 50, {
     filter: 'category="육류"',
+    sort: '-created',
   });
   return filterRecordList.items;
 };
 
 function Meat() {
-  const {isLoading, error, data, refetch} = useQuery({
+  const {isLoading, error, data} = useQuery({
     queryKey: ['products'],
     queryFn: () => filterMeatProducts(),
-    refetchOnWindowFocus: false,
-    refetchOnReconnect: false,
   });
-
-  refetch();
 
   if (isLoading) {
     return <Spinner />;

@@ -50,14 +50,14 @@ function Participation({onUpdateParticipation}) {
   };
 
   return (
-    <div className="App">
+    <div>
       <motion.button
         type="button"
         ref={opennerRef}
         whileHover={{scale: 1.04}}
         whileTap={{scale: 0.96}}
         onClick={handleOpen}
-        className="w-28 h-11 bg-primary-500 rounded-xl text-white hover:bg-primary-700 ml-52"
+        className="px-7 py-3 bg-primary-500 rounded-xl text-white hover:bg-primary-700"
       >
         참여하기
       </motion.button>

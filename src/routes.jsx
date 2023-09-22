@@ -1,9 +1,9 @@
+import {lazy} from 'react';
 import {
   Route,
   createBrowserRouter,
   createRoutesFromElements,
 } from 'react-router-dom';
-import {lazy} from 'react';
 
 const CreateRoom = lazy(() => import('./pages/CreateRoom'));
 const Home = lazy(() => import('./pages/Home'));
@@ -21,7 +21,6 @@ const Meat = lazy(() => import('./pages/products/Meat'));
 const Total = lazy(() => import('./pages/products/Total'));
 const Vegetable = lazy(() => import('./pages/products/Vegetable'));
 const Users = lazy(() => import('./pages/users/Users'));
-const Location = lazy(() => import('./parts/map/Location'));
 const DetailStatus = lazy(() => import('./pages/details/DetailStatus'));
 
 const router = createBrowserRouter(
@@ -49,7 +48,6 @@ const router = createBrowserRouter(
       <Route path="users/:id" element={<Users />} />
 
       <Route path="createroom" element={<CreateRoom />} />
-      <Route path="location" element={<Location />} />
     </>
   )
 );

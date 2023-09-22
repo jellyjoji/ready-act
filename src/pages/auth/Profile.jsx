@@ -3,7 +3,7 @@ import Spinner from '@/components/Spinner';
 import Header from '@/layout/Header';
 import {getPbImageURL} from '@/utils/getPbImageURL';
 import {numberWithComma} from '@/utils/numberWithComma';
-
+import navStyles from '@/styles/Nav.module.css';
 import Button from '@/components/Button';
 import {useEffect, useState} from 'react';
 import {Helmet} from 'react-helmet-async';
@@ -112,7 +112,7 @@ function Profile() {
                         'aria-live': 'polite',
                       },
                     });
-                    navigate('/home');
+                    navigate('/signin');
                   }}
                 >
                   로그아웃
@@ -169,7 +169,7 @@ function Profile() {
             ))}
           </ul>
         </div>
-        <Nav profileColor="#000" profileSpan="navSpan" />
+        <Nav profileColor="#000" profileSpan={navStyles.navSpan} />
       </>
     );
   } else {

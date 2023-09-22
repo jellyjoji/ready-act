@@ -16,9 +16,11 @@ import {ClientResponseError} from 'pocketbase';
 import {useContext, useRef} from 'react';
 import {Helmet} from 'react-helmet-async';
 import toast from 'react-hot-toast';
+import {useNavigate} from 'react-router-dom';
 
 function CreateRoom() {
   const {createRoomForm} = useContext(AppContext);
+  const navigate = useNavigate();
 
   const formRef = useRef(null);
   const titleRef = useRef(null);
@@ -75,6 +77,7 @@ function CreateRoom() {
           'aria-live': 'polite',
         },
       });
+      navigate(`/products`);
     } catch (error) {
       if (!(error instanceof ClientResponseError)) {
         toast.error('등록에 실패하였습니다. 다시 시도해 주세요.', {

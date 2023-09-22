@@ -3,13 +3,17 @@ import {pb} from '@/api/pocketbase';
 import FormInput from '@/components/FormInput';
 import {ClientResponseError} from 'pocketbase';
 import {useContext, useEffect, useState} from 'react';
+import {useNavigate} from 'react-router-dom';
 
 function Creator() {
   const {updateCreateRoomForm} = useContext(AppContext);
-  const [productIdData, setProductIdData] = useState('');
+  const [, setProductIdData] = useState('');
+  const navigate = useNavigate();
 
   const [localStorageId] = useState(
-    () => JSON.parse(localStorage.getItem('pocketbase_auth')).model.id
+    localStorage.getItem('pocketbase_auth')
+      ? () => JSON.parse(localStorage.getItem('pocketbase_auth')).model.id
+      : navigate('/signin')
   );
 
   const [idData, setIdData] = useState({});
@@ -70,4 +74,5 @@ function Creator() {
     </>
   );
 }
+
 export default Creator;

@@ -2,7 +2,7 @@ import { AppContext } from '@/App';
 import FormInput from '@/components/FormInput';
 import { useState, useContext, useEffect } from 'react';
 
-function DatePicker({ value = null, title, className, labelClassName, ...restProps }) {
+function DatePicker({ value = null, label, title, className, labelClassName, ...restProps }) {
 
   const { updateCreateRoomForm } = useContext(AppContext);
   const [data, setData] = useState(value);
@@ -24,7 +24,8 @@ function DatePicker({ value = null, title, className, labelClassName, ...restPro
         placeholder="픽업 날짜와 시간을 선택헤주세요"
         labelClassName="product name"
         inputClassName="defaultInput w-full"
-        label="픽업"
+        label={label}
+        {...restProps}
       />
     </div>
   )

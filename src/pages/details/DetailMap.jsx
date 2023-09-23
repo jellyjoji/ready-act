@@ -70,6 +70,7 @@ function DetailMap() {
         <Header />
       </div>
       <div ref={detailMapRef} className="w-full h-[600px] my-3 relative">
+        <h1 className="sr-only">R09M</h1>
         <Button
           type="button"
           className={`${styles.button} right-2 bottom-4 bg-white p-2`}
@@ -80,6 +81,7 @@ function DetailMap() {
       </div>
 
       <ul>
+        <h2 className="sr-only">현재 위치</h2>
         <li className="flex mb-4 mt-4 items-center">
           <span className="mt-5 mb-18 font-extrabold text-lg">
             {data && data.meetingPoint

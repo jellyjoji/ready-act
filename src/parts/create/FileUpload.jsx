@@ -1,9 +1,8 @@
 import imgUpload from '@/assets/icons/imgUpload.svg';
-import { forwardRef, useId, useState } from 'react';
+import { forwardRef, useState } from 'react';
 
 function FileUpload({ className, title, ...restProps }, ref) {
   const [fileImages, setFileImages] = useState(null);
-  const id = useId();
 
   const handleFileUpload = (e) => {
     const { files } = e.target;
@@ -19,14 +18,14 @@ function FileUpload({ className, title, ...restProps }, ref) {
       <div className=" mb-14">
         <div className="flex justify-between items-center">
           <p>사진 업로드</p>
-          <label htmlFor={id} className={className}>
+          <label htmlFor="photo" className={className}>
             {title}
           </label>
           <input
             type="file"
             accept="image/jpg,image/png,image/jpeg,image/webp,image/avif"
             name="photo"
-            id={id}
+            id="photo"
             ref={ref}
             onChange={handleFileUpload}
             style={{ display: 'none' }}

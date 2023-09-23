@@ -1,26 +1,17 @@
-import { AppContext } from '@/App';
-import { useContext, useId, useState, useEffect } from 'react';
+import { forwardRef, useState } from 'react';
 
-function PaymentToggleButton({ value, labelClassName, title }) {
-  const [isToggled, setToggled] = useState(value);
-  const { id } = useId();
-  const { updateCreateRoomForm } = useContext(AppContext);
-  // const [data, setData] = useState(value);
-
-  useEffect(() => {
-    updateCreateRoomForm('payment', isToggled)
-    console.log(isToggled);
-  }, [isToggled])
-
+function PaymentToggleButton({ labelClassName }, ref) {
+  const [isToggled, setToggled] = useState(false);
 
   return (
     <>
-      <label htmlFor="id" className={labelClassName}>
-        {title}
+      <label htmlFor="payment" className={labelClassName}>
+        지불 방법
       </label>
-      <div id="id" className="bg-greenishgray-200 w-full p-2 rounded-lg">
+      <div id="payment" className="bg-greenishgray-200 w-full p-2 rounded-lg">
         <button
-          value={isToggled}
+          ref={ref}
+          // value={isToggled}
           type="button"
           className="w-full rounded-lg "
           onClick={() => setToggled(!isToggled)}
@@ -48,4 +39,4 @@ function PaymentToggleButton({ value, labelClassName, title }) {
   );
 }
 
-export default PaymentToggleButton;
+export default forwardRef(PaymentToggleButton);

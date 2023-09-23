@@ -77,12 +77,11 @@ function Profile() {
         </Helmet>
         <h1 className="sr-only">R09M</h1>
 
-        <div className="py-2 h-screen">
-          <div className="px-4">
-            <Header />
-            <h2 className="pageTitle">프로필</h2>
-          </div>
-          <div className="flex gap-5 border-b border-b-line-400 pb-4">
+        <div className="px-4 py-2 h-screen">
+          <Header />
+          <h2 className="pageTitle">프로필</h2>
+
+          <div className="flex gap-5 border-b border-b-line-400 pb-4 pt-4">
             <img
               src={getPbImageURL(userData, 'photo')}
               alt={`${name}의 프로필`}

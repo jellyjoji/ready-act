@@ -48,7 +48,7 @@
 
   .authInput {
     @apply defaultBorder;
-    @apply border-2 w-full my-3;
+    @apply border-2 w-[90vw] my-3;
   }
 
   .pageTitle {

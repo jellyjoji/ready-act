@@ -93,19 +93,20 @@ function Detail() {
       <ul className="pl-4">
         <h2 className="sr-only">상품 정보</h2>
         <li className="flex mb-3 mt-2 items-center font-semibold text-lg justify-between">
-          <img
-            src={getPbImageURL(creator, 'photo')}
-            alt={creator.name}
-            aria-hidden="true"
-            className="object-cover rounded-full w-14 h-14 relative"
-          />
+          <figure className="flex items-center gap-3 mt-2">
+            <img
+              src={getPbImageURL(creator, 'photo')}
+              alt={creator.name}
+              aria-hidden="true"
+              className="object-cover rounded-full w-14 h-14 relative"
+            />
+            <figcaption>{creator.name}</figcaption>
+          </figure>
           <img
             src={crownSmall}
             alt="게시물 작성자"
             className="absolute mt-10 ml-10"
           />
-          <span className="pr-[400px]">{creator.name}</span>
-
           <SeeMore />
         </li>
 
@@ -168,17 +169,18 @@ function Detail() {
           </div>
         </li>
 
-        <li>
-          <div className="mt-6 text-lg font-semibold">
-            {numberWithComma(price / participateNumber)}원
+        <li className="flex flex-col">
+          <div className="flex justify-between items-center mr-5">
+            <div className="flex flex-col">
+              <span className="mt-2 text-lg font-semibold">
+                {numberWithComma(price / participateNumber)}원
+              </span>
+              <span className="text-greenishgray-500 font-semibold">
+                1인당 정산비
+              </span>
+            </div>
+            <Participation onUpdateParticipation={handleUpdateParticipation} />
           </div>
-        </li>
-
-        <li className="flex items-center pr-4 place-content-between">
-          <span className="text-greenishgray-500 font-semibold">
-            1인당 정산비
-          </span>
-          <Participation onUpdateParticipation={handleUpdateParticipation} />
         </li>
       </ul>
     </>

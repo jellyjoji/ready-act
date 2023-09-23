@@ -1,5 +1,5 @@
-import { AppContext } from '@/App';
-import { useContext, useEffect, useRef, useState } from 'react';
+import {AppContext} from '@/App';
+import {useContext, useEffect, useRef, useState} from 'react';
 import './Location.module.css';
 
 const {kakao} = window;
@@ -86,7 +86,7 @@ function Location() {
       <div className="map_wrap">
         <div ref={locationMapRef} className="w-full h-[420px]"></div>
         <div className="hAddr flex">
-          <span id="centerAddr" className="p-4">
+          <span id="centerAddr" className="py-4">
             {data}
           </span>
         </div>

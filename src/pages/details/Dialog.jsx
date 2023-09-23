@@ -1,25 +1,23 @@
-import { motion } from 'framer-motion';
+import {motion} from 'framer-motion';
 import Backdrop from './Backdrop';
-import { useLayoutEffect, useRef } from 'react';
-import { oneOf, node, bool, string, func } from 'prop-types';
-
-/* VARIANTS ----------------------------------------------------------------- */
+import {useLayoutEffect, useRef} from 'react';
+import {oneOf, node, bool, string, func} from 'prop-types';
 
 const dropInOut = {
-  from: { y: '-100vh' },
-  to: { y: 0 },
-  exit: { y: '100vh' },
+  from: {y: '-100vh'},
+  to: {y: 0},
+  exit: {y: '100vh'},
 };
 
 const dropScaleInOut = {
-  from: { y: '-100vh', scale: 0 },
-  to: { y: 0, scale: 1 },
-  exit: { y: '100vh', scale: 0 },
+  from: {y: '-100vh', scale: 0},
+  to: {y: 0, scale: 1},
+  exit: {y: '100vh', scale: 0},
 };
 
 const dropRotateScaleInOut = {
-  from: { y: '100vh', scale: 0, rotateZ: -80 },
-  to: { y: 0, scale: 1, rotateZ: 0 },
+  from: {y: '100vh', scale: 0, rotateZ: -80},
+  to: {y: 0, scale: 1, rotateZ: 0},
   exit: {
     y: '-200vh',
     scale: 0,
@@ -30,8 +28,6 @@ const dropRotateScaleInOut = {
   },
 };
 
-/* SPRING ANIMATION CONFIGURATION ------------------------------------------- */
-
 const animationConfig = {
   type: 'spring',
   mass: 6,
@@ -39,10 +35,8 @@ const animationConfig = {
   damping: 90,
 };
 
-/* COMPONENT ---------------------------------------------------------------- */
-
 function Dialog({
-  type = 'drop' /* drop, scale, rotate */,
+  type = 'drop',
   children,
   isBackdropClickClose = false,
   onClose,
@@ -58,7 +52,7 @@ function Dialog({
     const last = focusable[focusable.length - 1];
 
     const handleKeyboardTrap = (e) => {
-      const { target, key, shiftKey } = e;
+      const {target, key, shiftKey} = e;
 
       switch (target) {
         case first:
@@ -95,12 +89,9 @@ function Dialog({
   };
 
   return (
-    //백드롭 
-    <Backdrop onClose={isBackdropClickClose ? onClose : null}> 
-     {/* 백드롭의 자식 */}
+    <Backdrop onClose={isBackdropClickClose ? onClose : null}>
       <motion.div
         role="dialog"
-        // aria-role="true"
         ref={dialogRef}
         drag
         dragConstraints={{
@@ -120,7 +111,7 @@ function Dialog({
         animate="to"
         exit="exit"
         transition={animationConfig}
-        whileTap={{ scale: 0.96 }}
+        whileTap={{scale: 0.96}}
         className="Dialog"
         onClick={handleStopPropagation}
       >
@@ -130,25 +121,23 @@ function Dialog({
   );
 }
 
-/* COMPOUND COMPONENT ------------------------------------------------------- */
-
-Dialog.Head = function DialogHead({ children }) {
+Dialog.Head = function DialogHead({children}) {
   return <div className="DialogHead">{children}</div>;
-}
+};
 
-Dialog.Body = function DialogBody({ children }) {
+Dialog.Body = function DialogBody({children}) {
   return <div className="DialogBody">{children}</div>;
 };
 
-Dialog.Foot = function DialogFoot({ children }) {
+Dialog.Foot = function DialogFoot({children}) {
   return <div className="DialogFoot">{children}</div>;
 };
 
-Dialog.CloseButton = function DialogCloseButton({ onClose, label = 'close' }) {
+Dialog.CloseButton = function DialogCloseButton({onClose, label = 'close'}) {
   return (
     <button
       type="button"
-      className="absolute top-8 right-6 w-7 h-7 border-0 p-0 flex justify-center items-center bg-transparent text-[#0a0000]"
+      className="absolute top-8 right-6 w-4 h-4 border-0 p-0 flex justify-center items-center bg-transparent text-[#0a0000]"
       aria-label={label}
       title={label}
       onClick={onClose}
@@ -164,7 +153,6 @@ Dialog.CloseButton = function DialogCloseButton({ onClose, label = 'close' }) {
       </svg>
     </button>
   );
-
 };
 
 Dialog.propTypes = {
@@ -172,25 +160,21 @@ Dialog.propTypes = {
   children: node, // 자식 엘리먼트가 노드 타입이어야 함
   isBackdropClickClose: bool, // 부울 타입
   onClose: func,
-  label: string,// 함수 타입, 필수 프로퍼티
+  label: string, // 함수 타입, 필수 프로퍼티
 };
 
 Dialog.Head.propTypes = {
   children: node, // 자식 엘리먼트가 노드 타입이어야 함
-  
 };
 Dialog.Body.propTypes = {
   children: node, // 자식 엘리먼트가 노드 타입이어야 함
-  
 };
 Dialog.Foot.propTypes = {
   children: node, // 자식 엘리먼트가 노드 타입이어야 함
-  
 };
 Dialog.CloseButton.propTypes = {
-  onClose:func, // 자식 엘리먼트가 노드 타입이어야 함
-  label:string
+  onClose: func, // 자식 엘리먼트가 노드 타입이어야 함
+  label: string,
 };
-
 
 export default Dialog;

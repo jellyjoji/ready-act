@@ -50,7 +50,7 @@ function Logo() {
         <meta property="og:image" content="favicon.png" />
         <meta property="og:article:author" content="Ready! Act" />
       </Helmet>
-      <div className="bg-primary-600 w-[576px] h-[740px] text-center flex justify-center items-center relative">
+      <div className="bg-primary-600 w-screen h-screen text-center flex justify-center items-center relative">
         <h1 className="sr-only">R09M</h1>
         <AnimationLogo />
         <Link to="/home" className="absolute bottom-10">

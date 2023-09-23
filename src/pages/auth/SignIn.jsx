@@ -79,41 +79,41 @@ function SignIn() {
       <div className="px-4 py-2">
         <Header />
         <h2 className="pageTitle">로그인</h2>
+
+        <form onSubmit={handleSignIn}>
+          <FormInput
+            type="email"
+            label="이메일"
+            name="email"
+            placeholder="이메일을 입력해 주세요."
+            labelClassName="authLabel"
+            inputClassName="authInput"
+            defaultValue={formState.email}
+            onChange={handleInput}
+          />
+          <FormInput
+            type="password"
+            label="패스워드"
+            name="password"
+            placeholder="비밀번호를 입력해 주세요."
+            labelClassName="authLabel"
+            inputClassName="authInput"
+            defaultValue={formState.password}
+            onChange={handleInput}
+          />
+
+          <Button type="submit" className="authActiveButton">
+            로그인
+          </Button>
+          <Button type="reset" className="authinActiveButton">
+            취소
+          </Button>
+        </form>
+
+        <Link to="/signup">
+          <span className="authTransform">회원가입</span>
+        </Link>
       </div>
-
-      <form onSubmit={handleSignIn}>
-        <FormInput
-          type="email"
-          label="이메일"
-          name="email"
-          placeholder="이메일을 입력해 주세요."
-          labelClassName="authLabel"
-          inputClassName="authInput"
-          defaultValue={formState.email}
-          onChange={handleInput}
-        />
-        <FormInput
-          type="password"
-          label="패스워드"
-          name="password"
-          placeholder="비밀번호를 입력해 주세요."
-          labelClassName="authLabel"
-          inputClassName="authInput"
-          defaultValue={formState.password}
-          onChange={handleInput}
-        />
-
-        <Button type="submit" className="authActiveButton">
-          로그인
-        </Button>
-        <Button type="reset" className="authinActiveButton">
-          취소
-        </Button>
-      </form>
-
-      <Link to="/signup">
-        <span className="authTransform">회원가입</span>
-      </Link>
     </>
   );
 }

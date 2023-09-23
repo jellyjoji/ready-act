@@ -2,7 +2,7 @@ import { AppContext } from '@/App';
 import { category } from '@/data/category';
 import { useContext, useEffect, useState } from 'react';
 
-function CategoryDropdown({ value = "전체", className }) {
+function CategoryDropdown({ value, className }) {
   const { updateCreateRoomForm } = useContext(AppContext);
   const [selectedCategory, setSelectedCategory] = useState(value);
 

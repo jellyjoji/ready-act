@@ -7,8 +7,8 @@ import ContentTextarea from '@/parts/create/ContentTextarea';
 import Creator from '@/parts/create/Creator';
 import DatePicker from '@/parts/create/DatePicker';
 import FileUpload from '@/parts/create/FileUpload';
-import MeetingPoint from '@/parts/create/MeetingPoint';
-// import Location from '@/parts/map/Location';
+// import MeetingPoint from '@/parts/create/MeetingPoint';
+import Location from '@/parts/map/Location';
 import ParticipateCounter from '@/parts/create/ParticipateCounter';
 import PaymentToggleButton from '@/parts/create/PaymentToggleButton';
 import Status from '@/parts/create/Status';
@@ -137,7 +137,7 @@ function CreateRoom() {
           <div className="flex flex-col gap-4 p-4 relative"
           >
 
-            {/* <Location /> */}
+            <Location />
 
             <CategoryDropdown
               title="카테고리"
@@ -192,7 +192,7 @@ function CreateRoom() {
 
             <ParticipateCounter labelClassName="participateCounter" label="참여자 인원" />
 
-            <MeetingPoint title="만날 장소" labelClassName="meetingPoint" />
+            {/* <MeetingPoint title="만날 장소" labelClassName="meetingPoint" /> */}
 
             <FileUpload
               ref={uploadImageRef}

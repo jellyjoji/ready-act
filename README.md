@@ -29,9 +29,9 @@ Ready! Act
 
 ## 기능별 페이지 분석
 
-<h1>공통</h1>
+<h1>공통 요소</h1>
 아이콘의 경우 내장된 이모티콘을 활용하여 저작권 문제를 해결하고 익숙함을 이끌어 냄</br>
-Button, Input, Modal Dialog와 같이 재사용성이 높은 요소는 아토믹 컴포넌트로 제작</br>
+Button, Input 같이 재사용성이 높은 요소는 아토믹 컴포넌트로 제작</br>
 
 ## 이은빈
 
@@ -92,6 +92,7 @@ Button, Input, Modal Dialog와 같이 재사용성이 높은 요소는 아토믹
 
 - 게시물 : 기존 방 개설 페이지에 기재한 사항이 반영될 수 있도록 함</br>
   PocketHost를 활용하여(게시물 작성자, 상품명, 상품이미지, 픽업 시간, 장소, 내용, 참여인원, 참여자의 프로필사진, 1인당 정산비)렌더링</br>
+- PocketHost의 관계확장을 이용하여 참여 인원의 프로필 이미지 화면에 렌더링
 
 ### 🧸 모달 다이얼로그
 
@@ -129,9 +130,15 @@ Button, Input, Modal Dialog와 같이 재사용성이 높은 요소는 아토믹
 
 - 사용자가 안전하게 공동 구매의 모임을 개설하고 참여하여 소비 비용절감 등의 긍정적인 효과를 경험할 수 있는 모바일 공동 구매 모임 플랫폼 서비스
 
-## 💁 서비스 소개
+## 💁 서비스 소개 및 사용방법
 
-- 동영상 또는 gif 넣기
+### PPT
+
+- https://www.canva.com/design/DAFvIYWAAfs/08mFk2Ei-nhKsZSOM7vjEw/edit
+
+### YouTube - R09M 시연영상
+
+[![R09M](https://img.youtube.com/vi/zv3tWgo-yR8/0.jpg)](https://youtu.be/zv3tWgo-yR8)
 
 ## 👩‍🏫 기술 스택
 
@@ -173,7 +180,122 @@ Button, Input, Modal Dialog와 같이 재사용성이 높은 요소는 아토믹
 
 ## 📁 디렉토리 트리
 
-이모지 적용 파일 구조 트리 첨부 / 마지막 풀 리퀘 후 제작
+```
+📦src
+ ┣ 📂api
+ ┃ ┗ 📜pocketbase.js
+ ┣ 📂assets
+ ┃ ┣ 📂icons
+ ┃ ┃ ┣ 📜activeAlarm.svg
+ ┃ ┃ ┣ 📜arrow.svg
+ ┃ ┃ ┣ 📜arrowLeft.svg
+ ┃ ┃ ┣ 📜close.svg
+ ┃ ┃ ┣ 📜complete.svg
+ ┃ ┃ ┣ 📜crownSmall.svg
+ ┃ ┃ ┣ 📜currentSpot.svg
+ ┃ ┃ ┣ 📜dinner.svg
+ ┃ ┃ ┣ 📜dots.svg
+ ┃ ┃ ┣ 📜imgUpload.svg
+ ┃ ┃ ┣ 📜inactiveAlarm.svg
+ ┃ ┃ ┣ 📜location.svg
+ ┃ ┃ ┣ 📜logo.svg
+ ┃ ┃ ┣ 📜minusCircle.svg
+ ┃ ┃ ┣ 📜myLocation.svg
+ ┃ ┃ ┣ 📜participateNum.svg
+ ┃ ┃ ┣ 📜pickup.svg
+ ┃ ┃ ┣ 📜pickuptime.svg
+ ┃ ┃ ┣ 📜plus.svg
+ ┃ ┃ ┣ 📜plusCircle.svg
+ ┃ ┃ ┣ 📜prev.svg
+ ┃ ┃ ┣ 📜proceeding.svg
+ ┃ ┃ ┣ 📜reset.svg
+ ┃ ┃ ┣ 📜spot.svg
+ ┃ ┃ ┗ 📜waiting.svg
+ ┃ ┗ 📜placeholderProfile.jpeg
+ ┣ 📂components
+ ┃ ┣ 📜Button.jsx
+ ┃ ┣ 📜FormInput.jsx
+ ┃ ┣ 📜Input.jsx
+ ┃ ┗ 📜Spinner.jsx
+ ┣ 📂context
+ ┃ ┗ 📜Auth.jsx
+ ┣ 📂data
+ ┃ ┗ 📜category.js
+ ┣ 📂hooks
+ ┃ ┗ 📜useStorage.js
+ ┣ 📂layout
+ ┃ ┣ 📜CreateHeader.jsx
+ ┃ ┗ 📜Header.jsx
+ ┣ 📂pages
+ ┃ ┣ 📂auth
+ ┃ ┃ ┣ 📜Profile.jsx
+ ┃ ┃ ┣ 📜SignIn.jsx
+ ┃ ┃ ┣ 📜SignUp.jsx
+ ┃ ┃ ┗ 📜Withdrawal.jsx
+ ┃ ┣ 📂details
+ ┃ ┃ ┣ 📜Backdrop.jsx
+ ┃ ┃ ┣ 📜Cancel.jsx
+ ┃ ┃ ┣ 📜ChangeStatus.jsx
+ ┃ ┃ ┣ 📜CheckIcon.jsx
+ ┃ ┃ ┣ 📜Detail.jsx
+ ┃ ┃ ┣ 📜DetailMap.jsx
+ ┃ ┃ ┣ 📜DetailStatus.jsx
+ ┃ ┃ ┣ 📜Dialog.jsx
+ ┃ ┃ ┣ 📜Participation.jsx
+ ┃ ┃ ┣ 📜SeeMore.jsx
+ ┃ ┃ ┗ 📜StatusIcon.jsx
+ ┃ ┣ 📂products
+ ┃ ┃ ┣ 📜Fruit.jsx
+ ┃ ┃ ┣ 📜Grains.jsx
+ ┃ ┃ ┣ 📜Meat.jsx
+ ┃ ┃ ┣ 📜Total.jsx
+ ┃ ┃ ┗ 📜Vegetable.jsx
+ ┃ ┣ 📂users
+ ┃ ┃ ┣ 📜SignInUsers.jsx
+ ┃ ┃ ┗ 📜Users.jsx
+ ┃ ┣ 📜CreateRoom.jsx
+ ┃ ┣ 📜Home.jsx
+ ┃ ┣ 📜Logo.jsx
+ ┃ ┗ 📜Search.jsx
+ ┣ 📂parts
+ ┃ ┣ 📂create
+ ┃ ┃ ┣ 📜CategoryDropdown.jsx
+ ┃ ┃ ┣ 📜ContentTextarea.jsx
+ ┃ ┃ ┣ 📜Creator.jsx
+ ┃ ┃ ┣ 📜DatePicker.jsx
+ ┃ ┃ ┣ 📜FileUpload.jsx
+ ┃ ┃ ┣ 📜MeetingPoint.jsx
+ ┃ ┃ ┣ 📜ParticipateCounter.jsx
+ ┃ ┃ ┣ 📜PaymentToggleButton.jsx
+ ┃ ┃ ┣ 📜Price.jsx
+ ┃ ┃ ┣ 📜Status.jsx
+ ┃ ┃ ┣ 📜TimePicker.jsx
+ ┃ ┃ ┗ 📜Title.jsx
+ ┃ ┣ 📂map
+ ┃ ┃ ┣ 📜currentLocation.js
+ ┃ ┃ ┣ 📜Location.jsx
+ ┃ ┃ ┣ 📜Location.module.css
+ ┃ ┃ ┗ 📜mapMark.js
+ ┃ ┣ 📂nav
+ ┃ ┃ ┣ 📜HomeIcon.jsx
+ ┃ ┃ ┣ 📜Nav.jsx
+ ┃ ┃ ┣ 📜ProfileIcon.jsx
+ ┃ ┃ ┗ 📜SearchIcon.jsx
+ ┃ ┗ 📜AnimationLogo.jsx
+ ┣ 📂styles
+ ┃ ┣ 📜ChangeStatus.module.css
+ ┃ ┣ 📜customComponents.css
+ ┃ ┣ 📜Home.module.css
+ ┃ ┣ 📜Nav.module.css
+ ┃ ┗ 📜tailwind.css
+ ┣ 📂utils
+ ┃ ┣ 📜debounce.js
+ ┃ ┣ 📜getPbImageURL.js
+ ┃ ┗ 📜numberWithComma.js
+ ┣ 📜App.jsx
+ ┣ 📜main.jsx
+ ┗ 📜routes.jsx
+```
 
 ## 🍭 참고 자료</br>
 
@@ -216,5 +338,3 @@ npm i 또는 pnpm i
 ```
 npm run dev 또는 pnpm dev
 ```
-
-## 사용 방법

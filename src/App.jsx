@@ -59,7 +59,7 @@ function App() {
         <AuthProvider>
           <QueryClientProvider client={queryClient}>
             <AppContext.Provider value={appState}>
-              <div className="max-w-xl mx-auto mt-12 font-pretendard">
+              <div className="max-w-xl mx-auto font-pretendard">
                 <Suspense
                   fallback={<Spinner size={200} message="페이지 로딩 중..." />}
                 >

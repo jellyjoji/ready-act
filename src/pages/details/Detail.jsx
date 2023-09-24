@@ -93,7 +93,7 @@ function Detail() {
       <ul className="pl-4">
         <h2 className="sr-only">상품 정보</h2>
         <li className="flex mb-3 mt-2 items-center font-semibold text-lg justify-between">
-          <figure className="flex items-center gap-3">
+          <figure className="flex items-center gap-3 mt-2">
             <img
               src={getPbImageURL(creator, 'photo')}
               alt={creator.name}
@@ -169,17 +169,18 @@ function Detail() {
           </div>
         </li>
 
-        <li>
-          <div className="mt-6 text-lg font-semibold">
-            {numberWithComma(price / participateNumber)}원
+        <li className="flex flex-col">
+          <div className="flex justify-between items-center mr-5">
+            <div className="flex flex-col">
+              <span className="mt-2 text-lg font-semibold">
+                {numberWithComma(price / participateNumber)}원
+              </span>
+              <span className="text-greenishgray-500 font-semibold">
+                1인당 정산비
+              </span>
+            </div>
+            <Participation onUpdateParticipation={handleUpdateParticipation} />
           </div>
-        </li>
-
-        <li className="flex items-center pr-4 place-content-between">
-          <span className="text-greenishgray-500 font-semibold">
-            1인당 정산비
-          </span>
-          <Participation onUpdateParticipation={handleUpdateParticipation} />
         </li>
       </ul>
     </>

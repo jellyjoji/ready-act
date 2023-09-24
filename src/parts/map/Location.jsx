@@ -86,7 +86,7 @@ function Location() {
       <div className="map_wrap">
         <div ref={locationMapRef} className="w-full h-[320px]"></div>
         <div className="hAddr flex">
-          <span id="centerAddr" className="p-4 text-primary-700">
+          <span id="centerAddr" className="py-4 text-primary-700">
             {data}
           </span>
         </div>

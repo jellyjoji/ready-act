@@ -9,7 +9,6 @@ function DatePicker({ value = null, label, title, className, labelClassName, ...
 
   useEffect(() => {
     updateCreateRoomForm('pickUp', data)
-    console.log(data);
   }, [data])
 
   const handleInputChange = (e) => {

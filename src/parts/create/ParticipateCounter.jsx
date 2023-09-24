@@ -9,7 +9,6 @@ function ParticipateCounter({ value = 0, labelClassName }) {
 
   useEffect(() => {
     updateCreateRoomForm('participateNumber', count);
-    console.log(count);
   }, [count]);
 
   const incrementCount = () => {

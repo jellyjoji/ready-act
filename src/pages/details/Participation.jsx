@@ -66,7 +66,7 @@ function Participation({onUpdateParticipation}) {
         {open && (
           <div className="fixed top-0 left-0 w-screen h-full z-10 bg-[#15151582]">
             <Dialog type="rotate" onClose={handleClose}>
-              <div className="flex flex-col fixed z-50 top-[500px] left-1/2 w-[clamp(300px, 96vw, 840px)] h-[clamp(300px, 96vh, 700px)] border border-[#b9b9b956] rounded-12 bg-white bg-no-repeat bg-center bg-cover transform -translate-x-1/2 -translate-y-1/2 rounded-xl p-8">
+              <div className="flex flex-col fixed z-50 top-[50vh] left-1/2 w-[clamp(300px, 96vw, 840px)] h-[clamp(300px, 96vh, 700px)] border border-[#b9b9b956] rounded-12 bg-white bg-no-repeat bg-center bg-cover transform -translate-x-1/2 -translate-y-1/2 rounded-xl p-8">
                 <Dialog.Head>
                   <h3 className="flex justify-center items-center">RO9M</h3>
                 </Dialog.Head>

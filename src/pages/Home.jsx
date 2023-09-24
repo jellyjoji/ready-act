@@ -74,7 +74,7 @@ function Home() {
         <meta property="og:image" content="favicon.png" />
         <meta property="og:article:author" content="Ready! Act" />
       </Helmet>
-      <div className="relative p-4">
+      <div className="relative p-2">
         <h1 className="sr-only">R09M</h1>
         <Link to="/home">
           <img src={logo} alt="공구룸 로고" className="w-12 h-12 m-auto" />
@@ -112,7 +112,7 @@ function Home() {
           ))}
         </Swiper>
         <div className="relative">
-          <div ref={mainMapRef} className="w-full h-[65vh] my-3">
+          <div ref={mainMapRef} className="w-full h-[57vh] my-3">
             {isLoading && (
               <div className="absolute top-0 left-0 right-0 bottom-0 bg-zinc-100 flex justify-center items-center">
                 지도 로딩 중...
@@ -130,7 +130,8 @@ function Home() {
                 type="button"
                 className={`${styles.button} left-2 bottom-16 bg-white p-2`}
                 onClick={() => {
-                  mapMark(mainMapRef.current);
+                  mapMark(mainMapRef.current, data);
+                  mapCached = true;
                 }}
               >
                 <h3 className="sr-only">기존 위치로 돌아가기</h3>

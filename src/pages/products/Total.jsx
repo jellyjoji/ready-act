@@ -15,10 +15,13 @@ const getProducts = async () => {
 };
 
 function Total() {
-  const {isLoading, error, data} = useQuery({
+  const {isLoading, error, data, refetch} = useQuery({
     queryKey: ['products'],
     queryFn: () => getProducts(),
+    
   });
+
+  refetch();
 
   if (isLoading) {
     return <Spinner />;

@@ -17,10 +17,12 @@ const filterMeatProducts = async () => {
 };
 
 function Meat() {
-  const {isLoading, error, data} = useQuery({
+  const {isLoading, error, data, refetch} = useQuery({
     queryKey: ['products'],
     queryFn: () => filterMeatProducts(),
   });
+
+  refetch();
 
   if (isLoading) {
     return <Spinner />;

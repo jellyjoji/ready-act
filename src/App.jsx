@@ -15,8 +15,6 @@ export const AppContext = createContext();
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
-      staleTime: 1000 * 60 * 2,
-      cacheTime: 1000 * 60 * 4,
       refetchOnWindowFocus: false,
       refetchOnReconnect: false,
     },

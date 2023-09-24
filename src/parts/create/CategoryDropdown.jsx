@@ -1,10 +1,10 @@
-import {AppContext} from '@/App';
-import {category} from '@/data/category';
-import {useContext, useEffect, useState} from 'react';
+import { AppContext } from '@/App';
+import { category } from '@/data/category';
+import { useContext, useEffect, useState } from 'react';
 
-function CategoryDropdown({className, title}) {
-  const {updateCreateRoomForm} = useContext(AppContext);
-  const [selectedCategory, setSelectedCategory] = useState('전체');
+function CategoryDropdown({ value, className }) {
+  const { updateCreateRoomForm } = useContext(AppContext);
+  const [selectedCategory, setSelectedCategory] = useState(value);
 
   useEffect(() => {
     updateCreateRoomForm('category', selectedCategory);

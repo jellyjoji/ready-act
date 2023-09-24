@@ -1,11 +1,11 @@
 import imgUpload from '@/assets/icons/imgUpload.svg';
-import {forwardRef, useState} from 'react';
+import { forwardRef, useState } from 'react';
 
-function FileUpload({className, title, ...restProps}, ref) {
+function FileUpload({ className, title, ...restProps }, ref) {
   const [fileImages, setFileImages] = useState(null);
 
   const handleFileUpload = (e) => {
-    const {files} = e.target;
+    const { files } = e.target;
     const fileImages = Array.from(files).map((file) => ({
       image: URL.createObjectURL(file),
       label: file.name,
@@ -28,7 +28,7 @@ function FileUpload({className, title, ...restProps}, ref) {
             id="photo"
             ref={ref}
             onChange={handleFileUpload}
-            style={{display: 'none'}}
+            style={{ display: 'none' }}
             {...restProps}
           />
         </div>

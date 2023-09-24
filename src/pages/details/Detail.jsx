@@ -1,14 +1,14 @@
-import {pb} from '@/api/pocketbase';
+import { pb } from '@/api/pocketbase';
 import crownSmall from '@/assets/icons/crownSmall.svg';
 import dinner from '@/assets/icons/dinner.svg';
 import location from '@/assets/icons/location.svg';
 import Spinner from '@/components/Spinner';
 import Header from '@/layout/Header';
-import {getPbImageURL} from '@/utils/getPbImageURL';
-import {numberWithComma} from '@/utils/numberWithComma';
-import {useQuery} from '@tanstack/react-query';
-import {Helmet} from 'react-helmet-async';
-import {Link, useParams} from 'react-router-dom';
+import { getPbImageURL } from '@/utils/getPbImageURL';
+import { numberWithComma } from '@/utils/numberWithComma';
+import { useQuery } from '@tanstack/react-query';
+import { Helmet } from 'react-helmet-async';
+import { Link, useParams } from 'react-router-dom';
 import DetailStatus from './DetailStatus';
 import Participation from './Participation';
 import SeeMore from './SeeMore';
@@ -20,17 +20,17 @@ const getDetails = async (id) => {
 };
 
 function Detail() {
-  const {id} = useParams();
+  const { id } = useParams();
 
   const handleUpdateParticipation = (newParticipation) => {
     (data) => {
-      const nextData = {...data};
+      const nextData = { ...data };
       nextData.expand.participate.push(newParticipation);
       return nextData;
     };
   };
 
-  const {isLoading, error, data, refetch} = useQuery({
+  const { isLoading, error, data, refetch } = useQuery({
     queryKey: ['products', id],
     queryFn: () => getDetails(id),
   });
@@ -56,7 +56,7 @@ function Detail() {
     expand,
   } = data;
 
-  const {creator, participate} = expand;
+  const { creator, participate } = expand;
 
   return (
     <>

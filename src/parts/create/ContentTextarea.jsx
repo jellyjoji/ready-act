@@ -1,15 +1,11 @@
-import {AppContext} from '@/App';
-import {useContext, useEffect, useState} from 'react';
+import { AppContext } from '@/App';
+import { useContext, useEffect, useState } from 'react';
 
-function ContentTextarea({
-  title,
-  placeholder,
-  className,
-  labelClassName,
-  ...restProps
-}) {
-  const {updateCreateRoomForm} = useContext(AppContext);
-  const [data, setData] = useState('');
+
+function ContentTextarea(
+  { value = "", title, placeholder, className, labelClassName, ...restProps }) {
+  const { updateCreateRoomForm } = useContext(AppContext);
+  const [data, setData] = useState(value);
 
   useEffect(() => {
     updateCreateRoomForm('content', data);

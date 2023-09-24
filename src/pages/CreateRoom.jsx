@@ -1,55 +1,55 @@
-import {AppContext} from '@/App';
-import {pb} from '@/api/pocketbase';
+import { AppContext } from '@/App';
+import { pb } from '@/api/pocketbase';
 import Button from '@/components/Button';
-import FormInput from '@/components/FormInput';
 import CreateHeader from '@/layout/CreateHeader';
 import CategoryDropdown from '@/parts/create/CategoryDropdown';
 import ContentTextarea from '@/parts/create/ContentTextarea';
 import Creator from '@/parts/create/Creator';
 import DatePicker from '@/parts/create/DatePicker';
 import FileUpload from '@/parts/create/FileUpload';
+// import MeetingPoint from '@/parts/create/MeetingPoint';
+import Location from '@/parts/map/Location';
 import ParticipateCounter from '@/parts/create/ParticipateCounter';
 import PaymentToggleButton from '@/parts/create/PaymentToggleButton';
 import Status from '@/parts/create/Status';
-import Location from '@/parts/map/Location';
-import {ClientResponseError} from 'pocketbase';
-import {useContext, useRef} from 'react';
-import {Helmet} from 'react-helmet-async';
+import { ClientResponseError } from 'pocketbase';
+import { useContext, useRef } from 'react';
+import { Helmet } from 'react-helmet-async';
+import Price from '@/parts/create/Price';
+import Title from '@/parts/create/title';
+import { useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
-import {useNavigate} from 'react-router-dom';
+
 
 function CreateRoom() {
-  const {createRoomForm} = useContext(AppContext);
+  const { createRoomForm } = useContext(AppContext);
   const navigate = useNavigate();
 
   const formRef = useRef(null);
-  const titleRef = useRef(null);
-  const priceRef = useRef(null);
-  const dateRef = useRef(null);
-  const paymentRef = useRef(null);
-  const ParticipateCounterRef = useRef(null);
   const uploadImageRef = useRef(null);
-  const statusRef = useRef(null);
+  const paymentRef = useRef(null);
 
   const handleCreate = async (e) => {
     e.preventDefault();
 
     const categoryValue = createRoomForm.category;
-    const titleValue = titleRef.current.value;
+    const titleValue = createRoomForm.title;
     const contentValue = createRoomForm.content;
-    const priceValue = priceRef.current.value;
-    const dateValue = dateRef.current.value;
-
+    const priceValue = createRoomForm.price;
+    // createRoomForm.pickUp
+    const dateValue = new Date(createRoomForm.pickUp).toISOString();
     const paymentValue = paymentRef.current.dataset.payment;
+    // const paymentValue = createRoomForm.payment;
     const ParticipateCounterValue = Number(
-      ParticipateCounterRef.current.textContent
+      // createRoomForm.current.textContent
+      createRoomForm.participateNumber
     );
 
     const meetingPointValue = createRoomForm.meetingPoint;
     const creatorValue = createRoomForm.creator.id;
 
     const uploadImageValue = uploadImageRef.current.files[0];
-    const statusValue = statusRef.current.value;
+    const statusValue = createRoomForm.status;
 
     const data = new FormData();
 
@@ -128,74 +128,87 @@ function CreateRoom() {
         </div>
       </div>
 
-      <form encType="multipart/form-data" ref={formRef} onSubmit={handleCreate}>
-        <div className="flex flex-col gap-4 p-4 relative">
-          <Location />
+      <div>
+        <form
+          encType="multipart/form-data"
+          ref={formRef}
+          onSubmit={handleCreate}
+        >
+          <div className="flex flex-col gap-4 p-4 relative"
+          >
 
-          <CategoryDropdown
-            title="카테고리"
-            className="w-full defaultInput mt-4"
-          />
-          <FormInput
-            ref={titleRef}
-            type="text"
-            placeholder="상품명을 입력해주세요."
-            labelClassName="product name"
-            inputClassName="defaultInput w-full"
-            label="상품명"
-          />
-          <FormInput
-            ref={priceRef}
-            type="number"
-            placeholder="0원"
-            labelClassName="product price"
-            inputClassName="defaultInput w-full"
-            label="상품 가격"
-          />
-          <ContentTextarea
-            title="내용"
-            placeholder="공구 모임 주요내용을 알려주세요."
-            className="w-full defaultInput"
-            labelClassName="product content"
-          />
+            <Location />
 
-          <DatePicker
-            ref={dateRef}
-            title="픽업 날짜"
-            className="w-full defaultInput mt-4"
-            labelClassName="date Picker"
-          />
+            <CategoryDropdown
+              title="카테고리"
+              className="w-full defaultInput"
+              label="카테고리"
+              value={createRoomForm.category}
+            />
 
-          <Status
-            ref={statusRef}
-            title="상태"
-            className="w-full defaultInput "
-            labelClassName="status"
-          />
+            <Title
+              value={createRoomForm.title}
+            />
 
-          <Creator />
+            <Price
+              value={createRoomForm.price}
+            />
 
-          <PaymentToggleButton
-            ref={paymentRef}
-            title="정산 방법"
-            labelClassName="payment"
-          />
+            <ContentTextarea
+              title="내용"
+              placeholder="공구 모임 주요내용을 알려주세요."
+              className="w-full defaultInput"
+              labelClassName="product content"
+              label="내용"
+              value={createRoomForm.content}
+            />
 
-          <ParticipateCounter ref={ParticipateCounterRef} title="인원" />
+            <DatePicker
+              // title="픽업 날짜"
+              label="픽업 날짜"
+              className="w-full defaultInput"
+              labelClassName="date Picker"
+              value={createRoomForm.pickUp}
 
-          <FileUpload
-            ref={uploadImageRef}
-            title="파일 업로드"
-            className="bg-[#EBF8E8] p-4 rounded-lg text-primary-500"
-          />
-        </div>
-        <div className="fixed bottom-0 max-w-xl w-full bg-white py-3 px-4">
-        <Button type="submit" className="py-4 activeButton lgFontButton w-full z-50">
-          방 만들기
-        </Button>
-      </div>
-      </form>
-      
+            />
+
+            <Status
+              title="상태"
+              label="상태"
+              className="w-full defaultInput "
+              labelClassName="status"
+            />
+
+            <Creator />
+
+            <PaymentToggleButton
+              ref={paymentRef}
+              title="정산 방법"
+              label="정산 방법"
+              labelClassName="payment"
+              value={createRoomForm.payment}
+
+            />
+
+            <ParticipateCounter labelClassName="participateCounter" label="참여자 인원" />
+
+            {/* <MeetingPoint title="만날 장소" labelClassName="meetingPoint" /> */}
+
+            <FileUpload
+              ref={uploadImageRef}
+              title="파일 업로드"
+              label="파일 업로드"
+              className="bg-[#EBF8E8] p-4 rounded-lg text-primary-500"
+            />
+          </div >
+          <Button
+            type="submit"
+            className="fixed bottom-3 py-4 activeButton lgFontButton mx-3 w-[93vw] max-w-[544px]"
+          >
+            방 만들기
+          </Button>
+        </form >
+      </div >
     </>
   );
 }

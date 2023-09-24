@@ -1,8 +1,7 @@
-import {forwardRef, useState, useId} from 'react';
+import { forwardRef, useState } from 'react';
 
-function PaymentToggleButton({labelClassName, title}, ref) {
+function PaymentToggleButton({ labelClassName }, ref) {
   const [isToggled, setToggled] = useState(false);
-  const {id} = useId();
 
   return (
     <>
@@ -12,6 +11,7 @@ function PaymentToggleButton({labelClassName, title}, ref) {
       <div id="payment" className="bg-greenishgray-200 w-full p-2 rounded-lg">
         <button
           ref={ref}
+          // value={isToggled}
           type="button"
           className="w-full rounded-lg "
           onClick={() => setToggled(!isToggled)}
@@ -21,16 +21,14 @@ function PaymentToggleButton({labelClassName, title}, ref) {
             className={`flex w-full ${isToggled ? 'items-center' : ''}`.trim()}
           >
             <div
-              className={`w-1/2 ${
-                !isToggled ? 'shadow-lg bg-white rounded-lg' : ''
-              }`.trim()}
+              className={`w-1/2 ${!isToggled ? 'shadow-lg bg-white rounded-lg' : ''
+                }`.trim()}
             >
               만나서 결제
             </div>
             <div
-              className={`w-1/2 ${
-                isToggled ? 'shadow-lg bg-white rounded-lg' : ''
-              }`.trim()}
+              className={`w-1/2 ${isToggled ? 'shadow-lg bg-white rounded-lg' : ''
+                }`.trim()}
             >
               계좌 이체
             </div>

@@ -1,11 +1,11 @@
-import {AppContext} from '@/App';
-import {useContext, useEffect, useRef, useState} from 'react';
+import { AppContext } from '@/App';
+import { useContext, useEffect, useRef, useState } from 'react';
 import './Location.module.css';
 
-const {kakao} = window;
+const { kakao } = window;
 
 function Location() {
-  const {updateCreateRoomForm} = useContext(AppContext);
+  const { updateCreateRoomForm } = useContext(AppContext);
   const locationMapRef = useRef(null);
   const [data, setData] = useState();
 
@@ -22,7 +22,7 @@ function Location() {
       const geocoder = new kakao.maps.services.Geocoder();
 
       const marker = new kakao.maps.Marker(),
-        infowindow = new kakao.maps.InfoWindow({zindex: 1});
+        infowindow = new kakao.maps.InfoWindow({ zindex: 1 });
 
       searchAddrFromCoords(map.getCenter(), displayCenterInfo);
 
@@ -84,9 +84,9 @@ function Location() {
   return (
     <div className="h-full">
       <div className="map_wrap">
-        <div ref={locationMapRef} className="w-full h-[420px]"></div>
+        <div ref={locationMapRef} className="w-full h-[320px]"></div>
         <div className="hAddr flex">
-          <span id="centerAddr" className="py-4">
+          <span id="centerAddr" className="py-4 text-primary-700">
             {data}
           </span>
         </div>

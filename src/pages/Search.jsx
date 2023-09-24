@@ -1,14 +1,14 @@
-import {pb} from '@/api/pocketbase';
+import { pb } from '@/api/pocketbase';
 import Input from '@/components/Input';
 import Spinner from '@/components/Spinner';
 import Header from '@/layout/Header';
 import Nav from '@/parts/nav/Nav';
-import {debounce} from '@/utils/debounce';
-import {getPbImageURL} from '@/utils/getPbImageURL';
-import {numberWithComma} from '@/utils/numberWithComma';
-import {useEffect, useState} from 'react';
-import {Helmet} from 'react-helmet-async';
-import {Link} from 'react-router-dom';
+import { debounce } from '@/utils/debounce';
+import { getPbImageURL } from '@/utils/getPbImageURL';
+import { numberWithComma } from '@/utils/numberWithComma';
+import { useEffect, useState } from 'react';
+import { Helmet } from 'react-helmet-async';
+import { Link } from 'react-router-dom';
 import navStyles from '@/styles/Nav.module.css';
 
 function Search() {
@@ -69,7 +69,7 @@ function Search() {
           <Input
             id="search"
             placeholder="검색"
-            className="authInput"
+            className="authInput max-w-[544px]"
             defaultValue={searchData}
             onChange={debounce((e) => {
               setSearchData(e.target.value);

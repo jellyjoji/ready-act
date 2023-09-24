@@ -1,8 +1,8 @@
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import close from '@/assets/icons/close.svg';
 import logo from '@/assets/icons/logo.svg';
 
-function CreateHeader({...restProps}) {
+function CreateHeader({ ...restProps }) {
   return (
     <div className="relative">
       <Link to="/home">

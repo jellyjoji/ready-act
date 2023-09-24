@@ -1,4 +1,4 @@
-import {lazy} from 'react';
+import { lazy } from 'react';
 import {
   Route,
   createBrowserRouter,
@@ -6,6 +6,7 @@ import {
 } from 'react-router-dom';
 
 const CreateRoom = lazy(() => import('./pages/CreateRoom'));
+const Location = lazy(() => import('./parts/map/Location'));
 const Home = lazy(() => import('./pages/Home'));
 const Logo = lazy(() => import('./pages/Logo'));
 const Search = lazy(() => import('./pages/Search'));
@@ -48,6 +49,7 @@ const router = createBrowserRouter(
       <Route path="users/:id" element={<Users />} />
 
       <Route path="createroom" element={<CreateRoom />} />
+      <Route path="location" element={<Location />} />
     </>
   )
 );

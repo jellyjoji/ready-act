@@ -112,7 +112,7 @@ function Home() {
           ))}
         </Swiper>
         <div className="relative">
-          <div ref={mainMapRef} className="w-full h-[57vh] my-3">
+          <div ref={mainMapRef} className="w-full h-[48vh] my-3">
             {isLoading && (
               <div className="absolute top-0 left-0 right-0 bottom-0 bg-zinc-100 flex justify-center items-center">
                 지도 로딩 중...

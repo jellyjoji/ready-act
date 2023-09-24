@@ -30,10 +30,12 @@ function Detail() {
     };
   };
 
-  const {isLoading, error, data} = useQuery({
+  const {isLoading, error, data, refetch} = useQuery({
     queryKey: ['products', id],
     queryFn: () => getDetails(id),
   });
+
+  refetch();
 
   if (isLoading) {
     return <Spinner />;

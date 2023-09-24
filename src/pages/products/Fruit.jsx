@@ -17,10 +17,12 @@ const filterFruitProducts = async () => {
 };
 
 function Fruit() {
-  const {isLoading, error, data} = useQuery({
+  const {isLoading, error, data, refetch} = useQuery({
     queryKey: ['products'],
     queryFn: () => filterFruitProducts(),
   });
+
+  refetch();
 
   if (isLoading) {
     return <Spinner />;

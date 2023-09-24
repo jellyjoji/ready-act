@@ -4,9 +4,22 @@ import { Toaster } from 'react-hot-toast';
 import { RouterProvider } from 'react-router-dom';
 import AuthProvider from './context/Auth';
 import router from './routes';
-import {pb} from './api/pocketbase';
+import { pb } from './api/pocketbase';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
+import Spinner from './components/Spinner';
+import { Suspense } from 'react';
 
 export const AppContext = createContext();
+
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      refetchOnWindowFocus: false,
+      refetchOnReconnect: false,
+    },
+  },
+});
 
 function App() {
   pb.autoCancellation(false);
@@ -42,12 +55,18 @@ function App() {
     <>
       <HelmetProvider>
         <AuthProvider>
-          {/* 공급할 앱 상태를 받은 appState 를 AppContext 에 주입  */}
-          <AppContext.Provider value={appState}>
-            <div className="max-w-xl mx-auto mt-12 font-pretendard">
-              <RouterProvider router={router} />
-            </div>
-          </AppContext.Provider>
+          <QueryClientProvider client={queryClient}>
+            <AppContext.Provider value={appState}>
+              <div className="max-w-xl mx-auto font-pretendard">
+                <Suspense
+                  fallback={<Spinner size={200} message="페이지 로딩 중..." />}
+                >
+                  <RouterProvider router={router} />
+                </Suspense>
+              </div>
+            </AppContext.Provider>
+            <ReactQueryDevtools />
+          </QueryClientProvider>
         </AuthProvider>
       </HelmetProvider>
 

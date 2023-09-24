@@ -1,36 +1,29 @@
 import { AppContext } from '@/App';
-import { useEffect, useState, useContext, useId } from 'react';
+import { useContext, useEffect, useState } from 'react';
 
 
 function ContentTextarea(
-  { title, placeholder, className, labelClassName, ...restProps }) {
-  const { id } = useId();
+  { value = "", title, placeholder, className, labelClassName, ...restProps }) {
   const { updateCreateRoomForm } = useContext(AppContext);
-  const [data, setData] = useState('');
+  const [data, setData] = useState(value);
 
   useEffect(() => {
     updateCreateRoomForm('content', data);
-
-
-  }, [data])
+  }, [data]);
 
   const handleInputChange = (e) => {
-
     setData(e.target.value);
-
-    // console.log(setData);
-
   };
 
   return (
     <>
-      <label htmlFor={id} className={labelClassName}>
-        {title}
+      <label htmlFor="content" className={labelClassName}>
+        내용
       </label>
       <textarea
         value={data}
         onChange={handleInputChange}
-        id={id}
+        id="content"
         placeholder={placeholder}
         className={className}
         {...restProps}

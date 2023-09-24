@@ -3,13 +3,14 @@ import Spinner from '@/components/Spinner';
 import Header from '@/layout/Header';
 import {getPbImageURL} from '@/utils/getPbImageURL';
 import {numberWithComma} from '@/utils/numberWithComma';
-
+import navStyles from '@/styles/Nav.module.css';
 import Button from '@/components/Button';
 import {useEffect, useState} from 'react';
 import {Helmet} from 'react-helmet-async';
 import toast from 'react-hot-toast';
 import {Link, useNavigate} from 'react-router-dom';
 import Withdrawal from './Withdrawal';
+import Nav from '@/parts/nav/Nav';
 
 function Profile() {
   const [userData, setUserData] = useState();
@@ -48,15 +49,39 @@ function Profile() {
       <>
         <Helmet>
           <title>R09M - 프로필</title>
+          <meta charset="UTF-8" />
+          <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0"
+          />
+          <meta
+            property="og:title"
+            content="합리적인 소비를 위한 공동구매 서비스 R09M 프로필 페이지"
+          />
+          <meta
+            property="twitter:title"
+            content="합리적인 소비를 위한 공동구매 서비스 R09M 프로필 페이지"
+          />
+          <meta property="og:type" content="web application" />
+          <meta property="og:url" content="https://r09m.vercel.app/profile" />
+          <meta
+            property="og:description"
+            content="로그인된 사용자의 정보 및 판매 상품을 확인할 수 있는 페이지입니다."
+          />
+          <meta
+            name="description"
+            content="로그인된 사용자의 정보 및 판매 상품을 확인할 수 있는 페이지입니다."
+          ></meta>
+          <meta property="og:image" content="favicon.png" />
+          <meta property="og:article:author" content="Ready! Act" />
         </Helmet>
         <h1 className="sr-only">R09M</h1>
 
-        <div className="py-2 h-screen">
-          <div className="px-4">
-            <Header />
-            <h2 className="pageTitle">프로필</h2>
-          </div>
-          <div className="flex gap-5 border-b border-b-line-400 pb-4">
+        <div className="px-4 py-2 h-screen">
+          <Header />
+          <h2 className="pageTitle">프로필</h2>
+
+          <div className="flex gap-5 border-b border-b-line-400 pb-4 pt-4">
             <img
               src={getPbImageURL(userData, 'photo')}
               alt={`${name}의 프로필`}
@@ -86,7 +111,7 @@ function Profile() {
                         'aria-live': 'polite',
                       },
                     });
-                    navigate('/home');
+                    navigate('/signin');
                   }}
                 >
                   로그아웃
@@ -109,9 +134,9 @@ function Profile() {
                         className="w-[100px] h-full rounded-2xl"
                       />
                       <figcaption>
-                        <h2 className="text-sm text-greenishgray-700 font-semibold ">
+                        <h4 className="text-sm text-greenishgray-700 font-semibold ">
                           {products.title}
-                        </h2>
+                        </h4>
 
                         {products.status === '대기중' ? (
                           <span className="font-bold absolute text-primary-500 right-6 top-4">
@@ -143,6 +168,7 @@ function Profile() {
             ))}
           </ul>
         </div>
+        <Nav profileColor="#000" profileSpan={navStyles.navSpan} />
       </>
     );
   } else {

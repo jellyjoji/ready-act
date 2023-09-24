@@ -1,11 +1,10 @@
-import { useId, useContext, useState, useEffect } from 'react';
-import { category } from '@/data/category';
 import { AppContext } from '@/App';
+import { category } from '@/data/category';
+import { useContext, useEffect, useState } from 'react';
 
-function CategoryDropdown({ className, title }) {
-  const { id } = useId();
+function CategoryDropdown({ value, className }) {
   const { updateCreateRoomForm } = useContext(AppContext);
-  const [selectedCategory, setSelectedCategory] = useState('전체');
+  const [selectedCategory, setSelectedCategory] = useState(value);
 
   useEffect(() => {
     updateCreateRoomForm('category', selectedCategory);
@@ -13,11 +12,13 @@ function CategoryDropdown({ className, title }) {
 
   return (
     <div>
-      <label htmlFor={id}>{title}</label>
+      <label htmlFor="category">
+        카테고리
+      </label>
       <select
         value={selectedCategory}
         onChange={(e) => setSelectedCategory(e.target.value)}
-        id={id}
+        id="category"
         className={className}
         name="category"
       >

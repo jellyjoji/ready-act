@@ -1,16 +1,18 @@
 import arrow from '@/assets/icons/arrow.svg';
 import { Link } from 'react-router-dom';
 
-function MeetingPoint({ title, ...restProps }) {
+function MeetingPoint({ title, labelClassName, ...restProps }) {
   return (
     <>
-      <div className="flex justify-between w-full py-4 bg-white">
-        <label>{title}</label>
+      <Link to="/location">
+        <div className="flex justify-between w-full py-4">
+          <label htmlFor="meetingPoint" className={labelClassName}>
+            만날 장소
+          </label>
+          <img id="meetingPoint" src={arrow} alt="만날 장소 지도 이동" {...restProps} />
+        </div>
+      </Link>
 
-        <Link to="/location">
-          <img src={arrow} alt="만날 장소 지도 이동" {...restProps} />
-        </Link>
-      </div>
     </>
   );
 }

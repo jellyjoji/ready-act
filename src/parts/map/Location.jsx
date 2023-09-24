@@ -1,14 +1,11 @@
-import {AppContext} from '@/App';
-import arrowLeft from '@/assets/icons/arrowLeft.svg';
-import Button from '@/components/Button';
-import {useContext, useEffect, useRef, useState} from 'react';
-import {Link} from 'react-router-dom';
+import { AppContext } from '@/App';
+import { useContext, useEffect, useRef, useState } from 'react';
 import './Location.module.css';
 
-const {kakao} = window;
+const { kakao } = window;
 
 function Location() {
-  const {updateCreateRoomForm} = useContext(AppContext);
+  const { updateCreateRoomForm } = useContext(AppContext);
   const locationMapRef = useRef(null);
   const [data, setData] = useState();
 
@@ -25,7 +22,7 @@ function Location() {
       const geocoder = new kakao.maps.services.Geocoder();
 
       const marker = new kakao.maps.Marker(),
-        infowindow = new kakao.maps.InfoWindow({zindex: 1});
+        infowindow = new kakao.maps.InfoWindow({ zindex: 1 });
 
       searchAddrFromCoords(map.getCenter(), displayCenterInfo);
 
@@ -86,23 +83,12 @@ function Location() {
 
   return (
     <div className="h-full">
-      <p className="my-4">만날 장소</p>
-
       <div className="map_wrap">
-        <div ref={locationMapRef} className="w-full h-[420px]"></div>
+        <div ref={locationMapRef} className="w-full h-[320px]"></div>
         <div className="hAddr flex">
-          <span id="centerAddr" className="p-4">
+          <span id="centerAddr" className="py-4 text-primary-700">
             {data}
           </span>
-
-          <Link
-            to="/createroom"
-            className="bg-white w-full absolute max-w-xl bottom-0 p-4 drop-shadow-2xl"
-          >
-            <Button type="submit" className="activeButton lgFontButton w-full ">
-              이 위치로 설정
-            </Button>
-          </Link>
         </div>
       </div>
     </div>

@@ -17,10 +17,12 @@ const filterGrainsProducts = async () => {
 };
 
 function Grains() {
-  const {isLoading, error, data} = useQuery({
+  const {isLoading, error, data, refetch} = useQuery({
     queryKey: ['products'],
     queryFn: () => filterGrainsProducts(),
   });
+
+  refetch();
 
   if (isLoading) {
     return <Spinner />;

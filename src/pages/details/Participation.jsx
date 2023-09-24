@@ -5,11 +5,13 @@ import {func} from 'prop-types';
 import {useRef, useState} from 'react';
 import {useParams} from 'react-router-dom';
 import Dialog from './Dialog';
+import {useNavigate} from 'react-router-dom';
 
 function Participation({onUpdateParticipation}) {
   const {id} = useParams();
   const opennerRef = useRef(null);
   const [open, setOpen] = useState(false);
+  const navigate = useNavigate();
 
   async function joinAsParticipant(productId, userId) {
     try {
@@ -47,6 +49,7 @@ function Participation({onUpdateParticipation}) {
     const productId = id;
     await joinAsParticipant(productId, userId);
     handleClose();
+    navigate(`/products/${id}`);
   };
 
   return (

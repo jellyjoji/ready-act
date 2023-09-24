@@ -67,14 +67,14 @@ function DetailMap() {
   return (
     <>
       <div className="px-4 py-2">
-        <Header />
+        <Header link={`/products/${id}`} />
       </div>
       <div ref={detailMapRef} className="w-full h-[600px] my-3 relative">
         <h1 className="sr-only">R09M</h1>
         <Button
           type="button"
           className={`${styles.button} right-2 bottom-4 bg-white p-2`}
-          onClick={currentLocation}
+          onClick={()=>{currentLocation(detailMapRef.current)}}
         >
           <img src={myLocation} alt="현재 위치로 가기" className="mx-auto" />
         </Button>

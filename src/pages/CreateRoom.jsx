@@ -128,80 +128,74 @@ function CreateRoom() {
         </div>
       </div>
 
-      <div>
-        <form
-          encType="multipart/form-data"
-          ref={formRef}
-          onSubmit={handleCreate}
-        >
-          <div className="flex flex-col gap-4 p-4 relative">
-            <Location />
+      <form encType="multipart/form-data" ref={formRef} onSubmit={handleCreate}>
+        <div className="flex flex-col gap-4 p-4 relative">
+          <Location />
 
-            <CategoryDropdown
-              title="카테고리"
-              className="w-full defaultInput mt-4"
-            />
-            <FormInput
-              ref={titleRef}
-              type="text"
-              placeholder="상품명을 입력해주세요."
-              labelClassName="product name"
-              inputClassName="defaultInput w-full"
-              label="상품명"
-            />
-            <FormInput
-              ref={priceRef}
-              type="number"
-              placeholder="0원"
-              labelClassName="product price"
-              inputClassName="defaultInput w-full"
-              label="상품 가격"
-            />
-            <ContentTextarea
-              title="내용"
-              placeholder="공구 모임 주요내용을 알려주세요."
-              className="w-full defaultInput"
-              labelClassName="product content"
-            />
+          <CategoryDropdown
+            title="카테고리"
+            className="w-full defaultInput mt-4"
+          />
+          <FormInput
+            ref={titleRef}
+            type="text"
+            placeholder="상품명을 입력해주세요."
+            labelClassName="product name"
+            inputClassName="defaultInput w-full"
+            label="상품명"
+          />
+          <FormInput
+            ref={priceRef}
+            type="number"
+            placeholder="0원"
+            labelClassName="product price"
+            inputClassName="defaultInput w-full"
+            label="상품 가격"
+          />
+          <ContentTextarea
+            title="내용"
+            placeholder="공구 모임 주요내용을 알려주세요."
+            className="w-full defaultInput"
+            labelClassName="product content"
+          />
 
-            <DatePicker
-              ref={dateRef}
-              title="픽업 날짜"
-              className="w-full defaultInput mt-4"
-              labelClassName="date Picker"
-            />
+          <DatePicker
+            ref={dateRef}
+            title="픽업 날짜"
+            className="w-full defaultInput mt-4"
+            labelClassName="date Picker"
+          />
 
-            <Status
-              ref={statusRef}
-              title="상태"
-              className="w-full defaultInput "
-              labelClassName="status"
-            />
+          <Status
+            ref={statusRef}
+            title="상태"
+            className="w-full defaultInput "
+            labelClassName="status"
+          />
 
-            <Creator />
+          <Creator />
 
-            <PaymentToggleButton
-              ref={paymentRef}
-              title="정산 방법"
-              labelClassName="payment"
-            />
+          <PaymentToggleButton
+            ref={paymentRef}
+            title="정산 방법"
+            labelClassName="payment"
+          />
 
-            <ParticipateCounter ref={ParticipateCounterRef} title="인원" />
+          <ParticipateCounter ref={ParticipateCounterRef} title="인원" />
 
-            <FileUpload
-              ref={uploadImageRef}
-              title="파일 업로드"
-              className="bg-[#EBF8E8] p-4 rounded-lg text-primary-500"
-            />
-          </div>
-          <Button
-            type="submit"
-            className="fixed bottom-3 py-4 activeButton lgFontButton mx-3 w-[93vw]"
-          >
-            방 만들기
-          </Button>
-        </form>
+          <FileUpload
+            ref={uploadImageRef}
+            title="파일 업로드"
+            className="bg-[#EBF8E8] p-4 rounded-lg text-primary-500"
+          />
+        </div>
+        <div className="fixed bottom-0 max-w-xl w-full bg-white py-3 px-4">
+        <Button type="submit" className="py-4 activeButton lgFontButton w-full z-50">
+          방 만들기
+        </Button>
       </div>
+      </form>
+      
     </>
   );
 }

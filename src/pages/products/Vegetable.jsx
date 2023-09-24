@@ -16,10 +16,12 @@ const filterVegetableProducts = async () => {
 };
 
 function Vegetable() {
-  const {isLoading, error, data} = useQuery({
+  const {isLoading, error, data, refetch} = useQuery({
     queryKey: ['products'],
     queryFn: () => filterVegetableProducts(),
   });
+
+  refetch();
 
   if (isLoading) {
     return <Spinner />;

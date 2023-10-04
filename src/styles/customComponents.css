@@ -1,14 +1,29 @@
 @layer components {
+  .defaultButton {
+    @apply text-white text-center font-semibold;
+  }
+
+  .goToHomepage {
+    @apply defaultButton;
+    @apply border-2 rounded-xl px-10 py-3 border-white;
+  }
+
+  .hoverGoToHomepage {
+    @apply bg-primary-800 border-primary-800;
+  }
+
   .activeButton {
-    @apply text-white text-center font-semibold bg-primary-500 border border-none rounded-xl py-3;
+    @apply defaultButton;
+    @apply bg-primary-500 border-none rounded-xl py-3;
   }
 
   .inactiveButton {
-    @apply text-greenishgray-400 text-center font-semibold bg-line-200 border-none border rounded-xl py-3;
+    @apply text-greenishgray-400 text-center font-semibold bg-line-200 border-none rounded-xl py-3;
   }
 
   .cancleButton {
-    @apply text-white text-center font-semibold bg-cancel-500 border border-none rounded-xl py-3;
+    @apply defaultButton;
+    @apply bg-cancel-500 border-none rounded-xl py-3;
   }
 
   .lgFontButton {
@@ -19,7 +34,64 @@
     @apply text-sm;
   }
 
+  .defaultBorder {
+    @apply rounded-lg border-solid border-line-400 p-4;
+  }
   .defaultInput {
-    @apply rounded-lg border border-solid border-line-400 p-4;
+    @apply defaultBorder;
+    @apply border;
+  }
+
+  .authLabel {
+    @apply font-semibold text-greenishgray-800;
+  }
+
+  .authInput {
+    @apply defaultBorder;
+    @apply border-2 w-full my-3;
+  }
+
+  .pageTitle {
+    @apply text-lg text-center font-semibold pt-4;
+  }
+
+  .authActiveButton {
+    @apply activeButton;
+    @apply lgFontButton;
+    @apply w-full mt-4 mb-2 hover:bg-primary-700;
+  }
+
+  .authinActiveButton {
+    @apply inactiveButton;
+    @apply lgFontButton;
+    @apply w-full hover:bg-greenishgray-400 hover:text-white;
+  }
+
+  .authTransform {
+    @apply inline-block text-right mx-1 my-2 hover:underline;
+  }
+
+  .signOut {
+    @apply mt-2 p-1 bg-greenishgray-300 inline-block text-xs hover:bg-greenishgray-500 hover:text-white;
+  }
+
+  .pageTitle {
+    @apply text-lg text-center font-semibold pt-4;
+  }
+
+  .authActiveButton {
+    @apply activeButton;
+    @apply lgFontButton;
+    @apply w-full mt-4 mb-2 hover:bg-primary-700;
+  }
+
+  .authinActiveButton {
+    @apply inactiveButton;
+    @apply lgFontButton;
+    @apply w-full hover:bg-greenishgray-400 hover:text-white;
+  }
+
+  .authTransform {
+    @apply inline-block text-right mx-1 my-2 hover:underline;
   }
 }

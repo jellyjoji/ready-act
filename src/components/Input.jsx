@@ -1,36 +1,24 @@
-import {useId} from 'react';
-import {string} from 'prop-types';
+import { string } from 'prop-types';
+import { useId } from 'react';
 
-function Input({
-  type,
-  placeholder,
-  labelClassName,
-  inputClassName,
-  ...restProps
-}) {
+function Input({ type = 'text', placeholder, className, ...restProps }) {
   const id = useId();
 
   return (
-    <>
-      <form>
-        <label htmlFor={id} className={labelClassName}></label>
-        <input
-          id={id}
-          type={type}
-          placeholder={placeholder}
-          className={inputClassName}
-          {...restProps}
-        />
-      </form>
-    </>
+    <input
+      id={id}
+      type={type}
+      placeholder={placeholder}
+      className={className}
+      {...restProps}
+    />
   );
 }
 
 Input.propTypes = {
   type: string,
   placeholder: string,
-  labelClassName: string,
-  inputClassName: string,
+  className: string,
 };
 
 export default Input;

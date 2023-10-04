@@ -1,0 +1,15 @@
+.group {
+  @apply flex justify-between my-5 p-6 rounded-2xl;
+}
+
+.title {
+  @apply text-xl font-bold;
+}
+
+.description {
+  @apply text-sm font-medium text-greenishgray-600;
+}
+
+.figure {
+  @apply flex items-center gap-2;
+}

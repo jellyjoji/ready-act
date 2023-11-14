@@ -28,7 +28,7 @@ function App() {
     title: '',
     content: '',
     price: 0,
-    pickup: null,
+    pickUp: null,
     payment: '',
     participateCounter: 0,
     meetingPoint: '',

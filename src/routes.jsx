@@ -24,6 +24,8 @@ const Vegetable = lazy(() => import('./pages/products/Vegetable'));
 const Users = lazy(() => import('./pages/users/Users'));
 const DetailStatus = lazy(() => import('./pages/details/DetailStatus'));
 
+const Chats = lazy(() => import('./pages/chats/Chats'));
+
 const router = createBrowserRouter(
   createRoutesFromElements(
     <>
@@ -50,6 +52,8 @@ const router = createBrowserRouter(
 
       <Route path="createroom" element={<CreateRoom />} />
       <Route path="location" element={<Location />} />
+
+      <Route path="chats" element={<Chats />} />
     </>
   )
 );

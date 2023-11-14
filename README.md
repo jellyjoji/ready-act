@@ -74,17 +74,18 @@ Button, Input 같이 재사용성이 높은 요소는 아토믹 컴포넌트로 
 ### 🏡 방 개설 페이지
 
 - Context API 를 사용한 전역 상태 관리와 컴포넌트 간의 데이터 전달 편리화
-- 페이지 이동시 전역 데이터 공유를 통한 상태값 유지 기능으로 UX 사용성 개선
-- Pocket Host 를 이용한 서버 통신과 Form 데이터 생성
-- Kakao Map API 를 사용한 공동구매 거래 위치 선택 기능
+- Form 데이터 생성과 Pocket Host 를 이용한 서버 통신
 - Local Storage 와 Pocket Host 의 ID 를 비교하여 동명이인을 방지한 로그인 정보 출력
-- HTML `<Form>` 태그를 사용한 데이터 전송과 수신
-- 다양한 입력 양식 제작 `<input>` `<button>` `<textarea>` `<date>` `<select>` `<option>`
 - react-router-dom 의 Link 컴포넌트를 사용한 렌더링
 - 이미지를 업로드할 수 있는 파일 업로드 기능
 - Date.prototype.toISOString() 메서드를 활용한 날짜와 시간 데이터 커스텀
 - 참여 인원을 계산해주는 Counter 기능
 - 아토믹 컴포넌트를 활용한 코드 분산 관리
+
+### 🗺️ 위치 선택 페이지
+
+- Kakao Map API 를 사용한 공동구매 거래 위치 선택 기능
+- Context API 를 활용한 페이지 이동시 상태값 유지 및 사용자 경험 개선
 
 ## 서진만
 

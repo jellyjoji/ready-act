@@ -1,14 +1,13 @@
-import {pb} from '@/api/pocketbase';
+import { pb } from '@/api/pocketbase';
 import logo from '@/assets/icons/logo.svg';
-import {AnimatePresence, motion} from 'framer-motion';
-import {func} from 'prop-types';
-import {useRef, useState} from 'react';
-import {useParams} from 'react-router-dom';
+import { AnimatePresence, motion } from 'framer-motion';
+import { func } from 'prop-types';
+import { useRef, useState } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
 import Dialog from './Dialog';
-import {useNavigate} from 'react-router-dom';
 
-function Participation({onUpdateParticipation}) {
-  const {id} = useParams();
+function Participation({ onUpdateParticipation }) {
+  const { id } = useParams();
   const opennerRef = useRef(null);
   const [open, setOpen] = useState(false);
   const navigate = useNavigate();
@@ -57,8 +56,8 @@ function Participation({onUpdateParticipation}) {
       <motion.button
         type="button"
         ref={opennerRef}
-        whileHover={{scale: 1.04}}
-        whileTap={{scale: 0.96}}
+        whileHover={{ scale: 1.04 }}
+        whileTap={{ scale: 0.96 }}
         onClick={handleOpen}
         className="px-7 py-3 bg-primary-500 rounded-xl text-white hover:bg-primary-700"
       >

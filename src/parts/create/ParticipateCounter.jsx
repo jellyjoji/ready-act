@@ -3,8 +3,8 @@ import minusCircle from '@/assets/icons/minusCircle.svg';
 import plusCircle from '@/assets/icons/plusCircle.svg';
 import { AppContext } from '@/App';
 
-function ParticipateCounter({ value = 0, labelClassName }) {
-  const [count, setCount] = useState(value);
+function ParticipateCounter({ value, labelClassName, title }) {
+  const [count, setCount] = useState(value = 0);
   const { updateCreateRoomForm } = useContext(AppContext);
 
   useEffect(() => {
@@ -22,8 +22,9 @@ function ParticipateCounter({ value = 0, labelClassName }) {
   return (
     <div className="py-2">
       <label htmlFor="participateCounter" className={labelClassName}>
-        참여자 인원
+        {title}
       </label>
+
       <div value={count} id="participateCounter" className="flex gap-2 float-right p-2 items-center">
         <button type="button" onClick={decrementCount}>
           <img src={minusCircle} alt="minus" />

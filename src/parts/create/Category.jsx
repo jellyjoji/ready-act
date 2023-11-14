@@ -2,9 +2,9 @@ import { AppContext } from '@/App';
 import { category } from '@/data/category';
 import { useContext, useEffect, useState } from 'react';
 
-function CategoryDropdown({ value, className }) {
+function Category({ value, className, ...restProps }) {
   const { updateCreateRoomForm } = useContext(AppContext);
-  const [selectedCategory, setSelectedCategory] = useState(value);
+  const [selectedCategory, setSelectedCategory] = useState(value = "⛳️ 전체");
 
   useEffect(() => {
     updateCreateRoomForm('category', selectedCategory);
@@ -21,10 +21,11 @@ function CategoryDropdown({ value, className }) {
         id="category"
         className={className}
         name="category"
+        {...restProps}
       >
         {category.map((list) => (
-          <option key={list.title} value={list.title}>
-            {list.title}
+          <option key={list.icon} value={list.icon}>
+            {list.icon}
           </option>
         ))}
       </select>
@@ -32,4 +33,4 @@ function CategoryDropdown({ value, className }) {
   );
 }
 
-export default CategoryDropdown;
+export default Category;

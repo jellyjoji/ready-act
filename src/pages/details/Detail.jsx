@@ -175,7 +175,7 @@ function Detail() {
           <div className="flex justify-between items-center mr-5">
             <div className="flex flex-col">
               <span className="mt-2 text-lg font-semibold">
-                {numberWithComma(price / participateNumber)}원
+                {numberWithComma(Math.floor(price / participateNumber))}원
               </span>
               <span className="text-greenishgray-500 font-semibold">
                 1인당 정산비

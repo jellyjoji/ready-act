@@ -2,7 +2,7 @@ import { AppContext } from '@/App';
 import FormInput from '@/components/FormInput';
 import { useState, useContext, useEffect } from 'react';
 
-function DatePicker({ value = null, label, title, className, labelClassName, ...restProps }) {
+function PickUp({ value = null, label, title, className, labelClassName, ...restProps }) {
 
   const { updateCreateRoomForm } = useContext(AppContext);
   const [data, setData] = useState(value);
@@ -17,6 +17,7 @@ function DatePicker({ value = null, label, title, className, labelClassName, ...
   return (
     <div>
       <FormInput
+        title={title}
         value={data || ''}
         onChange={handleInputChange}
         type="datetime-local"
@@ -30,4 +31,4 @@ function DatePicker({ value = null, label, title, className, labelClassName, ...
   )
 }
 
-export default DatePicker
+export default PickUp;

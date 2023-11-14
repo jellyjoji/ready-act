@@ -1,8 +1,10 @@
+import { AppContext } from '@/App';
 import imgUpload from '@/assets/icons/imgUpload.svg';
-import { forwardRef, useState } from 'react';
+import { useContext, useState } from 'react';
 
-function FileUpload({ className, title, ...restProps }, ref) {
-  const [fileImages, setFileImages] = useState(null);
+function UploadImage({ value, className, title, ...restProps }) {
+  const { updateCreateRoomForm } = useContext(AppContext);
+  const [fileImages, setFileImages] = useState(value);
 
   const handleFileUpload = (e) => {
     const { files } = e.target;
@@ -11,6 +13,7 @@ function FileUpload({ className, title, ...restProps }, ref) {
       label: file.name,
     }));
     setFileImages(fileImages);
+    updateCreateRoomForm('uploadImage', fileImages);
   };
 
   return (
@@ -26,7 +29,6 @@ function FileUpload({ className, title, ...restProps }, ref) {
             accept="image/jpg,image/png,image/jpeg,image/webp,image/avif"
             name="photo"
             id="photo"
-            ref={ref}
             onChange={handleFileUpload}
             style={{ display: 'none' }}
             {...restProps}
@@ -37,7 +39,8 @@ function FileUpload({ className, title, ...restProps }, ref) {
             <img src={imgUpload} alt="photo" className="w-20 p-4" />
           )}
           {fileImages?.map((file) => {
-            return <img key={file.label} src={file.image} alt={file.label} />;
+            return <img value={fileImages}
+              key={file.label} src={file.image} alt={file.label} />;
           })}
         </div>
       </div>
@@ -45,4 +48,4 @@ function FileUpload({ className, title, ...restProps }, ref) {
   );
 }
 
-export default forwardRef(FileUpload);
+export default UploadImage;

@@ -1,18 +1,15 @@
 import { AppContext } from '@/App';
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useState } from 'react';
 
 
-function ContentTextarea(
+function Content(
   { value = "", title, placeholder, className, labelClassName, ...restProps }) {
   const { updateCreateRoomForm } = useContext(AppContext);
   const [data, setData] = useState(value);
 
-  useEffect(() => {
-    updateCreateRoomForm('content', data);
-  }, [data]);
-
   const handleInputChange = (e) => {
     setData(e.target.value);
+    updateCreateRoomForm('content', data);
   };
 
   return (
@@ -32,4 +29,4 @@ function ContentTextarea(
   );
 }
 
-export default ContentTextarea;
+export default Content;

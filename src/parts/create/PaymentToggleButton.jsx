@@ -1,7 +1,16 @@
-import { forwardRef, useState } from 'react';
+import { AppContext } from '@/App';
+import { useContext, useEffect, useState } from 'react';
 
-function PaymentToggleButton({ labelClassName }, ref) {
-  const [isToggled, setToggled] = useState(false);
+function PaymentToggleButton({ value = "false", labelClassName, ...restProps }) {
+  const { updateCreateRoomForm } = useContext(AppContext);
+  const [isToggled, setToggled] = useState(value);
+
+  const paymentMethod = isToggled ? '계좌 이체' : '만나서 결제';
+  const activeClassNames = 'shadow-lg bg-white rounded-lg';
+
+  useEffect(() => {
+    updateCreateRoomForm('payment', paymentMethod);
+  }, [isToggled]);
 
   return (
     <>
@@ -10,33 +19,24 @@ function PaymentToggleButton({ labelClassName }, ref) {
       </label>
       <div id="payment" className="bg-greenishgray-200 w-full p-2 rounded-lg">
         <button
-          ref={ref}
-          // value={isToggled}
+          value={isToggled}
           type="button"
-          className="w-full rounded-lg "
+          className="w-full rounded-lg flex items-center"
           onClick={() => setToggled(!isToggled)}
-          data-payment={isToggled ? '계좌 이체' : '만나서 결제'}
+          data-payment={paymentMethod}
+          {...restProps}
         >
-          <div
-            className={`flex w-full ${isToggled ? 'items-center' : ''}`.trim()}
-          >
-            <div
-              className={`w-1/2 ${!isToggled ? 'shadow-lg bg-white rounded-lg' : ''
-                }`.trim()}
-            >
-              만나서 결제
-            </div>
-            <div
-              className={`w-1/2 ${isToggled ? 'shadow-lg bg-white rounded-lg' : ''
-                }`.trim()}
-            >
-              계좌 이체
-            </div>
-          </div>
+          <span className={`w-1/2 ${!isToggled ? activeClassNames : ''}`}>
+            만나서 결제
+          </span>
+          <span className={`w-1/2 ${isToggled ? activeClassNames : ''}`}>
+            계좌 이체
+          </span>
         </button>
+
       </div>
     </>
   );
 }
 
-export default forwardRef(PaymentToggleButton);
+export default PaymentToggleButton;
